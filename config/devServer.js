@@ -1,8 +1,8 @@
-const ip = require('ip');
-console.log(process.env.HOST);
+const {address} = require('ip');
+
 module.exports = {
   open: true,
-  host: ip.address(),
+  host: address(),
   port: Number(process.env.HOST),
   hot: true,
   compress: true,
