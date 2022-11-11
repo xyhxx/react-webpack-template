@@ -4,7 +4,8 @@ function startedServer(port, host) {
   console.log('\n');
   console.log(chalk.green('Server started! ✓'));
   console.log('\n');
-  console.log(`open: ${chalk.hex('#db5a6b').bold(`http://${host}:${port}`)}`);
+  console.log(`Network: ${chalk.hex('#db5a6b').bold(`http://${host}:${port}`)}`);
+  console.log('\n');
 };
 
 function error(error) {

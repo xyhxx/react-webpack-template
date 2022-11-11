@@ -5,7 +5,8 @@ const {
   nodeModulesPath,
   appPath,
 } = require('./paths');
-const {isProduction} = require('./constants');
+const {isProduction, ENV} = require('./constants');
+const envList = require('./env');
 
 const {resolve} = require("path");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
@@ -55,7 +56,9 @@ const plugins = [
     )
   ),
   new DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    'process.env': {
+      ...envList(),
+    }
   }),
   // 将public下面的资源复制到dist目录去（除了index.html）
   new CopyPlugin({

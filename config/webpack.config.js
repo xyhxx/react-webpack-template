@@ -22,8 +22,6 @@ const devServer = require('./devServer');
 const {resolve} = require('path');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-const {wrap} = new SpeedMeasurePlugin(); 
 
 const config = {
   stats: 'errors-warnings',
@@ -238,4 +236,4 @@ const config = {
   devServer,
 };
 
-module.exports = isDevelopment ? wrap(config) : config;
+module.exports = config;
