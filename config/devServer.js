@@ -1,10 +1,9 @@
 const ip = require('ip');
-
-
+console.log(process.env.HOST);
 module.exports = {
   open: true,
   host: ip.address(),
-  port: 509,
+  port: Number(process.env.HOST),
   hot: true,
   compress: true,
   historyApiFallback: true,

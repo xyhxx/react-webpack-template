@@ -5,7 +5,7 @@ const {
   nodeModulesPath,
   appPath,
 } = require('./paths');
-const {isProduction, ENV} = require('./constants');
+const {isProduction} = require('./constants');
 const envList = require('./env');
 
 const {resolve} = require("path");
