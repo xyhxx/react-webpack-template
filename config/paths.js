@@ -10,4 +10,7 @@ module.exports = {
   nodeModulesPath: resolvePath('node_modules'),
   publicPath: resolvePath('public'),
   appPath: resolvePath('.'),
+  pkgPath: resolvePath('package.json'),
+  assetsPublicPath: '/',
+  indexHtmlPath: resolvePath('public/index.html'),
 }

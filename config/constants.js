@@ -2,7 +2,7 @@ const useSourceMap = false;
 const ENV = process.env.NODE_ENV;
 const isProduction = ENV === "production";
 const isDevelopment = ENV === "development";
-const enableThreadLoader = false;
+const enableThreadLoader = true;
 const buildSourceMap = isProduction ? useSourceMap : true;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;

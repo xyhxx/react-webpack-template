@@ -16,7 +16,7 @@ const WebpackBar = require('webpackbar');
 const {DefinePlugin} = require('webpack');
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 const plugins = [
   new WebpackBar(),

@@ -1,11 +1,11 @@
 const chalk = require('chalk');
 
 function startedServer(port, host) {
-  console.log('\n');
+  console.log();
   console.log(chalk.green('Server started! ✓'));
-  console.log('\n');
+  console.log();
   console.log(`Network: ${chalk.hex('#db5a6b').bold(`http://${host}:${port}`)}`);
-  console.log('\n');
+  console.log();
 };
 
 function error(error) {

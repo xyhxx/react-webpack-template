@@ -1,13 +1,9 @@
 
-const {
-  isProduction,
-  enableThreadLoader,
-} = require('./constants');
+const {isProduction} = require('./constants');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function getStyleLoaders(cssOptions, preProcessor) {
-  return [
-    enableThreadLoader && require.resolve('thread-loader'),
+  return  [
     isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
     {
       loader: require.resolve('css-loader'),

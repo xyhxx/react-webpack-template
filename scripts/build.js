@@ -1,0 +1,51 @@
+const webpack = require('webpack');
+const chalk = require('chalk');
+const config = require('../config/webpack.config');
+
+const MAX_CHUNK_SIZE = 500 * 1024;
+
+console.log('Creating an optimized production build...');
+
+function printAssets(assets){
+  console.log('Packaging resource list:')
+  console.log();
+
+  let list = [];
+
+  for (const [path, size] of Object.entries(assets)) {
+    const isJs = path.lastIndexOf('.js') === path.length - 3;
+    const isCss = path.lastIndexOf('.css') === path.length - 4;
+    const isMedia = path.includes('static/assets');
+    const sizeNum = size.size();
+    const kbSize = Math.ceil(sizeNum / 1024);
+    const sizePen = sizeNum > MAX_CHUNK_SIZE ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
+    const pathPen = isJs ? chalk.hex('#48c0a3') : (isCss ? chalk.hex('#b0a4e3') : chalk.hex('#eacd76'));
+
+    if (isJs || isMedia || isCss) 
+      list.push({
+        path,
+        size: `${kbSize} KB`,
+        sizePen,
+        pathPen,
+      });
+  }
+  const maxLength = Math.max(...list.map(val => val.size.length));
+  list.forEach(function ({path, size, sizePen, pathPen}) {
+    const afterSize = size.padEnd(maxLength + 2, ' ');
+
+    console.log(sizePen(`Size: ${afterSize}`), pathPen(path));
+  });
+
+  console.log();
+  console.log();
+}
+
+const compiler = webpack(config);
+compiler.run(function(err, stats) {
+  if (err) {
+    console.log(chalk.red('build error: ', err.message));
+    process.exit(1);
+    return;
+  }
+  printAssets(stats.compilation.assets);
+});

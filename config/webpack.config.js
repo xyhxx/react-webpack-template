@@ -4,6 +4,7 @@ const {
   srcPath,
   nodeModulesPath,
   appPath,
+  assetsPublicPath,
 } = require('./paths');
 const {getStyleLoaders} = require('./utils');
 const {
@@ -14,7 +15,6 @@ const {
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
-  isDevelopment,
 } = require('./constants');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
@@ -43,6 +43,7 @@ const config = {
       : "static/js/[name].chunk.js",
     assetModuleFilename: 'static/assets/[name].[hash][ext]',
     clean: true,
+    publicPath: assetsPublicPath,
   },
   module: {
     rules: [
@@ -213,8 +214,6 @@ const config = {
     // 代码分割配置
     splitChunks: {
       chunks: "all",
-      minChunks: 3,
-      automaticNameDelimiter: '~',
       cacheGroups: {
         reactVendors: {
           name: 'react-vendors',
