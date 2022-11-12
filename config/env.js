@@ -21,12 +21,12 @@ function getEnv() {
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
 
-  const resule = {};
+  const result = {};
   for(const [key, value] of Object.entries(temp)){
-    Object.assign(resule, {[key]: JSON.stringify(value)});
+    Object.assign(result, {[key]: JSON.stringify(value)});
   }
 
-  return resule;
+  return result;
 };
 
 module.exports = getEnv;
