@@ -15,6 +15,7 @@ const {
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
+  useSourceMap
 } = require('./constants');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
@@ -27,7 +28,7 @@ const config = {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: "./src/index.tsx",
-  devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
+  devtool: isProduction ? (useSourceMap ? 'source-map' : false) : 'cheap-module-source-map',
   mode: isProduction ? "production" : "development",
   performance: false,
   infrastructureLogging: {

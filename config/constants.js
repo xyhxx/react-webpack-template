@@ -19,4 +19,5 @@ module.exports = {
   sassRegex,
   sassModuleRegex,
   ENV,
+  useSourceMap,
 }

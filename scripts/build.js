@@ -29,7 +29,10 @@ function printAssets(assets){
         pathPen,
       });
   }
-  const maxLength = Math.max(...list.map(val => val.size.length));
+  const maxLength = list.reduce(function (pre, next) {
+    return next.size.length > pre ? next.size.length : pre;
+  }, 0);
+
   list.forEach(function ({path, size, sizePen, pathPen}) {
     const afterSize = size.padEnd(maxLength + 2, ' ');
 
@@ -45,7 +48,6 @@ compiler.run(function(err, stats) {
   if (err) {
     console.log(chalk.red('build error: ', err.message));
     process.exit(1);
-    return;
   }
   printAssets(stats.compilation.assets);
 });
