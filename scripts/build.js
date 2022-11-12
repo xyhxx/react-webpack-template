@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const config = require('../config/webpack.config');
+const {clearConsole} = require('../config/utils');
 
 const MAX_CHUNK_SIZE = 500 * 1024;
 
@@ -38,9 +39,6 @@ function printAssets(assets){
 
     console.log(sizePen(`Size: ${afterSize}`), pathPen(path));
   });
-
-  console.log();
-  console.log();
 }
 
 const compiler = webpack(config);
@@ -49,5 +47,18 @@ compiler.run(function(err, stats) {
     console.log(chalk.red('build error: ', err.message));
     process.exit(1);
   }
-  printAssets(stats.compilation.assets);
+  const assets = stats.compilation.assets;
+  const startTime = stats.compilation.startTime;
+  const endTime = stats.compilation.endTime;
+  const time = endTime - startTime;
+
+  clearConsole();
+  console.log();
+  console.log(chalk.green('Successfully ✔ '));
+  console.log(
+    chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`)
+  );
+  console.log();
+  printAssets(assets);
+  console.log();
 });
