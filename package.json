@@ -5,8 +5,8 @@
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development node scripts/server.js",
     "build": "tsc && cross-env NODE_ENV=production node scripts/build.js",
-    "test": "tsc && cross-env NODE_ENV=test node scripts/test.js",
-    "test:coverage": "tsc && cross-env NODE_ENV=test node scripts/test.js --coverage"
+    "test": "cross-env NODE_ENV=test node scripts/test.js --watchAll",
+    "test:coverage": "cross-env NODE_ENV=test node scripts/test.js --coverage --watchAll"
   },
   "private": true,
   "dependencies": {
@@ -101,6 +101,7 @@
   },
   "jest": {
     "roots": [
+      "<rootDir>/src",
       "<rootDir>/__tests__"
     ],
     "collectCoverageFrom": [
