@@ -1,5 +1,9 @@
 {
   "extends": "proste/reactTS.js",
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  },
   "parserOptions": {
     "project": "./tsconfig.json",
     "tsconfigRootDir": ".",

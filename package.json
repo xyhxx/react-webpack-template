@@ -2,8 +2,11 @@
   "name": "react-webpack",
   "version": "0.0.1",
   "scripts": {
+    "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development node scripts/server.js",
-    "build": "tsc && cross-env NODE_ENV=production node scripts/build.js"
+    "build": "tsc && cross-env NODE_ENV=production node scripts/build.js",
+    "test": "tsc && cross-env NODE_ENV=test node scripts/test.js",
+    "test:coverage": "tsc && cross-env NODE_ENV=test node scripts/test.js --coverage"
   },
   "private": true,
   "dependencies": {
@@ -22,16 +25,21 @@
     "@svgr/webpack": "^6.5.1",
     "@tanstack/react-query-devtools": "^4.14.5",
     "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/babel__core": "^7.1.20",
+    "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "babel-jest": "^29.3.1",
     "babel-loader": "^9.1.0",
     "babel-preset-react-app": "^10.0.1",
+    "camelcase": "^6.3.0",
     "chalk": "^4.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
@@ -41,17 +49,23 @@
     "eslint": "^8.27.0",
     "eslint-config-proste": "^3.3.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.5",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^3.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
     "ip": "^1.1.8",
+    "jest": "^27.5.1",
+    "jest-environment-jsdom": "^27.5.1",
+    "jest-watch-typeahead": "^2.2.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.19",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.8.2",
+    "react-app-polyfill": "^3.0.0",
     "react-refresh": "^0.14.0",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
@@ -60,6 +74,7 @@
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^6.1.0",
     "thread-loader": "^3.0.4",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
@@ -83,5 +98,59 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/__tests__"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "@styles(.*)$": "<rootDir>/src/styles$1",
+      "@assets(.*)$": "<rootDir>/src/assets$1",
+      "@routes(.*)$": "<rootDir>/src/routes$1",
+      "@apis(.*)$": "<rootDir>/src/apis$1",
+      "@components(.*)$": "<rootDir>/src/components$1",
+      "@hooks(.*)$": "<rootDir>/src/hooks$1",
+      "@pages(.*)$": "<rootDir>/src/pages$1",
+      "@stores(.*)$": "<rootDir>/src/stores$1",
+      "@models(.*)$": "<rootDir>/src/models$1",
+      "@utils(.*)$": "<rootDir>/src/utils$1"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx",
+      "json",
+      "jsx"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "resetMocks": true
   }
 }
