@@ -2,8 +2,7 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const config = require('../config/webpack.config');
 const {clearConsole} = require('../config/utils');
-
-const MAX_CHUNK_SIZE = 500 * 1024;
+const {MAX_CHUNK_SIZE} = require('../config/constants');
 
 console.log('Creating an optimized production build...');
 
@@ -11,7 +10,8 @@ function printAssets(assets){
   console.log('Packaging resource list:')
   console.log();
 
-  let list = [];
+  const list = [];
+  let overstep = false;
 
   for (const [path, size] of Object.entries(assets)) {
     const isJs = path.lastIndexOf('.js') === path.length - 3;
@@ -21,6 +21,7 @@ function printAssets(assets){
     const kbSize = Math.ceil(sizeNum / 1024);
     const sizePen = sizeNum > MAX_CHUNK_SIZE ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
     const pathPen = isJs ? chalk.hex('#48c0a3') : (isCss ? chalk.hex('#b0a4e3') : chalk.hex('#eacd76'));
+    if(!overstep) overstep = sizeNum > MAX_CHUNK_SIZE;
 
     if (isJs || isMedia || isCss) 
       list.push({
@@ -39,6 +40,36 @@ function printAssets(assets){
 
     console.log(sizePen(`Size: ${afterSize}`), pathPen(path));
   });
+
+  if (overstep) {
+    const varColor = '#177cb0';
+    const pathColor = '#f00056';
+
+    console.log();
+    console.log();
+    console.log(
+      chalk.grey(
+        `Some chunks are larger ${MAX_CHUNK_SIZE / 1024}KB after compilation. Consider:`
+      )
+    );
+    console.log();
+    console.log(
+      chalk.hex(pathColor)(
+        `1.Using dynamic import() to code-split the application`
+      )
+    );
+    console.log(
+      chalk.hex(pathColor)(
+        `2.Modify ${chalk.hex(varColor)('splitChunks')} in `
+        +`${chalk.white('config/optimization.js')}`
+      )
+    );
+    console.log(
+      chalk.hex(pathColor)(`3.Adjust the prompt size by adjusting`
+      +` ${chalk.hex(varColor)('MAX_CHUNK_SIZE')}`
+      +` in ${chalk.white('config/constants.js')}`)
+    );
+  }
 }
 
 const compiler = webpack(config);
