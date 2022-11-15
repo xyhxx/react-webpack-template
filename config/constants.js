@@ -4,6 +4,7 @@ const isProduction = ENV === "production";
 const isDevelopment = ENV === "development";
 const enableThreadLoader = true;
 const buildSourceMap = isProduction ? useSourceMap : true;
+const enableSpeedMeasure = false;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
@@ -20,4 +21,5 @@ module.exports = {
   sassModuleRegex,
   ENV,
   useSourceMap,
+  enableSpeedMeasure,
 }

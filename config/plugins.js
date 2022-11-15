@@ -60,20 +60,17 @@ const plugins = [
       ...envList(),
     }
   }),
-  // 将public下面的资源复制到dist目录去（除了index.html）
   new CopyPlugin({
     patterns: [
       {
         from: publicPath,
         to: outputPath,
         toType: "dir",
-        noErrorOnMissing: true, // 不生成错误
+        noErrorOnMissing: true, 
         globOptions: {
-          // 忽略文件
-          ignore: ["**/index.html"],
+          ignore: ["**/index.html", "**/pLogo.svg"],
         },
         info: {
-          // 跳过terser压缩js
           minimized: true,
         },
       },
