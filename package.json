@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development node scripts/server.js",
-    "build": "tsc && cross-env NODE_ENV=production node scripts/build.js",
+    "build": "cross-env NODE_ENV=production node scripts/build.js",
     "test": "cross-env NODE_ENV=test node scripts/test.js --watchAll",
     "test:coverage": "cross-env NODE_ENV=test node scripts/test.js --coverage --watchAll"
   },
@@ -55,6 +55,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^3.2.0",
     "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "ip": "^1.1.8",
