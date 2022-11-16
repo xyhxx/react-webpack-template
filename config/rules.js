@@ -1,4 +1,4 @@
-const {getStyleLoaders} = require('./utils');
+const { getStyleLoaders } = require('./utils');
 const {
   buildSourceMap,
   enableThreadLoader,
@@ -8,7 +8,7 @@ const {
   sassRegex,
   sassModuleRegex,
 } = require('./constants');
-const {srcPath} = require('./paths');
+const { srcPath } = require('./paths');
 
 const rules = [
   {
@@ -31,8 +31,7 @@ const rules = [
           importLoaders: 1,
           sourceMap: buildSourceMap,
           modules: {
-            mode: 'local',
-            localIdentName: '[name]-[hash:base64:5]',
+            localIdentName: '[local]-[hash:base64:5]',
           },
         }),
       },
@@ -58,8 +57,7 @@ const rules = [
             importLoaders: 3,
             sourceMap: buildSourceMap,
             modules: {
-              mode: 'local',
-              localIdentName: '[name]-[hash:base64:5]',
+              localIdentName: '[local]-[hash:base64:5]',
             },
           },
           'sass-loader'
@@ -119,9 +117,9 @@ const rules = [
                   },
                 ],
               ],
-              
+
               plugins: [
-                !isProduction 
+                !isProduction
                 && require.resolve('react-refresh/babel'),
               ].filter(Boolean),
               cacheDirectory: true,
