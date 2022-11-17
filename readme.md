@@ -40,7 +40,3 @@ If you want to modify some configuration information, such as whether to enable 
 The project directory and basic template information have been created in this package.
 
 <br />
-
-<h2>Tips</h2>
-
-Using speed measure webpack plugin will cause the console to output `(node:7232) [DEP_WEBPACK_COMPILATION_NORMAL_MODULE_LOADER_HOOK] DeprecationWarning: ...`, which is just a compilation time analysis plug-in. If you do not want to output warnings, you can close it in `config/constants.js` and set `const enableSpeedMeasure = false`.
