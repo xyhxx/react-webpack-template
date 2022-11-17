@@ -17,7 +17,6 @@ const {DefinePlugin} = require('webpack');
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const plugins = [
   new WebpackBar(),
@@ -76,24 +75,6 @@ const plugins = [
         },
       },
     ],
-  }),
-  new ForkTsCheckerWebpackPlugin({
-    async: isDevelopment,
-    logger: {
-      infrastructure: 'silent',
-    },
-    issue: {
-      include: [
-        { file: '../**/src/**/*.{ts,tsx}' },
-        { file: '**/src/**/*.{ts,tsx}' },
-      ],
-      exclude: [
-        { file: '**/src/**/__tests__/**' },
-        { file: '**/src/**/?(*.){spec|test}.*' },
-        { file: '**/src/setupProxy.*' },
-        { file: '**/src/setupTests.*' },
-      ],
-    },
   }),
 ];
 

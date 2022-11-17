@@ -9,6 +9,14 @@ const {
   sassModuleRegex,
 } = require('./constants');
 const { srcPath } = require('./paths');
+const swcTransformOptions = {
+  react: {
+    refresh: !isProduction,
+    runtime: 'automatic'
+  },
+};
+const swcParserOptions = {
+};
 
 const rules = [
   {
@@ -99,35 +107,46 @@ const rules = [
         },
       },
       {
-        test: /\.(js|jsx|ts|tsx|mjs)$/,
+        test: /.(ts|tsx)$/,
         include: srcPath,
         use: [
-          enableThreadLoader && require.resolve('thread-loader'),
           {
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve('swc-loader'),
             options: {
-              customize: require.resolve(
-                'babel-preset-react-app/webpack-overrides'
-              ),
-              presets: [
-                [
-                  require.resolve('babel-preset-react-app'),
-                  {
-                    runtime: 'automatic',
-                  },
-                ],
-              ],
-
-              plugins: [
-                !isProduction
-                && require.resolve('react-refresh/babel'),
-              ].filter(Boolean),
-              cacheDirectory: true,
-              cacheCompression: false,
-              compact: isProduction,
+              jsc: {
+                parser: {
+                  syntax: "typescript",
+                  tsx: true,
+                  ...swcParserOptions,
+                },
+                transform: {
+                  ...swcTransformOptions,
+                },
+              },
             },
           }
-        ].filter(Boolean),
+        ],
+      },
+      {
+        test: /.(|js|jsx|mjs)$/,
+        include: srcPath,
+        use: [
+          {
+            loader: require.resolve('swc-loader'),
+            options: {
+              jsc: {
+                parser: {
+                  syntax: "ecmascript",
+                  jsx: true,
+                  ...swcParserOptions,
+                },
+                transform: {
+                  ...swcTransformOptions,
+                },
+              },
+            },
+          }
+        ],
       },
       {
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],

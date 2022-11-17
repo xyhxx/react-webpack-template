@@ -30,17 +30,6 @@ const optimization = {
       }
     }),
   ],
-  splitChunks: {
-    chunks: "all",
-    cacheGroups: {
-      reactVendors: {
-        name: 'react-vendors',
-        chunks: 'all',
-        test: /(react|react-dom|react-dom-router)/,
-        priority: 10,
-      }
-    }
-  },
   runtimeChunk: {
     name: (entrypoint) => `runtime~${entrypoint.name}`,
   },
