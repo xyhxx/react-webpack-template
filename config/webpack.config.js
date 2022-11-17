@@ -5,7 +5,7 @@ const {
   appPath,
   assetsPublicPath,
 } = require('./paths');
-const {isProduction, useSourceMap, enableSpeedMeasure} = require('./constants');
+const {isProduction, useSourceMap} = require('./constants');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
 const rules = require('./rules');

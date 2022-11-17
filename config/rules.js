@@ -1,7 +1,6 @@
 const { getStyleLoaders } = require('./utils');
 const {
   buildSourceMap,
-  enableThreadLoader,
   isProduction,
   cssRegex,
   cssModuleRegex,
