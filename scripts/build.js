@@ -3,8 +3,7 @@ const chalk = require('chalk');
 const config = require('../config/webpack.config');
 const {clearConsole} = require('../config/utils');
 const {MAX_CHUNK_SIZE} = require('../config/constants');
-
-console.log('Creating an optimized production build...');
+const {errorLogger} = require('./logger');
 
 function printAssets(assets){
   console.log('Packaging resource list:')
@@ -71,25 +70,35 @@ function printAssets(assets){
     );
   }
 }
+try {
+  const compiler = webpack(config);
+  compiler.run(function(err, stats) {
+    if (err) {
+      errorLogger('Failed to compile');
+      console.log();
+      console.log(err.message);
+      console.log();
+      process.exit(1);
+    }
+    const assets = stats.compilation.assets;
+    const startTime = stats.compilation.startTime;
+    const endTime = stats.compilation.endTime;
+    const time = endTime - startTime;
 
-const compiler = webpack(config);
-compiler.run(function(err, stats) {
-  if (err) {
-    console.log(chalk.red('build error: ', err.message));
-    process.exit(1);
-  }
-  const assets = stats.compilation.assets;
-  const startTime = stats.compilation.startTime;
-  const endTime = stats.compilation.endTime;
-  const time = endTime - startTime;
-
-  clearConsole();
+    clearConsole();
+    console.log();
+    console.log(chalk.green('Successfully 🤩'));
+    console.log(
+      chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`)
+    );
+    console.log();
+    printAssets(assets);
+    console.log();
+  });
+} catch (error) {
+  errorLogger('Failed to compile');
   console.log();
-  console.log(chalk.green('Successfully ✔ '));
-  console.log(
-    chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`)
-  );
+  console.log(error.message);
   console.log();
-  printAssets(assets);
-  console.log();
-});
+  process.exit(1);
+}
