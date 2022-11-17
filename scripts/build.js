@@ -26,7 +26,7 @@ function printAssets(assets){
     if (isJs || isMedia || isCss) 
       list.push({
         path,
-        size: `${kbSize} KB`,
+        size: sizeNum >= 1024 ? `${kbSize} KB` : `${sizeNum} B`,
         sizePen,
         pathPen,
       });
