@@ -9,14 +9,6 @@ const {
   enableThreadLoader,
 } = require('./constants');
 const { srcPath } = require('./paths');
-const swcTransformOptions = {
-  react: {
-    refresh: !isProduction,
-    runtime: 'automatic'
-  },
-};
-const swcParserOptions = {
-};
 
 const rules = [
   {

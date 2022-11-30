@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function getStyleLoaders(cssOptions, preProcessor) {
   return  [
+    enableThreadLoader && require.resolve('thread-loader'),
     isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
     {
       loader: require.resolve('css-loader'),
@@ -34,7 +35,6 @@ function getStyleLoaders(cssOptions, preProcessor) {
     preProcessor && {
       loader: preProcessor,
     },
-    enableThreadLoader && require.resolve('thread-loader'),
   ].filter(Boolean);
 };
 
