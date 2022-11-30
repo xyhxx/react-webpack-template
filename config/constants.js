@@ -1,10 +1,11 @@
 const ENV = process.env.NODE_ENV;
 const MAX_CHUNK_SIZE = 600 * 1024;
-
+const enableThreadLoader = true;
 const useSourceMap = false;
 const isProduction = ENV === "production";
 const isDevelopment = ENV === "development";
 const buildSourceMap = isProduction ? useSourceMap : true;
+const enableSpeedMeasure = true;
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -22,4 +23,6 @@ module.exports = {
   ENV,
   useSourceMap,
   MAX_CHUNK_SIZE,
+  enableThreadLoader,
+  enableSpeedMeasure,
 }
