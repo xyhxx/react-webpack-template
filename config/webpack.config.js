@@ -5,13 +5,15 @@ const {
   appPath,
   assetsPublicPath,
 } = require('./paths');
-const {isProduction, useSourceMap} = require('./constants');
+const {isProduction, useSourceMap, enableSpeedMeasure} = require('./constants');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
 const rules = require('./rules');
 const optimization = require('./optimization');
 
 const {resolve} = require('path');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const {wrap} = new SpeedMeasurePlugin();
 
 const config = {
   stats: 'errors-warnings',
@@ -52,4 +54,6 @@ const config = {
   devServer,
 };
 
-module.exports = config;
+module.exports = isProduction 
+  ? config 
+  : enableSpeedMeasure ? wrap(config) : config;

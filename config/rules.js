@@ -6,6 +6,7 @@ const {
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
+  enableThreadLoader,
 } = require('./constants');
 const { srcPath } = require('./paths');
 const swcTransformOptions = {
@@ -106,46 +107,35 @@ const rules = [
         },
       },
       {
-        test: /.(ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx|mjs)$/,
         include: srcPath,
         use: [
+          enableThreadLoader && require.resolve('thread-loader'),
           {
-            loader: require.resolve('swc-loader'),
+            loader: require.resolve('babel-loader'),
             options: {
-              jsc: {
-                parser: {
-                  syntax: "typescript",
-                  tsx: true,
-                  ...swcParserOptions,
-                },
-                transform: {
-                  ...swcTransformOptions,
-                },
-              },
+              customize: require.resolve(
+                'babel-preset-react-app/webpack-overrides'
+              ),
+              presets: [
+                [
+                  require.resolve('babel-preset-react-app'),
+                  {
+                    runtime: 'automatic',
+                  },
+                ],
+              ],
+
+              plugins: [
+                !isProduction
+                && require.resolve('react-refresh/babel'),
+              ].filter(Boolean),
+              cacheDirectory: true,
+              cacheCompression: false,
+              compact: isProduction,
             },
           }
-        ],
-      },
-      {
-        test: /.(|js|jsx|mjs)$/,
-        include: srcPath,
-        use: [
-          {
-            loader: require.resolve('swc-loader'),
-            options: {
-              jsc: {
-                parser: {
-                  syntax: "ecmascript",
-                  jsx: true,
-                  ...swcParserOptions,
-                },
-                transform: {
-                  ...swcTransformOptions,
-                },
-              },
-            },
-          }
-        ],
+        ].filter(Boolean),
       },
       {
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
