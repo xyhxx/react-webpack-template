@@ -5,7 +5,6 @@ const useSourceMap = false;
 const isProduction = ENV === "production";
 const isDevelopment = ENV === "development";
 const buildSourceMap = isProduction ? useSourceMap : true;
-const enableSpeedMeasure = true;
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -24,5 +23,4 @@ module.exports = {
   useSourceMap,
   MAX_CHUNK_SIZE,
   enableThreadLoader,
-  enableSpeedMeasure,
 }

@@ -23,9 +23,6 @@ const plugins = [
   new WebpackBar(),
   new ForkTsCheckerWebpackPlugin({
     async: isDevelopment,
-    logger: {
-      infrastructure: 'silent',
-    },
     issue: {
       include: [
         { file: '../**/src/**/*.{ts,tsx}' },
