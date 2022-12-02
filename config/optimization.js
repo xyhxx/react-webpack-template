@@ -7,6 +7,7 @@ const optimization = {
   minimizer: [
     new ESBuildMinifyPlugin({
       css: true,
+      legalComments: 'none',
     }),
   ],
   runtimeChunk: {
