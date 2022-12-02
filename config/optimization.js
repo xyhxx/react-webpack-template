@@ -1,28 +1,12 @@
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
+const {ESBuildMinifyPlugin} = require('esbuild-loader');
+
 const {isProduction} = require('./constants');
 
 const optimization = {
   minimize: isProduction,
   minimizer: [
-    new CssMinimizerPlugin(),
-    new TerserWebpackPlugin({
-      terserOptions: {
-        compress: {
-          warnings: false,
-          comparisons: false,
-          inline: 2,
-        },
-        mangle: {
-          safari10: true,
-        },
-        keep_classnames: isProduction,
-        keep_fnames: isProduction,
-        output: {
-          comments: false,
-          ascii_only: true,
-        },
-      }
+    new ESBuildMinifyPlugin({
+      css: true,
     }),
   ],
   runtimeChunk: {
