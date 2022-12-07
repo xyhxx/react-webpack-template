@@ -106,25 +106,13 @@ const rules = [
           {
             loader: require.resolve('babel-loader'),
             options: {
-              customize: require.resolve(
-                'babel-preset-react-app/webpack-overrides'
-              ),
-              presets: [
-                [
-                  require.resolve('babel-preset-react-app'),
-                  {
-                    runtime: 'automatic',
-                  },
-                ],
-              ],
-
               plugins: [
                 !isProduction
                 && require.resolve('react-refresh/babel'),
               ].filter(Boolean),
-              cacheDirectory: true,
-              cacheCompression: false,
               compact: isProduction,
+              cacheDirectory: true,
+              cacheCompression: false
             },
           }
         ].filter(Boolean),

@@ -20,6 +20,10 @@
     "zustand": "^4.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.9",
     "@svgr/webpack": "^6.5.1",
     "@tanstack/react-query-devtools": "^4.14.5",
@@ -37,7 +41,6 @@
     "@typescript-eslint/parser": "^5.42.1",
     "babel-loader": "^9.1.0",
     "babel-plugin-react-remove-properties": "^0.3.0",
-    "babel-preset-react-app": "^10.0.1",
     "camelcase": "^6.3.0",
     "chalk": "^4.1.2",
     "copy-webpack-plugin": "^11.0.0",
@@ -80,72 +83,5 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",
     "webpackbar": "^5.0.2"
-  },
-  "browserslist": {
-    "production": [
-      ">= 1%",
-      "not dead",
-      "not op_mini all",
-      "not ie <= 11"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "roots": [
-      "<rootDir>"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
-    ],
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
-    ],
-    "testMatch": [
-      "<rootDir>/__tests__/**/*.{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
-    "modulePaths": [],
-    "moduleNameMapper": {
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-      "@styles(.*)$": "<rootDir>/src/styles$1",
-      "@assets(.*)$": "<rootDir>/src/assets$1",
-      "@routes(.*)$": "<rootDir>/src/routes$1",
-      "@apis(.*)$": "<rootDir>/src/apis$1",
-      "@components(.*)$": "<rootDir>/src/components$1",
-      "@hooks(.*)$": "<rootDir>/src/hooks$1",
-      "@pages(.*)$": "<rootDir>/src/pages$1",
-      "@stores(.*)$": "<rootDir>/src/stores$1",
-      "@models(.*)$": "<rootDir>/src/models$1",
-      "@utils(.*)$": "<rootDir>/src/utils$1"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "tsx",
-      "json",
-      "jsx"
-    ],
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ],
-    "resetMocks": true
   }
 }
