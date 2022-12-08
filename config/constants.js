@@ -3,7 +3,7 @@ import {fileURLToPath} from "url";
 
 export const ENV = process.env.NODE_ENV;
 export const MAX_CHUNK_SIZE = 600 * 1024;
-export const enableThreadLoader = true;
+export const enableThreadLoader = false;
 export const useSourceMap = false;
 export const isProduction = ENV === "production";
 export const isDevelopment = ENV === "development";
