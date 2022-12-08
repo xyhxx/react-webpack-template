@@ -2,7 +2,6 @@ import {
   outputPath,
   publicPath,
   srcPath,
-  nodeModulesPath,
   appPath,
 } from './paths.js';
 import {isProduction, isDevelopment} from './constants.js';
