@@ -1,16 +1,16 @@
 
-const {isProduction} = require('./constants');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import {isProduction} from './constants.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-function getStyleLoaders(cssOptions, preProcessor) {
+export function getStyleLoaders(cssOptions, preProcessor) {
   return  [
-    isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
+    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
     {
-      loader: require.resolve('css-loader'),
+      loader: 'css-loader',
       options: cssOptions,
     },
     {
-      loader: require.resolve('postcss-loader'),
+      loader: 'postcss-loader',
       options: {
         sourceMap: !isProduction,
         postcssOptions: {
@@ -37,13 +37,8 @@ function getStyleLoaders(cssOptions, preProcessor) {
   ].filter(Boolean);
 };
 
-function clearConsole() {
+export function clearConsole() {
   process.stdout.write(
     process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H'
   );
-}
-
-module.exports = {
-  getStyleLoaders,
-  clearConsole,
 }

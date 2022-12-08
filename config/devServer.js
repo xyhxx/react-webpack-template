@@ -1,6 +1,7 @@
-const {address} = require('ip');
+import ip from 'ip';
+const {address} = ip;
 
-module.exports = {
+export default {
   open: true,
   host: address(),
   port: Number(process.env.HOST),

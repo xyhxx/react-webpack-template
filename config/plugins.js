@@ -1,25 +1,27 @@
-const {
+import {
   outputPath,
   publicPath,
   srcPath,
   nodeModulesPath,
   appPath,
-} = require('./paths');
-const {isProduction, isDevelopment} = require('./constants');
-const envList = require('./env');
+} from './paths.js';
+import {isProduction, isDevelopment} from './constants.js';
+import envList from './env.js';
 
-const {resolve} = require("path");
-const ESLintWebpackPlugin = require("eslint-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const WebpackBar = require('webpackbar');
-const {DefinePlugin} = require('webpack');
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+import {resolve} from 'path';
+import ESLintWebpackPlugin from 'eslint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import WebpackBar from 'webpackbar';
+import webpack from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-const plugins = [
+const {DefinePlugin} = webpack;
+
+ const plugins = [
   new WebpackBar(),
   new ForkTsCheckerWebpackPlugin({
     async: isDevelopment,
@@ -112,4 +114,4 @@ if (isProduction) {
   );
 }
 
-module.exports = plugins;
+export default plugins;

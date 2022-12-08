@@ -1,8 +1,8 @@
-const {appPath} = require('./paths');
-const {ENV} = require('./constants');
+import {appPath} from './paths.js';
+import {ENV} from './constants.js';
 
-const {resolve} = require('path');
-const {config} = require('dotenv');
+import {resolve} from 'path';
+import {config} from 'dotenv';
 
 const commonEnv = resolve(appPath, 'env/.env');
 
@@ -29,4 +29,4 @@ function getEnv() {
   return result;
 };
 
-module.exports = getEnv;
+export default getEnv;

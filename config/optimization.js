@@ -1,8 +1,8 @@
-const {ESBuildMinifyPlugin} = require('esbuild-loader');
+import {ESBuildMinifyPlugin} from 'esbuild-loader';
 
-const {isProduction} = require('./constants');
+import {isProduction} from './constants.js';
 
-const optimization = {
+export default {
   minimize: isProduction,
   minimizer: [
     new ESBuildMinifyPlugin({
@@ -42,5 +42,3 @@ const optimization = {
     },
   },
 };
-
-module.exports = optimization;

@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const chalk = require('chalk');
-const config = require('../config/webpack.config');
-const {clearConsole} = require('../config/utils');
-const {MAX_CHUNK_SIZE} = require('../config/constants');
-const {errorLogger} = require('./logger');
+import webpack from 'webpack';
+import chalk from 'chalk';
+import config from '../config/webpack.config.js';
+import {clearConsole} from '../config/utils.js';
+import {MAX_CHUNK_SIZE} from '../config/constants.js';
+import {errorLogger} from './logger.js';
 
 function printAssets(assets){
   console.log('Packaging resource list:')

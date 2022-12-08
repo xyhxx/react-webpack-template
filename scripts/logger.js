@@ -1,6 +1,6 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
-function startedServer(port, host) {
+export function startedServerLogger(port, host) {
   console.log();
   console.log(chalk.green('Server started! 🥰'));
   console.log();
@@ -8,11 +8,6 @@ function startedServer(port, host) {
   console.log();
 };
 
-function error(error) {
+export function errorLogger(error) {
   console.error(chalk.red(error + ' 😭'));
-};
-
-module.exports = {
-  startedServerLogger: startedServer,
-  errorLogger: error,
 };

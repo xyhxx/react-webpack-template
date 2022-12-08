@@ -1,5 +1,5 @@
-const { getStyleLoaders } = require('./utils');
-const {
+import { getStyleLoaders } from './utils.js';
+import {
   buildSourceMap,
   isProduction,
   cssRegex,
@@ -7,10 +7,10 @@ const {
   sassRegex,
   sassModuleRegex,
   enableThreadLoader,
-} = require('./constants');
-const { srcPath } = require('./paths');
+} from './constants.js';
+import { srcPath } from './paths.js';
 
-const rules = [
+export default [
   {
     oneOf: [
       {
@@ -76,7 +76,7 @@ const rules = [
         test: /\.svg$/,
         use: [
           {
-            loader: require.resolve('@svgr/webpack'),
+            loader: '@svgr/webpack',
             options: {
               prettier: false,
               svgo: false,
@@ -88,7 +88,7 @@ const rules = [
             },
           },
           {
-            loader: require.resolve('file-loader'),
+            loader: 'file-loader',
             options: {
               name: 'static/assets/[name].[hash].[ext]',
             },
@@ -102,13 +102,13 @@ const rules = [
         test: /\.(js|jsx|ts|tsx|mjs)$/,
         include: srcPath,
         use: [
-          enableThreadLoader && require.resolve('thread-loader'),
+          enableThreadLoader && 'thread-loader',
           {
-            loader: require.resolve('babel-loader'),
+            loader: 'babel-loader',
             options: {
               plugins: [
                 !isProduction
-                && require.resolve('react-refresh/babel'),
+                && 'react-refresh/babel',
               ].filter(Boolean),
               compact: isProduction,
               cacheDirectory: true,
@@ -124,5 +124,3 @@ const rules = [
     ],
   },
 ];
-
-module.exports = rules;

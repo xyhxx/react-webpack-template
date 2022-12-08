@@ -1,10 +1,11 @@
-const {resolve} = require('path');
+import {resolve} from 'path';
+import {__dirname} from './constants.js';
 
 function aliasPath(url){
   return resolve(__dirname, '../src/', url);
 }
 
-module.exports = {
+export default {
   '@styles': aliasPath('styles'),
   '@assets': aliasPath('assets'),
   '@routes': aliasPath('routes'),

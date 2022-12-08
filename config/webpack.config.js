@@ -1,19 +1,19 @@
-const alias = require('./alias');
-const {
+import alias from './alias.js';
+import {
   outputPath,
   nodeModulesPath,
   appPath,
   assetsPublicPath,
-} = require('./paths');
-const {isProduction, useSourceMap} = require('./constants');
-const plugins = require('./plugins');
-const devServer = require('./devServer');
-const rules = require('./rules');
-const optimization = require('./optimization');
+} from './paths.js';
+import {isProduction, useSourceMap} from './constants.js';
+import plugins from './plugins.js';
+import devServer from './devServer.js';
+import rules from './rules.js';
+import optimization from './optimization.js';
 
-const {resolve} = require('path');
+import {resolve} from 'path';
 
-const config = {
+export default {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: "./src/index.tsx",
@@ -51,5 +51,3 @@ const config = {
   },
   devServer,
 };
-
-module.exports = config;
