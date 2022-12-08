@@ -1,4 +1,4 @@
-import { getStyleLoaders } from './utils.js';
+import {getStyleLoaders} from './utils.js';
 import {
   buildSourceMap,
   isProduction,
@@ -8,7 +8,9 @@ import {
   sassModuleRegex,
   enableThreadLoader,
 } from './constants.js';
-import { srcPath } from './paths.js';
+import {srcPath, appPath} from './paths.js';
+
+import {resolve} from 'path';
 
 export default [
   {
@@ -111,7 +113,7 @@ export default [
                 && 'react-refresh/babel',
               ].filter(Boolean),
               compact: isProduction,
-              cacheDirectory: true,
+              cacheDirectory: resolve(appPath, '.temp-cache/babel-cache'),
               cacheCompression: false
             },
           }

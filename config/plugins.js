@@ -21,7 +21,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const {DefinePlugin} = webpack;
 
- const plugins = [
+const plugins = [
   new WebpackBar(),
   new ForkTsCheckerWebpackPlugin({
     async: isDevelopment,
@@ -43,10 +43,7 @@ const {DefinePlugin} = webpack;
     context: srcPath,
     exclude: "node_modules",
     cache: true,
-    cacheLocation: resolve(
-      nodeModulesPath,
-      ".cache/.eslintcache",
-    ),
+    cacheLocation: resolve(appPath, '.temp-cache/.eslintcache'),
   }),
   new HtmlWebpackPlugin(
     Object.assign(
