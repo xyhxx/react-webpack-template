@@ -1,18 +1,14 @@
 import {getStyleLoaders} from './utils.js';
 import {
   buildSourceMap,
-  isProduction,
   cssRegex,
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
-  enableThreadLoader,
 } from './constants.js';
-import {srcPath, appPath} from './paths.js';
+import babel from './babel.js';
 
-import {resolve} from 'path';
-
-export default [
+const rules = [
   {
     oneOf: [
       {
@@ -101,28 +97,12 @@ export default [
         },
       },
       {
-        test: /\.(js|jsx|ts|tsx|mjs)$/,
-        include: srcPath,
-        use: [
-          enableThreadLoader && 'thread-loader',
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: [
-                !isProduction
-                && 'react-refresh/babel',
-              ].filter(Boolean),
-              compact: isProduction,
-              cacheDirectory: resolve(appPath, '.temp-cache/babel-cache'),
-              cacheCompression: false
-            },
-          }
-        ].filter(Boolean),
-      },
-      {
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
         type: 'asset/resource',
       },
+      babel,
     ],
   },
 ];
+
+export default rules;
