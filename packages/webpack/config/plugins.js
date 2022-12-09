@@ -19,8 +19,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-console.log(envList());
-
 const plugins = [
   new WebpackBar(),
   new ForkTsCheckerWebpackPlugin({
