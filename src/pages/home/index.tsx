@@ -17,7 +17,7 @@ const Home: FC = function() {
       <h2 className={css.title} data-testid='title'>
         count is {count}
       </h2>
-      <div className={css.btnGroup}>
+      <div className={css['btn-group']}>
         <button onClick={inc} data-testid='increment'>
           increment
         </button>
