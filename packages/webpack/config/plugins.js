@@ -2,7 +2,6 @@ const {
   outputPath,
   publicPath,
   srcPath,
-  nodeModulesPath,
   appPath,
 } = require('./paths');
 const {isProduction, isDevelopment} = require('./constants');
@@ -42,8 +41,8 @@ const plugins = [
     exclude: 'node_modules',
     cache: true,
     cacheLocation: resolve(
-      nodeModulesPath,
-      '.cache/.eslintcache',
+      appPath,
+      '.temp-cache/.eslintcache',
     ),
   }),
   new HtmlWebpackPlugin(

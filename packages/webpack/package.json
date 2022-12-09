@@ -1,7 +1,6 @@
 {
   "name": "@swt/webpack",
   "version": "1.0.0",
-  "main": "index.js",
   "private": true,
   "bin": {
     "swt-script": "./bin/index.js"
