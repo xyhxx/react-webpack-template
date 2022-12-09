@@ -28,6 +28,7 @@ specifiers:
   babel-plugin-react-remove-properties: ^0.3.0
   camelcase: ^7.0.0
   chalk: ^5.1.2
+  classnames: ^2.3.2
   copy-webpack-plugin: ^11.0.0
   cross-env: ^7.0.3
   css-loader: ^6.7.1
@@ -57,7 +58,6 @@ specifiers:
   react-app-polyfill: ^3.0.0
   react-dom: ^18.2.0
   react-error-boundary: ^3.1.4
-  react-hook-classnames: ^2.0.2
   react-refresh: ^0.14.0
   react-router-dom: ^6.4.3
   sass: ^1.56.1
@@ -78,10 +78,10 @@ specifiers:
 dependencies:
   '@tanstack/react-query': 4.19.1_biqbaboplfbrettd7655fr4n2y
   axios: 1.2.1
+  classnames: 2.3.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0
-  react-hook-classnames: 2.0.2_react@18.2.0
   react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
   zustand: 4.1.5_react@18.2.0
 
@@ -3505,6 +3505,10 @@ packages:
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
     dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
 
   /clean-css/5.3.1:
     resolution: {integrity: sha512-lCr8OHhiWCTw4v8POJovCoh4T7I9U11yVsPjMWWnnMmp9ZowCxyad1Pathle/9HjaDp+fdQKjO9fQydE6RHTZg==}
@@ -7675,14 +7679,6 @@ packages:
       react: '>=16.13.1'
     dependencies:
       '@babel/runtime': 7.20.6
-      react: 18.2.0
-    dev: false
-
-  /react-hook-classnames/2.0.2_react@18.2.0:
-    resolution: {integrity: sha512-T6w0tkaR1YYxg+MnmCARPHpHkgi77Yt77Zj/jR6QYNzXRYXFYLXVw/QMXp35X260YI118EFy34864mSS/3DLYQ==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
       react: 18.2.0
     dev: false
 
