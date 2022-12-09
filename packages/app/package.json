@@ -1,0 +1,39 @@
+{
+  "name": "@swt/app",
+  "type": "module",
+  "scripts": {
+    "dev": "swt-script dev",
+    "build": "swt-script build",
+    "test": "swt-script test",
+    "test:coverage": "swt-script test --coverage"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.14.5",
+    "axios": "^1.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-hook-classnames": "^2.0.2",
+    "react-router-dom": "^6.4.3",
+    "zustand": "^4.1.4"
+  },
+  "devDependencies": {
+    "@swt/webpack": "workspace:*",
+    "@tanstack/react-query-devtools": "^4.14.5",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.2.2",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/speed-measure-webpack-plugin": "^1.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "sass": "^1.56.1",
+    "stylelint": "^14.14.1",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard-scss": "^6.1.0"
+  }
+}

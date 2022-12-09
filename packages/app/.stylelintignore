@@ -1,0 +1,7 @@
+*.js
+*.ts
+*.jsx
+*.tsx
+node_modules
+build
+coverage
