@@ -25,7 +25,7 @@ function junglePort(host, defaultPort) {
 
   return detect(defaultPort, host).then(
     function(port) {
-      return new Promise(resolve => {
+      return new Promise(function(resolve) {
         if (port === defaultPort) return resolve(port);
 
         const message = `Something is already running on port ${defaultPort}.`;
