@@ -13,11 +13,15 @@ import optimization from './optimization.js';
 
 import {resolve} from 'path';
 
+const fileName = isProduction
+  ? 'static/js/[name].[contenthash:8].js'
+  : 'static/js/[name].js';
+
 export default {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: "./src/index.tsx",
-  devtool: isProduction ? (useSourceMap ? 'source-map' : false) : 'cheap-module-source-map',
+  devtool: isProduction ? useSourceMap ? 'source-map' : false : 'cheap-module-source-map',
   mode: isProduction ? "production" : "development",
   performance: false,
   infrastructureLogging: {
@@ -25,12 +29,8 @@ export default {
   },
   output: {
     path: isProduction ? outputPath : void 0,
-    filename: isProduction
-      ? "static/js/[name].[contenthash:8].js"
-      : "static/js/[name].js",
-    chunkFilename: isProduction
-      ? "static/js/[name].[contenthash:8].chunk.js"
-      : "static/js/[name].chunk.js",
+    filename: fileName,
+    chunkFilename: fileName,
     assetModuleFilename: 'static/assets/[name].[hash][ext]',
     clean: true,
     publicPath: assetsPublicPath,

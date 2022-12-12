@@ -9,6 +9,11 @@ import {
 import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
+const moduleCssOptions = {
+  localIdentName: '[local]-[hash:base64:5]',
+  exportLocalsConvention: 'dashes',
+};
+
 function getStyleLoaders(cssOptions, preProcessor) {
   return  [
     isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -64,9 +69,7 @@ const rules = [
         use: getStyleLoaders({
           importLoaders: 1,
           sourceMap: buildSourceMap,
-          modules: {
-            localIdentName: '[local]-[hash:base64:5]',
-          },
+          modules: moduleCssOptions,
         }),
       },
       {
@@ -90,9 +93,7 @@ const rules = [
           {
             importLoaders: 3,
             sourceMap: buildSourceMap,
-            modules: {
-              localIdentName: '[local]-[hash:base64:5]',
-            },
+            modules: moduleCssOptions,
           },
           'sass-loader'
         ),
