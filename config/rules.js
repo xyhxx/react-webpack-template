@@ -4,6 +4,7 @@ import {
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
+  isProduction,
 } from './constants.js';
 import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
