@@ -1,12 +1,48 @@
-const {getStyleLoaders} = require('./utils');
 const {
   buildSourceMap,
   cssRegex,
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
+  isProduction,
 } = require('./constants');
 const babel = require('./babel');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+function getStyleLoaders(cssOptions, preProcessor) {
+  return [
+    isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
+    {
+      loader: require.resolve('css-loader'),
+      options: cssOptions,
+    },
+    {
+      loader: require.resolve('postcss-loader'),
+      options: {
+        sourceMap: !isProduction,
+        postcssOptions: {
+          ident: 'postcss',
+          config: false,
+          plugins: [
+            'postcss-flexbugs-fixes',
+            [
+              'postcss-preset-env',
+              {
+                autoprefixer: {
+                  flexbox: 'no-2009',
+                },
+                stage: 3,
+              },
+            ],
+          ],
+        },
+      },
+    },
+    preProcessor && {
+      loader: preProcessor,
+    },
+  ].filter(Boolean);
+}
 
 const rules = [
   {

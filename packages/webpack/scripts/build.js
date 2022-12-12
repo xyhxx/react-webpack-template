@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const config = require('../config/webpack.config');
 const {clearConsole} = require('../config/utils');
 const {MAX_CHUNK_SIZE} = require('../config/constants');
-const {errorLogger} = require('./logger');
+const {errorLogger} = require('./utils');
 
 function printAssets(assets) {
   console.log('Packaging resource list:');
