@@ -14,6 +14,10 @@ const optimization = require('./optimization');
 
 const {resolve} = require('path');
 
+const fileName = isProduction
+  ? 'static/js/[name].[contenthash:8].js'
+  : 'static/js/[name].js';
+
 const config = {
   stats: 'errors-warnings',
   target: ['browserslist'],
@@ -26,12 +30,8 @@ const config = {
   },
   output: {
     path: isProduction ? outputPath : void 0,
-    filename: isProduction
-      ? 'static/js/[name].[contenthash:8].js'
-      : 'static/js/[name].js',
-    chunkFilename: isProduction
-      ? 'static/js/[name].[contenthash:8].chunk.js'
-      : 'static/js/[name].chunk.js',
+    filename: fileName,
+    chunkFilename: fileName,
     assetModuleFilename: 'static/assets/[name].[hash][ext]',
     clean: true,
     publicPath: assetsPublicPath,

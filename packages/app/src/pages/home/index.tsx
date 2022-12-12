@@ -13,11 +13,11 @@ const Home: FC = function() {
   return (
     <>
       <img src={icon} className={css.icon} />
-      <h1 className={cla([css.title, css.name, {[css['title-red']]: count >= 5}])}>React</h1>
+      <h1 className={cla([css.title, css.name, {[css.titleRed]: count >= 5}])}>React</h1>
       <h2 className={css.title} data-testid='title'>
         count is {count}
       </h2>
-      <div className={css['btn-group']}>
+      <div className={css.btnGroup}>
         <button onClick={inc} data-testid='increment'>
           increment
         </button>
