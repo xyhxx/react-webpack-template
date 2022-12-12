@@ -16,4 +16,5 @@ module.exports = {
   assetsPublicPath: '/',
   indexHtmlPath: resolvePath('public/index.html'),
   appDirection,
+  rootPath: resolvePath('../../'),
 };

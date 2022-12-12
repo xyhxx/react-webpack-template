@@ -2,9 +2,9 @@ const alias = require('./alias');
 const {
   outputPath,
   nodeModulesPath,
-  appPath,
   assetsPublicPath,
   srcPath,
+  rootPath,
 } = require('./paths');
 const {isProduction, useSourceMap} = require('./constants');
 const plugins = require('./plugins');
@@ -41,7 +41,7 @@ const config = {
   },
   cache: {
     type: 'filesystem',
-    cacheDirectory: resolve(appPath, '.temp-cache'),
+    cacheDirectory: resolve(rootPath, '.temp-cache'),
   },
   plugins,
   optimization,

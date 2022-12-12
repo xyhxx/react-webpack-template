@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const config = require('../config/webpack.config');
-const {clearConsole} = require('../config/utils');
+const {clearConsole} = require('./utils');
 const {MAX_CHUNK_SIZE} = require('../config/constants');
 const {errorLogger} = require('./utils');
 

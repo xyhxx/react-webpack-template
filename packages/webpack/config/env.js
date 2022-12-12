@@ -1,14 +1,13 @@
 const {ENV} = require('./constants');
 
-const {resolve} = require('path');
 const {config} = require('dotenv');
 
-const commonEnv = resolve(__dirname, '../env/.env');
+const commonEnv = require.resolve('../env/.env');
 
 const envs = {
-  test: resolve(__dirname, '../env/.env.test'),
-  development: resolve(__dirname, '../env/.env.development'),
-  production: resolve(__dirname, '../env/.env.production'),
+  test: require.resolve('../env/.env.test'),
+  development: require.resolve('../env/.env.development'),
+  production: require.resolve('../env/.env.production'),
 };
 
 function getEnv() {

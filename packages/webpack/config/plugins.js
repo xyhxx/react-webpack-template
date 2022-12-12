@@ -2,7 +2,7 @@ const {
   outputPath,
   publicPath,
   srcPath,
-  appPath,
+  rootPath,
 } = require('./paths');
 const {isProduction, isDevelopment} = require('./constants');
 const envList = require('./env');
@@ -41,7 +41,7 @@ const plugins = [
     exclude: 'node_modules',
     cache: true,
     cacheLocation: resolve(
-      appPath,
+      rootPath,
       '.temp-cache/.eslintcache',
     ),
   }),
@@ -101,7 +101,7 @@ if (isProduction)
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
-      reportFilename: resolve(appPath, 'analyzer/index.html'),
+      reportFilename: resolve(rootPath, 'analyzer/index.html'),
     }),
   );
 else
