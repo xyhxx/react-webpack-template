@@ -1,4 +1,3 @@
-import {getStyleLoaders} from './utils.js';
 import {
   buildSourceMap,
   cssRegex,
@@ -7,6 +6,42 @@ import {
   sassModuleRegex,
 } from './constants.js';
 import babel from './babel.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+function getStyleLoaders(cssOptions, preProcessor) {
+  return  [
+    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+    {
+      loader: 'css-loader',
+      options: cssOptions,
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: !isProduction,
+        postcssOptions: {
+          ident: 'postcss',
+          config: false,
+          plugins: [
+            'postcss-flexbugs-fixes',
+            [
+              'postcss-preset-env',
+              {
+                autoprefixer: {
+                  flexbox: 'no-2009',
+                },
+                stage: 3,
+              },
+            ],
+          ],
+        },
+      },
+    },
+    preProcessor && {
+      loader: preProcessor,
+    },
+  ].filter(Boolean);
+};
 
 const rules = [
   {

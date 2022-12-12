@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import chalk from 'chalk';
 import config from '../config/webpack.config.js';
-import {clearConsole} from '../config/utils.js';
+import {clearConsole} from './utils.js';
 import {MAX_CHUNK_SIZE} from '../config/constants.js';
 import {errorLogger} from './logger.js';
 

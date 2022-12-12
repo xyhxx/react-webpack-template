@@ -32,6 +32,7 @@ specifiers:
   copy-webpack-plugin: ^11.0.0
   cross-env: ^7.0.3
   css-loader: ^6.7.1
+  detect-port-alt: ^1.1.6
   dotenv: ^16.0.3
   esbuild-loader: ^2.20.0
   eslint: ^8.27.0
@@ -54,6 +55,7 @@ specifiers:
   postcss-flexbugs-fixes: ^5.0.2
   postcss-loader: ^7.0.1
   postcss-preset-env: ^7.8.2
+  prompts: ^2.4.2
   react: ^18.2.0
   react-app-polyfill: ^3.0.0
   react-dom: ^18.2.0
@@ -114,6 +116,7 @@ devDependencies:
   copy-webpack-plugin: 11.0.0_webpack@5.75.0
   cross-env: 7.0.3
   css-loader: 6.7.2_webpack@5.75.0
+  detect-port-alt: 1.1.6
   dotenv: 16.0.3
   esbuild-loader: 2.20.0_webpack@5.75.0
   eslint: 8.29.0
@@ -136,6 +139,7 @@ devDependencies:
   postcss-flexbugs-fixes: 5.0.2_postcss@8.4.19
   postcss-loader: 7.0.2_upg3rk2kpasnbk27hkqapxaxfq
   postcss-preset-env: 7.8.3_postcss@8.4.19
+  prompts: 2.4.2
   react-app-polyfill: 3.0.0
   react-refresh: 0.14.0
   sass: 1.56.1
@@ -2938,6 +2942,11 @@ packages:
     hasBin: true
     dev: true
 
+  /address/1.2.1:
+    resolution: {integrity: sha512-B+6bi5D34+fDYENiH5qOlA0cV2rAGKuWZ9LeyUUehbXy8e0VS9e498yO0Jeeh+iM+6KbfudHTFjXw2MmJD4QRA==}
+    engines: {node: '>= 10.0.0'}
+    dev: true
+
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -3991,6 +4000,17 @@ packages:
 
   /detect-node/2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
+    dev: true
+
+  /detect-port-alt/1.1.6:
+    resolution: {integrity: sha512-5tQykt+LqfJFBEYaDITx7S7cR7mJ/zQmLXZ2qt5w04ainYZw6tBf9dBunMjVeVOdYVRUzUOE4HkY5J7+uttb5Q==}
+    engines: {node: '>= 4.2.1'}
+    hasBin: true
+    dependencies:
+      address: 1.2.1
+      debug: 2.6.9
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /diff-sequences/29.3.1:
