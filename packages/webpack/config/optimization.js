@@ -35,7 +35,7 @@ const optimization = {
       reactVendors: {
         name: 'react-vendors',
         chunks: 'all',
-        test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router)/,
+        test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|@remix-run|scheduler)/,
         priority: 10,
         reuseExistingChunk: true,
       },
