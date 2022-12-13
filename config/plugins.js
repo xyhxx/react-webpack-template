@@ -92,11 +92,13 @@ const plugins = [
   }),
 ];
 
+const fileName = "static/css/[name].[contenthash:8].css"
+
 if (isProduction) {
   plugins.push(
     new MiniCssExtractPlugin({
-     filename: "static/css/[name].[contenthash:10].css",
-      chunkFilename: "static/css/[name].[contenthash:10].chunk.css",
+     filename: fileName,
+      chunkFilename: fileName,
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
