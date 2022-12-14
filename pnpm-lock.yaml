@@ -35,7 +35,7 @@ specifiers:
   dotenv: ^16.0.3
   esbuild-loader: ^2.20.0
   eslint: ^8.27.0
-  eslint-config-proste: ^3.3.0
+  eslint-config-proste: ^3.3.1
   eslint-plugin-import: ^2.26.0
   eslint-plugin-jest: ^27.1.5
   eslint-plugin-react: ^7.31.10
@@ -118,7 +118,7 @@ devDependencies:
   dotenv: 16.0.3
   esbuild-loader: 2.20.0_webpack@5.75.0
   eslint: 8.29.0
-  eslint-config-proste: 3.3.0_wixvxxvjsl3zxcxwflrsznlifq
+  eslint-config-proste: 3.3.1_wixvxxvjsl3zxcxwflrsznlifq
   eslint-plugin-import: 2.26.0_i656iqvetrvx3ajhg4t6psfrl4
   eslint-plugin-jest: 27.1.6_n5ffa5jryll5q6ovtkbycw753q
   eslint-plugin-react: 7.31.11_eslint@8.29.0
@@ -4455,8 +4455,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-proste/3.3.0_wixvxxvjsl3zxcxwflrsznlifq:
-    resolution: {integrity: sha512-Bewd4/4k6IRsueLs0qK2Z0U6O+fBs0vrUHh8FkoNzNe9Ze2kZxIqxUTyjIaOtWjOYFS6XkoU7MENWoIBjpO/tg==}
+  /eslint-config-proste/3.3.1_wixvxxvjsl3zxcxwflrsznlifq:
+    resolution: {integrity: sha512-Zwli+YsZgwo2nZjwze+U8Y0K3JkEG+z9FyiLkW1ZSIeMQKGbUlPoyf9qwIrog/Dsb1/cxNsMswvdSiRUZe0vZQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.4.0
       '@typescript-eslint/parser': ^5.4.0
