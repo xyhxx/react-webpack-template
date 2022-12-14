@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@types/node': ^18.11.9
       eslint: ^8.29.0
-      eslint-config-proste: ^3.3.0
+      eslint-config-proste: ^3.3.1
       eslint-plugin-import: ^2.26.0
       eslint-plugin-jest: ^27.1.6
       eslint-plugin-react: ^7.31.11
@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@types/node': 18.11.11
       eslint: 8.29.0
-      eslint-config-proste: 3.3.0_q7wrs6lulc4qhpgkosd2hclo6q
+      eslint-config-proste: 3.3.1_q7wrs6lulc4qhpgkosd2hclo6q
       eslint-plugin-import: 2.26.0_eslint@8.29.0
       eslint-plugin-jest: 27.1.6_jig7mdlcju4lt57i33g5qicbgy
       eslint-plugin-react: 7.31.11_eslint@8.29.0
@@ -4598,8 +4598,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-proste/3.3.0_q7wrs6lulc4qhpgkosd2hclo6q:
-    resolution: {integrity: sha512-Bewd4/4k6IRsueLs0qK2Z0U6O+fBs0vrUHh8FkoNzNe9Ze2kZxIqxUTyjIaOtWjOYFS6XkoU7MENWoIBjpO/tg==}
+  /eslint-config-proste/3.3.1_q7wrs6lulc4qhpgkosd2hclo6q:
+    resolution: {integrity: sha512-Zwli+YsZgwo2nZjwze+U8Y0K3JkEG+z9FyiLkW1ZSIeMQKGbUlPoyf9qwIrog/Dsb1/cxNsMswvdSiRUZe0vZQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.4.0
       '@typescript-eslint/parser': ^5.4.0
