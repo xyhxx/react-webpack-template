@@ -57,15 +57,15 @@ function printAssets(assets){
       )
     );
     console.log(
-      chalk.hex(pathColor)(
-        `2.Modify ${chalk.hex(varColor)('splitChunks')} in `
-        +`${chalk.white('config/optimization.js')}`
-      )
+      chalk.hex(pathColor)(`2.Adjust the prompt size by adjusting`
+      +` ${chalk.hex(varColor)('SWT_MAX_CHUNK_SIZE')}`
+      +` in ${chalk.white('src/.env')}`)
     );
     console.log(
-      chalk.hex(pathColor)(`3.Adjust the prompt size by adjusting`
-      +` ${chalk.hex(varColor)('MAX_CHUNK_SIZE')}`
-      +` in ${chalk.white('config/constants.js')}`)
+      chalk.hex(pathColor)(
+        `3.Modify ${chalk.hex(varColor)('splitChunks')} in `
+        +`${chalk.white('config/optimization.js')}`
+      )
     );
   }
 }
