@@ -1,5 +1,5 @@
 <img src='./packages/app/public/pLogo.svg' />
-<h1 align='center'>React-Webpack5-Template</h1>
+<h1 align='center'>React-Webpack-Template</h1>
 
 `An out of the box react webpack template,It is simpler, more convenient to customize and more modular on the basis of create-react-app.`
 
@@ -7,21 +7,21 @@
 
 <h2>Warning</h2>
 
-Do not modify files under `scripts` unless you are sure of the modified results
+Do not modify files under `webpack` unless you are sure of the modified results
 
 <br />
 
 <h2>Usage</h2>
 
-- Clone this repo, like `pnpm dlg degit xyhxx/react-webpack5-template#monorepo`. In addition, you can click "Use this template" to copy this template to your repositories
+- Clone this repo, like `pnpm dlx degit xyhxx/react-webpack-template#monorepo`. In addition, you can click "Use this template" to copy this template to your repositories
 
 - Install all dependencies `pnpm install`
 
-- Build under development mode `pnpm run dev`
+- Build under development mode `pnpm dev`
 
-- Build under production mode `pnpm run build`
+- Build under production mode `pnpm build`
 
-- Unit test or integration test `pnpm run test`
+- Unit test or integration test `pnpm test`
 
 - Other scripts can be viewed in package.json
 
