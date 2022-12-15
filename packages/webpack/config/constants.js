@@ -1,7 +1,7 @@
 const ENV = process.env.NODE_ENV;
-const MAX_CHUNK_SIZE = 600 * 1024;
-const enableThreadLoader = true;
-const useSourceMap = false;
+const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
+const enableThreadLoader = process.env.ENABLE_THREAD_LOADER === 'true';
+const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 const isProduction = ENV === 'production';
 const isDevelopment = ENV === 'development';
 const buildSourceMap = isProduction ? useSourceMap : true;

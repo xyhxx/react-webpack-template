@@ -2,6 +2,7 @@
 
 const spawn = require('cross-spawn');
 const {resolve} = require('path');
+const {getSWTEnv} = require('../config/env');
 
 process.on('unhandledRejection', function(err) {
   throw err;
@@ -15,7 +16,7 @@ const scriptIndex = args.findIndex(
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-if (['build', 'dev', 'test'].includes(script)) {
+function setEnv(script) {
   switch (script) {
     case 'dev':
       process.env.NODE_ENV = 'development';
@@ -28,6 +29,12 @@ if (['build', 'dev', 'test'].includes(script)) {
       break;
   }
 
+  const env = getSWTEnv();
+
+  Object.assign(process.env, env);
+}
+
+function runScript() {
   const result = spawn.sync(
     process.execPath,
     nodeArgs
@@ -51,7 +58,17 @@ if (['build', 'dev', 'test'].includes(script)) {
 
     process.exit(1);
   }
-  process.exit(result.status);
-} else
-  console.log('Unknown script "' + script + '".');
 
+  return result;
+}
+
+function start() {
+  if (['build', 'dev', 'test'].includes(script)) {
+    setEnv(script);
+    const {status} = runScript();
+    process.exit(status);
+  } else
+    console.log('Unknown script "' + script + '".');
+}
+
+start();

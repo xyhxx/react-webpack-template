@@ -5,7 +5,7 @@ const {
   rootPath,
 } = require('./paths');
 const {isProduction, isDevelopment} = require('./constants');
-const envList = require('./env');
+const {getEnv} = require('./env');
 
 const {resolve} = require('path');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
@@ -72,7 +72,7 @@ const plugins = [
   ),
   new DefinePlugin({
     'process.env': {
-      ...envList(),
+      ...getEnv(),
     },
   }),
   new CopyPlugin({
