@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import detect from 'detect-port-alt';
 import prompts from 'prompts';
+import {getSWTEnv} from '../config/env.js';
 
 export function clearConsole() {
   process.stdout.write(

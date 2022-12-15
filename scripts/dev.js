@@ -1,8 +1,10 @@
+import {clearConsole, startedServerLogger, errorLogger, junglePort} from './utils.js';
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from '../config/webpack.config.js';
 import chalk from 'chalk';
-import {clearConsole, startedServerLogger, errorLogger, junglePort} from './utils.js';
+
+console.log('in script');
 
 const isInteractive = process.stdout.isTTY;
   

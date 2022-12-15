@@ -2,9 +2,9 @@ import {dirname} from "path";
 import {fileURLToPath} from "url";
 
 export const ENV = process.env.NODE_ENV;
-export const MAX_CHUNK_SIZE = 600 * 1024;
-export const enableThreadLoader = false;
-export const useSourceMap = false;
+export const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
+export const enableThreadLoader = process.env.ENABLE_THREAD_LOADER === 'true';
+export const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 export const isProduction = ENV === "production";
 export const isDevelopment = ENV === "development";
 export const buildSourceMap = isProduction ? useSourceMap : true;

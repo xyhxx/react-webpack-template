@@ -1,9 +1,8 @@
+import {clearConsole, errorLogger} from './utils.js';
 import webpack from 'webpack';
 import chalk from 'chalk';
 import config from '../config/webpack.config.js';
-import {clearConsole} from './utils.js';
 import {MAX_CHUNK_SIZE} from '../config/constants.js';
-import {errorLogger} from './logger.js';
 
 function printAssets(assets){
   console.log('Packaging resource list:')
@@ -70,6 +69,7 @@ function printAssets(assets){
     );
   }
 }
+
 try {
   const compiler = webpack(config);
   compiler.run(function(err, stats) {

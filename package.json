@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=development node scripts/server.js",
-    "build": "cross-env NODE_ENV=production node scripts/build.js",
-    "test": "cross-env NODE_ENV=test node scripts/test.js --watchAll",
-    "test:coverage": "cross-env NODE_ENV=test node scripts/test.js --coverage --watchAll"
+    "dev": "node scripts/index.js dev",
+    "build": "node scripts/index.js build",
+    "test": "node scripts/index.js test",
+    "test:watch": "node scripts/index.js test --watchAll",
+    "test:coverage": "node scripts/index.js test --coverage"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +47,7 @@
     "chalk": "^5.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
+    "cross-spawn": "^7.0.3",
     "css-loader": "^6.7.1",
     "detect-port-alt": "^1.1.6",
     "dotenv": "^16.0.3",

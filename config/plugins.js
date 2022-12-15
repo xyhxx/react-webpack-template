@@ -5,7 +5,7 @@ import {
   appPath,
 } from './paths.js';
 import {isProduction, isDevelopment} from './constants.js';
-import envList from './env.js';
+import {getEnv} from './env.js';
 
 import {resolve} from 'path';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
@@ -71,7 +71,7 @@ const plugins = [
   ),
   new DefinePlugin({
     'process.env': {
-      ...envList(),
+      ...getEnv(),
     }
   }),
   new CopyPlugin({
