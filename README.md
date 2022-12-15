@@ -1,5 +1,5 @@
 <img src='./packages/app/public/pLogo.svg' />
-<h1 align='center'>React-Webpack5-Template</h1>
+<h1 align='center'>React-Webpack-Template</h1>
 
 `An out of the box react webpack template,It is simpler, more convenient to customize and more modular on the basis of create-react-app.`
 
@@ -17,11 +17,11 @@ Do not modify files under `webpack` unless you are sure of the modified results
 
 - Install all dependencies `pnpm install`
 
-- Build under development mode `pnpm run dev`
+- Build under development mode `pnpm dev`
 
-- Build under production mode `pnpm run build`
+- Build under production mode `pnpm build`
 
-- Unit test or integration test `pnpm run test`
+- Unit test or integration test `pnpm test`
 
 - Other scripts can be viewed in package.json
 
