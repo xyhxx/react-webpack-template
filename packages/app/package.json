@@ -5,6 +5,7 @@
     "dev": "swt-script dev",
     "build": "swt-script build",
     "test": "swt-script test",
+    "test:watch": "swt-script test --watchAll",
     "test:coverage": "swt-script test --coverage"
   },
   "dependencies": {

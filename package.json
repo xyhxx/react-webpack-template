@@ -20,6 +20,7 @@
     "dev": "pnpm -F app dev",
     "build": "pnpm -F app build",
     "test": "pnpm -F app test",
+    "test:watch": "pnpm -F app test:watch",
     "test:coverage": "pnpm -F app test:coverage"
   },
   "devDependencies": {
