@@ -59,7 +59,7 @@ function printAssets(assets){
     console.log(
       chalk.hex(pathColor)(`2.Adjust the prompt size by adjusting`
       +` ${chalk.hex(varColor)('SWT_MAX_CHUNK_SIZE')}`
-      +` in ${chalk.white('src/.env')}`)
+      +` in ${chalk.white('.env')}`)
     );
     console.log(
       chalk.hex(pathColor)(
