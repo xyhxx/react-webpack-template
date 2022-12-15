@@ -7,13 +7,13 @@
 
 <h2>Warning</h2>
 
-Do not modify files under `scripts` unless you are sure of the modified results
+Do not modify files under `webpack` unless you are sure of the modified results
 
 <br />
 
 <h2>Usage</h2>
 
-- Clone this repo, like `pnpm dlg degit xyhxx/react-webpack5-template#monorepo`. In addition, you can click "Use this template" to copy this template to your repositories
+- Clone this repo, like `pnpm dlx degit xyhxx/react-webpack-template#monorepo`. In addition, you can click "Use this template" to copy this template to your repositories
 
 - Install all dependencies `pnpm install`
 
