@@ -22,6 +22,6 @@
     "jsx": "react-jsx"
   },
   "extends": "./tsconfig.paths.json",
-  "exclude": ["node_modules", "config", "scripts"],
-  "include": ["src", "__tests__"]
+  "exclude": ["node_modules"],
+  "include": ["src", "__tests__", "config", "scripts"]
 }

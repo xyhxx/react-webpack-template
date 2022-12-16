@@ -21,7 +21,7 @@ export function getEnv() {
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
   const result = {};
-  
+
   for (const [key, value] of Object.entries(temp))
     !key.includes(prefix) && (result[key] = JSON.stringify(value));
 

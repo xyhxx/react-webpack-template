@@ -26,21 +26,21 @@ const plugins = [
     async: isDevelopment,
     issue: {
       include: [
-        { file: '../**/src/**/*.{ts,tsx}' },
-        { file: '**/src/**/*.{ts,tsx}' },
+        {file: '../**/src/**/*.{ts,tsx}'},
+        {file: '**/src/**/*.{ts,tsx}'},
       ],
       exclude: [
-        { file: '**/src/**/__tests__/**' },
-        { file: '**/src/**/?(*.){spec|test}.*' },
-        { file: '**/src/setupProxy.*' },
-        { file: '**/src/setupTests.*' },
+        {file: '**/src/**/__tests__/**'},
+        {file: '**/src/**/?(*.){spec|test}.*'},
+        {file: '**/src/setupProxy.*'},
+        {file: '**/src/setupTests.*'},
       ],
     },
   }),
   new ESLintWebpackPlugin({
     extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
     context: srcPath,
-    exclude: "node_modules",
+    exclude: 'node_modules',
     cache: true,
     cacheLocation: resolve(appPath, '.temp-cache/.eslintcache'),
   }),
@@ -49,40 +49,40 @@ const plugins = [
       {},
       {
         inject: true,
-        template: resolve(publicPath, "index.html"),
+        template: resolve(publicPath, 'index.html'),
       },
       isProduction
         ? {
-            minify: {
-              removeComments: true,
-              collapseWhitespace: true,
-              removeRedundantAttributes: true,
-              useShortDoctype: true,
-              removeEmptyAttributes: true,
-              removeStyleLinkTypeAttributes: true,
-              keepClosingSlash: true,
-              minifyJS: true,
-              minifyCSS: true,
-              minifyURLs: true,
-            },
-          }
-        : undefined
-    )
+          minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          },
+        }
+        : void 0,
+    ),
   ),
   new DefinePlugin({
     'process.env': {
       ...getEnv(),
-    }
+    },
   }),
   new CopyPlugin({
     patterns: [
       {
         from: publicPath,
         to: outputPath,
-        toType: "dir",
-        noErrorOnMissing: true, 
+        toType: 'dir',
+        noErrorOnMissing: true,
         globOptions: {
-          ignore: ["**/index.html", "**/pLogo.svg"],
+          ignore: ['**/index.html', '**/pLogo.svg'],
         },
         info: {
           minimized: true,
@@ -92,12 +92,12 @@ const plugins = [
   }),
 ];
 
-const fileName = "static/css/[name].[contenthash:8].css"
+const fileName = 'static/css/[name].[contenthash:8].css';
 
-if (isProduction) {
+if (isProduction)
   plugins.push(
     new MiniCssExtractPlugin({
-     filename: fileName,
+      filename: fileName,
       chunkFilename: fileName,
     }),
     new BundleAnalyzerPlugin({
@@ -106,10 +106,9 @@ if (isProduction) {
       reportFilename: resolve(appPath, 'analyzer/index.html'),
     }),
   );
-} else {
+else
   plugins.push(
     new ReactRefreshWebpackPlugin({overlay: false}),
   );
-}
 
 export default plugins;

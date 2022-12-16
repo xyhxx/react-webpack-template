@@ -7,7 +7,7 @@ import chalk from 'chalk';
 console.log('in script');
 
 const isInteractive = process.stdout.isTTY;
-  
+
 const {host, port: defaultPort} = webpackConfig.devServer;
 
 function start(port) {

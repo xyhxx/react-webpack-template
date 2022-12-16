@@ -11,7 +11,7 @@ export default {
     }),
   ],
   runtimeChunk: {
-    name: (entrypoint) => `runtime~${entrypoint.name}`,
+    name: entrypoint => `runtime~${entrypoint.name}`,
   },
   splitChunks: {
     chunks: 'async',
@@ -38,7 +38,7 @@ export default {
         test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|@remix-run|scheduler)/,
         priority: 10,
         reuseExistingChunk: true,
-      }
+      },
     },
   },
 };

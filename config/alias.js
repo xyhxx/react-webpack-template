@@ -1,7 +1,7 @@
 import {resolve} from 'path';
 import {__dirname} from './constants.js';
 
-function aliasPath(url){
+function aliasPath(url) {
   return resolve(__dirname, '../src/', url);
 }
 
@@ -16,4 +16,4 @@ export default {
   '@stores': aliasPath('stores'),
   '@utils': aliasPath('utils'),
   '@models': aliasPath('models'),
-}
+};

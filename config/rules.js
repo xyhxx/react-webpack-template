@@ -15,7 +15,7 @@ const moduleCssOptions = {
 };
 
 function getStyleLoaders(cssOptions, preProcessor) {
-  return  [
+  return [
     isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
     {
       loader: 'css-loader',
@@ -47,7 +47,7 @@ function getStyleLoaders(cssOptions, preProcessor) {
       loader: preProcessor,
     },
   ].filter(Boolean);
-};
+}
 
 const rules = [
   {
@@ -83,7 +83,7 @@ const rules = [
               mode: 'icss',
             },
           },
-          'sass-loader'
+          'sass-loader',
         ),
         sideEffects: true,
       },
@@ -95,12 +95,12 @@ const rules = [
             sourceMap: buildSourceMap,
             modules: moduleCssOptions,
           },
-          'sass-loader'
+          'sass-loader',
         ),
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        type: "asset",
+        type: 'asset',
         parser: {
           dataUrlCondition: {
             maxSize: 10 * 1024,
@@ -116,7 +116,7 @@ const rules = [
               prettier: false,
               svgo: false,
               svgoConfig: {
-                plugins: [{ removeViewBox: false }],
+                plugins: [{removeViewBox: false}],
               },
               titleProp: true,
               ref: true,

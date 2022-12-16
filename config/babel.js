@@ -20,8 +20,8 @@ export default {
         ].filter(Boolean),
         compact: isProduction,
         cacheDirectory: resolve(appPath, '.temp-cache/babel-cache'),
-        cacheCompression: false
+        cacheCompression: false,
       },
-    }
+    },
   ].filter(Boolean),
 };

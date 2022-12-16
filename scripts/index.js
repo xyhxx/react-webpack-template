@@ -1,4 +1,4 @@
-import spawn  from 'cross-spawn';
+import spawn from 'cross-spawn';
 import {resolve} from 'path';
 import {appPath} from '../config/paths.js';
 import {getSWTEnv} from '../config/env.js';
@@ -6,7 +6,6 @@ import {getSWTEnv} from '../config/env.js';
 process.on('unhandledRejection', function(err) {
   throw err;
 });
-
 
 const args = process.argv.slice(2);
 const scriptIndex = args.findIndex(

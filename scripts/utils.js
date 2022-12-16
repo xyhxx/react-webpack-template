@@ -1,11 +1,10 @@
 import chalk from 'chalk';
 import detect from 'detect-port-alt';
 import prompts from 'prompts';
-import {getSWTEnv} from '../config/env.js';
 
 export function clearConsole() {
   process.stdout.write(
-    process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H'
+    process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H',
   );
 }
 
@@ -15,11 +14,11 @@ export function startedServerLogger(port, host) {
   console.log();
   console.log(`Network: ${chalk.hex('#db5a6b').bold(`http://${host}:${port}`)}`);
   console.log();
-};
+}
 
 export function errorLogger(error) {
   console.error(chalk.red(error + ' 😭'));
-};
+}
 
 export function junglePort(host, defaultPort) {
   const isInteractive = process.stdout.isTTY;

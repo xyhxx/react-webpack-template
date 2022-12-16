@@ -8,5 +8,15 @@
     "project": "./tsconfig.json",
     "tsconfigRootDir": ".",
     "warnOnUnsupportedTypeScriptVersion": true
-  }
+  },
+  "overrides": [
+    {
+      "files": ["config/*", "scripts/*"],
+      "parserOptions": {},
+      "extends": "proste/javascript.js",
+      "rules": {
+        "no-console": 0
+      }
+    }
+  ]
 }

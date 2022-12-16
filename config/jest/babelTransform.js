@@ -1,9 +1,9 @@
 import babelJest from 'babel-jest';
 
 export default babelJest.createTransformer({
-  "presets": [
+  presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         targets: {
           node: 'current',
@@ -11,13 +11,13 @@ export default babelJest.createTransformer({
       },
     ],
     [
-      "@babel/preset-react",
+      '@babel/preset-react',
       {
-        runtime: "automatic",
-        useBuiltIns: true
-      }
+        runtime: 'automatic',
+        useBuiltIns: true,
+      },
     ],
-    "@babel/preset-typescript"
+    '@babel/preset-typescript',
   ],
   babelrc: false,
   configFile: false,

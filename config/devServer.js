@@ -1,4 +1,5 @@
 import ip from 'ip';
+
 const {address} = ip;
 
 export default {
@@ -13,5 +14,5 @@ export default {
       errors: true,
       warnings: false,
     },
-  }
-}
+  },
+};
