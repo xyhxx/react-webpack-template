@@ -7,7 +7,7 @@ function resolvePath(url) {
   return resolve(appDirection, url);
 }
 module.exports = {
-  outputPath: resolvePath('build'),
+  outputPath: resolvePath('../../build'),
   srcPath: resolvePath('src'),
   nodeModulesPath: resolvePath('node_modules'),
   publicPath: resolvePath('public'),
