@@ -1,7 +1,0 @@
-{
-  "extends": "proste/javascript.js",
-  "root": true,
-  "rules": {
-    "no-console": 0
-  }
-}

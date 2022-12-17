@@ -23,5 +23,8 @@
   },
   "extends": "./tsconfig.paths.json",
   "exclude": ["node_modules"],
-  "include": ["src", "__tests__", "./.eslintrc.cjs"]
+  "include": [
+    "src",
+    "__tests__"
+  ]
 }
