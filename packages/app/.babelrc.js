@@ -35,5 +35,6 @@ export default {
         'properties': ['data-testid'],
       },
     ],
+    isDev && 'react-refresh/babel',
   ].filter(Boolean),
 }
