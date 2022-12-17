@@ -24,7 +24,11 @@
   "extends": "./tsconfig.paths.json",
   "exclude": ["node_modules"],
   "include": [
-    "src",
-    "__tests__"
+    "packages/app/src",
+    "packages/app/__tests__",
+    "packages/webpack/bin",
+    "packages/webpack/scripts",
+    "packages/webpack/config",
+    ".eslintrc.cjs"
   ]
 }

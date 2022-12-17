@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./packages/app/src",
     "paths": {
       "@styles/*": ["./styles/*"],
       "@assets/*": ["./assets/*"],

@@ -22,6 +22,9 @@ const plugins = [
   new WebpackBar(),
   new ForkTsCheckerWebpackPlugin({
     async: isDevelopment,
+    typescript: {
+      configFile: resolve(rootPath, './tsconfig.json'),
+    },
     issue: {
       include: [
         {file: '../**/src/**/*.{ts,tsx}'},
