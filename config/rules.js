@@ -5,9 +5,11 @@ import {
   sassRegex,
   sassModuleRegex,
   isProduction,
+  enableEsbuild,
 } from './constants.js';
 import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import esbuild from './esbuild.js';
 
 const moduleCssOptions = {
   localIdentName: '[local]-[hash:base64:5]',
@@ -137,8 +139,10 @@ const rules = [
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
         type: 'asset/resource',
       },
-      babel,
-    ],
+      !enableEsbuild && babel,
+      enableEsbuild && esbuild(true),
+      enableEsbuild && esbuild(false),
+    ].filter(Boolean),
   },
 ];
 
