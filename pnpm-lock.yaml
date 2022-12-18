@@ -8,7 +8,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.46.1
       '@typescript-eslint/parser': ^5.46.1
       eslint: ^8.29.0
-      eslint-config-proste: ^3.3.1
+      eslint-config-proste: ^3.3.2
       eslint-plugin-import: ^2.26.0
       eslint-plugin-jest: ^27.1.6
       eslint-plugin-react: ^7.31.11
@@ -24,7 +24,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       eslint: 8.29.0
-      eslint-config-proste: 3.3.1_u3qmynmj23wm6hinuyxx73hnjy
+      eslint-config-proste: 3.3.2_u3qmynmj23wm6hinuyxx73hnjy
       eslint-plugin-import: 2.26.0_z7hwuz3w5sq2sbhy7d4iqrnsvq
       eslint-plugin-jest: 27.1.6_4ced5q7mcfgo4set7i7pibqfm4
       eslint-plugin-react: 7.31.11_eslint@8.29.0
@@ -93,6 +93,7 @@ importers:
       babel-jest: ^29.3.1
       babel-loader: ^9.1.0
       babel-plugin-react-remove-properties: ^0.3.0
+      browserslist-to-esbuild: ^1.2.0
       camelcase: '6'
       chalk: '4'
       copy-webpack-plugin: ^11.0.0
@@ -138,6 +139,7 @@ importers:
       babel-jest: 29.3.1_@babel+core@7.20.5
       babel-loader: 9.1.0_ztqwsvkb6z73luspkai6ilstpu
       babel-plugin-react-remove-properties: 0.3.0
+      browserslist-to-esbuild: 1.2.0
       camelcase: 6.3.0
       chalk: 4.1.2
       copy-webpack-plugin: 11.0.0_webpack@5.75.0
@@ -2262,6 +2264,7 @@ packages:
 
   /@tanstack/query-core/4.19.1:
     resolution: {integrity: sha512-Zp0aIose5C8skBzqbVFGk9HJsPtUhRVDVNWIqVzFbGQQgYSeLZMd3Sdb4+EnA5wl1J7X+bre2PJGnQg9x/zHOA==}
+    dev: false
 
   /@tanstack/react-query-devtools/4.19.1_xnkyuugmv5unvdsxvtkktqsuae:
     resolution: {integrity: sha512-U63A+ly9JLPJj7ryR9omdXT3n+gS7jlExrHty4klsd/6xdUhC38CKZyZ0Gi3vctaVYRGTU8/vI+uKzBYdFqLaA==}
@@ -2294,6 +2297,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
 
   /@testing-library/dom/8.19.0:
     resolution: {integrity: sha512-6YWYPPpxG3e/xOo6HIWwB/58HukkwIVTOaZ0VwdMVjhRUX/01E4FtQbck9GazOOj7MXHc5RBzMrU86iBJHbI+A==}
@@ -3463,6 +3467,13 @@ packages:
       fill-range: 7.0.1
     dev: true
 
+  /browserslist-to-esbuild/1.2.0:
+    resolution: {integrity: sha512-ftrrbI/VHBgEnmnSyhkqvQVMp6jAKybfs0qMIlm7SLBrQTGMsdCIP4q3BoKeLsZTBQllIQtY9kbxgRYV2WU47g==}
+    engines: {node: '>=12'}
+    dependencies:
+      browserslist: 4.21.4
+    dev: true
+
   /browserslist/4.21.4:
     resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -4586,8 +4597,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-proste/3.3.1_u3qmynmj23wm6hinuyxx73hnjy:
-    resolution: {integrity: sha512-Zwli+YsZgwo2nZjwze+U8Y0K3JkEG+z9FyiLkW1ZSIeMQKGbUlPoyf9qwIrog/Dsb1/cxNsMswvdSiRUZe0vZQ==}
+  /eslint-config-proste/3.3.2_u3qmynmj23wm6hinuyxx73hnjy:
+    resolution: {integrity: sha512-MaDEgM5cI/67v6f8MrBitsDU8hXLGJ6Z2kGwsH8s5wm9UiGOpVldzkwyioGKqzqKnfbrB+ZAK6yOdyOqvwTBRQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.4.0
       '@typescript-eslint/parser': ^5.4.0
@@ -7877,6 +7888,7 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
 
   /react-error-boundary/3.1.4_react@18.2.0:
     resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
@@ -7933,6 +7945,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /read-pkg-up/7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
@@ -8214,6 +8227,7 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /schema-utils/3.1.1:
     resolution: {integrity: sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==}

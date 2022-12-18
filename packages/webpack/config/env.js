@@ -2,7 +2,6 @@
 const {config} = require('dotenv');
 const {resolve} = require('path');
 const {appPath} = require('./paths');
-const {ENV} = require('./constants');
 
 const commonEnv = resolve(appPath, '.env');
 
@@ -14,28 +13,40 @@ const envs = {
   production: resolve(appPath, '.env.pro'),
 };
 
-function getEnv() {
+const env = {};
+const swtEnv = {};
+
+function objectIsEmpty(obj) {
+  return Object.getOwnPropertyNames(obj).length === 0;
+}
+
+function initEnv() {
+  if (!objectIsEmpty(env) && !objectIsEmpty(swtEnv)) return;
+  const ENV = process.env.NODE_ENV;
+
   const common = config({path: commonEnv}).parsed;
   const value = config({path: envs[ENV]}).parsed;
+
   const temp = {};
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
-  const result = {};
-  for (const [key, value] of Object.entries(temp))
-    !key.includes(prefix) && (result[key] = JSON.stringify(value));
 
-  return result;
+  for (const [key, value] of Object.entries(temp))
+    !key.includes(prefix)
+      ? env[key] = JSON.stringify(value)
+      : swtEnv[key.replace(prefix, '')] = value;
 }
 
 function getSWTEnv() {
-  const common = config({path: commonEnv}).parsed;
-  const result = {};
+  initEnv();
 
-  for (const [key, value] of Object.entries(common))
-    key.includes(prefix)
-    && (result[key.replace(prefix, '')] = value);
+  return swtEnv;
+}
 
-  return result;
+function getEnv() {
+  initEnv();
+
+  return env;
 }
 
 module.exports = {

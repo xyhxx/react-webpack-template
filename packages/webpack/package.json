@@ -23,6 +23,7 @@
     "babel-jest": "^29.3.1",
     "babel-loader": "^9.1.0",
     "babel-plugin-react-remove-properties": "^0.3.0",
+    "browserslist-to-esbuild": "^1.2.0",
     "camelcase": "6",
     "chalk": "4",
     "copy-webpack-plugin": "^11.0.0",

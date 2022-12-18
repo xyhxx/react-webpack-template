@@ -5,6 +5,7 @@ const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 const isProduction = ENV === 'production';
 const isDevelopment = ENV === 'development';
 const buildSourceMap = isProduction ? useSourceMap : true;
+const enableEsbuild = process.env.SWT_ENABLE_ESBUILD === 'true';
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -19,8 +20,8 @@ module.exports = {
   cssModuleRegex,
   sassRegex,
   sassModuleRegex,
-  ENV,
   useSourceMap,
   MAX_CHUNK_SIZE,
   enableThreadLoader,
+  enableEsbuild,
 };
