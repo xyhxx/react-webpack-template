@@ -6,14 +6,14 @@ const {
   srcPath,
   rootPath,
 } = require('./paths');
-const {isProduction, useSourceMap} = require('./constants');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
 const rules = require('./rules');
 const optimization = require('./optimization');
-
 const {resolve} = require('path');
 
+const isProduction = process.env.NODE_ENV === 'production';
+const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 const fileName = isProduction
   ? 'static/js/[name].[contenthash:8].js'
   : 'static/js/[name].js';

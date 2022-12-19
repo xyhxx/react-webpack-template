@@ -17,7 +17,18 @@
   ],
   "testEnvironment": "jsdom",
   "transform": {
-    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "@swt/webpack/config/jest/babelTransform.js",
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": [
+      "@swc/jest",
+      {
+        "jsc": {
+          "transform": {
+            "react": {
+              "runtime": "automatic"
+            }
+          }
+        }
+      }
+    ],
     "^.+\\.css$": "@swt/webpack/config/jest/cssTransform.js",
     "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "@swt/webpack/config/jest/fileTransform.js"
   },

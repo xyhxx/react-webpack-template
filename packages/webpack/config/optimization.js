@@ -1,6 +1,6 @@
 const {ESBuildMinifyPlugin} = require('esbuild-loader');
 
-const {isProduction} = require('./constants');
+const isProduction = process.env.NODE_ENV === 'production';
 
 const optimization = {
   minimize: isProduction,

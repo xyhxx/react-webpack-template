@@ -11,6 +11,12 @@ Do not modify files under `webpack` unless you are sure of the modified results
 
 <br />
 
+<h1>Babel</h2>
+
+The project use SWC by default. If you want to use babel, please download ` babel-loader @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript babel-plugin-react-remove-properties thread-loader` and set `SWT_ENABLE_SWC=false` in `.env`
+
+<br />
+
 <h2>Usage</h2>
 
 - Clone this repo, like `pnpm dlx degit xyhxx/react-webpack-template#monorepo`. In addition, you can click "Use this template" to copy this template to your repositories

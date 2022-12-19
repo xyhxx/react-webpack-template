@@ -4,9 +4,7 @@ const {
   srcPath,
   rootPath,
 } = require('./paths');
-const {isProduction, isDevelopment} = require('./constants');
 const {getEnv} = require('./env');
-
 const {resolve} = require('path');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -17,6 +15,9 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = !isProduction;
 
 const plugins = [
   new WebpackBar(),
