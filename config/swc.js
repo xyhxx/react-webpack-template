@@ -2,15 +2,6 @@ import {srcPath} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const swcTransformOptions = {
-  react: {
-    refresh: !isProduction,
-    runtime: 'automatic',
-  },
-};
-const swcParserOptions = {
-};
-
 export default function(isTs) {
   return {
     loader: 'swc-loader',
@@ -21,10 +12,13 @@ export default function(isTs) {
         parser: {
           syntax: isTs ? 'typescript' : 'ecmascript',
           [isTs ? 'tsx' : 'jsx']: true,
-          ...swcParserOptions,
         },
+        loose: true,
         transform: {
-          ...swcTransformOptions,
+          react: {
+            refresh: !isProduction,
+            runtime: 'automatic',
+          },
         },
         experimental: {
           plugins: [
