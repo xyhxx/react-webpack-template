@@ -1,4 +1,5 @@
 const {srcPath} = require('./paths.js');
+const browserslist = require('browserslist');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -36,6 +37,10 @@ module.exports = function(isTs) {
             ],
           ].filter(Boolean),
         },
+      },
+      env: {
+        targets: browserslist(),
+        mode: 'entry',
       },
     },
   };

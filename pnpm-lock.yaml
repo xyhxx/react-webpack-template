@@ -87,6 +87,7 @@ importers:
       '@swc/jest': ^0.2.24
       '@testing-library/dom': ^8.19.0
       '@types/node': ^18.11.9
+      browserslist: ^4.21.4
       camelcase: '6'
       chalk: '4'
       copy-webpack-plugin: ^11.0.0
@@ -129,6 +130,7 @@ importers:
       '@svgr/webpack': 6.5.1
       '@testing-library/dom': 8.19.0
       '@types/node': 18.11.11
+      browserslist: 4.21.4
       camelcase: 6.3.0
       chalk: 4.1.2
       copy-webpack-plugin: 11.0.0_webpack@5.75.0

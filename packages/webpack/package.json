@@ -15,6 +15,7 @@
     "@svgr/webpack": "^6.5.1",
     "@testing-library/dom": "^8.19.0",
     "@types/node": "^18.11.9",
+    "browserslist": "^4.21.4",
     "camelcase": "6",
     "chalk": "4",
     "copy-webpack-plugin": "^11.0.0",
