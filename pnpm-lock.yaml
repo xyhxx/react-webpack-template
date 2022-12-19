@@ -64,7 +64,6 @@ specifiers:
   stylelint-config-standard-scss: ^6.1.0
   swc-loader: ^0.2.3
   swc-plugin-react-remove-properties: ^0.1.1
-  thread-loader: ^3.0.4
   typescript: ^4.8.4
   webpack: ^5.75.0
   webpack-bundle-analyzer: ^4.7.0
@@ -140,7 +139,6 @@ devDependencies:
   stylelint-config-standard-scss: 6.1.0_u4cmdib575x7lmfjhgvokchuwe
   swc-loader: 0.2.3_zqhpc3y2oecp2qxc3hqu7q4zbq
   swc-plugin-react-remove-properties: 0.1.1
-  thread-loader: 3.0.4_webpack@5.75.0
   typescript: 4.9.4
   webpack: 5.75.0_id63hl4ti3a2o54kosxu7nkk2i
   webpack-bundle-analyzer: 4.7.0
@@ -6455,10 +6453,6 @@ packages:
     hasBin: true
     dev: true
 
-  /json-parse-better-errors/1.0.2:
-    resolution: {integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==}
-    dev: true
-
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
     dev: true
@@ -8784,20 +8778,6 @@ packages:
 
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
-    dev: true
-
-  /thread-loader/3.0.4_webpack@5.75.0:
-    resolution: {integrity: sha512-ByaL2TPb+m6yArpqQUZvP+5S1mZtXsEP7nWKKlAUTm7fCml8kB5s1uI3+eHRP2bk5mVYfRSBI7FFf+tWEyLZwA==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      webpack: ^4.27.0 || ^5.0.0
-    dependencies:
-      json-parse-better-errors: 1.0.2
-      loader-runner: 4.3.0
-      loader-utils: 2.0.4
-      neo-async: 2.6.2
-      schema-utils: 3.1.1
-      webpack: 5.75.0_id63hl4ti3a2o54kosxu7nkk2i
     dev: true
 
   /thunky/1.1.0:
