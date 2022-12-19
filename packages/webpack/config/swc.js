@@ -29,7 +29,8 @@ module.exports = function(isTs) {
         experimental: {
           plugins: [
             isProduction && [
-              'swc-plugin-react-remove-properties', {
+              require.resolve('swc-plugin-react-remove-properties'),
+              {
                 properties: ['data-testid'],
               },
             ],

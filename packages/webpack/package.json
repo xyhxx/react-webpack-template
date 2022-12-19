@@ -41,6 +41,7 @@
     "react-refresh": "^0.14.0",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
+    "swc-plugin-react-remove-properties": "^0.1.1",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "webpack-cli": "^4.10.0",
