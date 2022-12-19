@@ -2,7 +2,8 @@ import {clearConsole, errorLogger} from './utils.js';
 import webpack from 'webpack';
 import chalk from 'chalk';
 import config from '../config/webpack.config.js';
-import {MAX_CHUNK_SIZE} from '../config/constants.js';
+
+const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 
 function printAssets(assets) {
   console.log('Packaging resource list:');
