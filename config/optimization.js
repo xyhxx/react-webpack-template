@@ -1,6 +1,6 @@
 import {ESBuildMinifyPlugin} from 'esbuild-loader';
 
-import {isProduction} from './constants.js';
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
   minimize: isProduction,

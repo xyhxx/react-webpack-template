@@ -5,13 +5,14 @@ import {
   appPath,
   assetsPublicPath,
 } from './paths.js';
-import {isProduction, useSourceMap} from './constants.js';
 import plugins from './plugins.js';
 import devServer from './devServer.js';
 import rules from './rules.js';
 import optimization from './optimization.js';
-
 import {resolve} from 'path';
+
+const isProduction = process.env.NODE_ENV === 'production';
+const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 
 const fileName = isProduction
   ? 'static/js/[name].[contenthash:8].js'

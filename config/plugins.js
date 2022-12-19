@@ -4,7 +4,6 @@ import {
   srcPath,
   appPath,
 } from './paths.js';
-import {isProduction, isDevelopment} from './constants.js';
 import {getEnv} from './env.js';
 
 import {resolve} from 'path';
@@ -18,7 +17,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-const {DefinePlugin} = webpack;
+const {DefinePlugin} = webpack,
+      isDevelopment = process.env.NODE_ENV === 'development',
+      isProduction = !isDevelopment;
 
 const plugins = [
   new WebpackBar(),

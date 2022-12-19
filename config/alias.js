@@ -1,5 +1,5 @@
 import {resolve} from 'path';
-import {__dirname} from './constants.js';
+import {__dirname} from './paths.js';
 
 function aliasPath(url) {
   return resolve(__dirname, '../src/', url);

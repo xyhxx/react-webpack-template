@@ -1,5 +1,9 @@
-import {resolve} from 'path';
-import {__dirname} from './constants.js';
+import {resolve, dirname} from 'path';
+
+import {fileURLToPath} from 'url';
+
+export const __filename = fileURLToPath(import.meta.url);
+export const __dirname = dirname(__filename);
 
 function resolvePath(url) {
   return resolve(__dirname, '..', url);

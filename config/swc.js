@@ -1,5 +1,6 @@
-import {isProduction} from './constants.js';
 import {srcPath} from './paths.js';
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const swcTransformOptions = {
   react: {
