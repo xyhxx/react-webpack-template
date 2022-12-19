@@ -14,7 +14,7 @@ const swcParserOptions = {
 export default function(isTs) {
   return {
     loader: 'swc-loader',
-    test: isTs ? /.tsx?$/ : /.(|js|jsx|mjs)$/,
+    test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,
     include: srcPath,
     options: {
       jsc: {
