@@ -2,8 +2,9 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const config = require('../config/webpack.config');
 const {clearConsole} = require('./utils');
-const {MAX_CHUNK_SIZE} = require('../config/constants');
 const {errorLogger} = require('./utils');
+
+const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 
 function printAssets(assets) {
   console.log('Packaging resource list:');
