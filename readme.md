@@ -17,6 +17,12 @@ If you prefer monorepo, you can use the monorepo branch
 
 <br />
 
+<h1>Babel</h2>
+
+The project use SWC by default. If you want to use babel, please download ` babel-loader @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript ` and 
+set `SWT_ENABLE_SWC=false` in `.env`
+
+<br />
 
 <h2>Usage</h2>
 

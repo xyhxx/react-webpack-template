@@ -5,11 +5,11 @@ import {
   sassRegex,
   sassModuleRegex,
   isProduction,
-  enableEsbuild,
+  enableSWC,
 } from './constants.js';
 import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import esbuild from './esbuild.js';
+import swc from './swc.js';
 
 const moduleCssOptions = {
   localIdentName: '[local]-[hash:base64:5]',
@@ -139,9 +139,9 @@ const rules = [
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
         type: 'asset/resource',
       },
-      !enableEsbuild && babel,
-      enableEsbuild && esbuild(true),
-      enableEsbuild && esbuild(false),
+      !enableSWC && babel,
+      enableSWC && swc(true),
+      enableSWC && swc(false),
     ].filter(Boolean),
   },
 ];
