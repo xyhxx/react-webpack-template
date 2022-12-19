@@ -1,4 +1,5 @@
 import {srcPath} from './paths.js';
+import browserslist from 'browserslist';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -29,6 +30,9 @@ export default function(isTs) {
             ],
           ].filter(Boolean),
         },
+      },
+      env: {
+        targets: browserslist(),
       },
     },
   };
