@@ -19,8 +19,7 @@ If you prefer monorepo, you can use the monorepo branch
 
 <h1>Babel</h2>
 
-The project use SWC by default. If you want to use babel, please download ` babel-loader @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript ` and 
-set `SWT_ENABLE_SWC=false` in `.env`
+The project use SWC by default. If you want to use babel, please download ` babel-loader @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript babel-plugin-react-remove-properties` and set `SWT_ENABLE_SWC=false` in `.env`
 
 <br />
 
