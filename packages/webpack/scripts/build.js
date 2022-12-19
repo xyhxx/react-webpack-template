@@ -19,14 +19,16 @@ function printAssets(assets) {
     const kbSize = Math.ceil(sizeNum / 1024);
     const sizePen = sizeNum > MAX_CHUNK_SIZE ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
     const pathPen = isJs ? chalk.hex('#48c0a3') : isCss ? chalk.hex('#b0a4e3') : chalk.hex('#eacd76');
-    if (!overstep) overstep = sizeNum > MAX_CHUNK_SIZE;
-    if (isJs || isMedia || isCss)
+    if (isJs || isMedia || isCss) {
+      if (!overstep) overstep = sizeNum > MAX_CHUNK_SIZE;
+
       list.push({
         path,
         size: sizeNum >= 1024 ? `${kbSize} KB` : `${sizeNum} B`,
         sizePen,
         pathPen,
       });
+    }
   }
   const maxLength = list.reduce(function(pre, next) {
     return next.size.length > pre ? next.size.length : pre;
