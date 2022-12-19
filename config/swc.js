@@ -33,6 +33,7 @@ export default function(isTs) {
       },
       env: {
         targets: browserslist(),
+        mode: 'entry',
       },
     },
   };
