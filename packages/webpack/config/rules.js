@@ -141,7 +141,7 @@ const rules = [
         exclude: [/^$/, /\.(js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
         type: 'asset/resource',
       },
-      !enableSWC && babel,
+      !enableSWC && babel(),
       enableSWC && swc(false),
       enableSWC && swc(true),
     ].filter(Boolean),
