@@ -21,9 +21,13 @@ const fileName = isProduction
 export default {
   stats: 'errors-warnings',
   target: ['browserslist'],
-  entry: "./src/index.tsx",
-  devtool: isProduction ? useSourceMap ? 'source-map' : false : 'cheap-module-source-map',
-  mode: isProduction ? "production" : "development",
+  entry: './src/index.tsx',
+  devtool: isProduction
+    ? useSourceMap
+      ? 'source-map'
+      : false
+    : 'cheap-module-source-map',
+  mode: isProduction ? 'production' : 'development',
   performance: false,
   infrastructureLogging: {
     level: 'none',
@@ -47,7 +51,7 @@ export default {
   optimization,
   resolve: {
     modules: ['node_modules', nodeModulesPath],
-    extensions: [".jsx", ".js", ".ts", ".tsx", ".json"],
+    extensions: ['.jsx', '.js', '.ts', '.tsx', '.json'],
     alias,
   },
   devServer,
