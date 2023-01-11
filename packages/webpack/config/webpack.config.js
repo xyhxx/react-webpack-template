@@ -22,7 +22,11 @@ const config = {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: resolve(srcPath, 'index.tsx'),
-  devtool: isProduction ? useSourceMap ? 'source-map' : false : 'cheap-module-source-map',
+  devtool: isProduction
+    ? useSourceMap
+      ? 'source-map'
+      : false
+    : 'cheap-module-source-map',
   mode: isProduction ? 'production' : 'development',
   performance: false,
   infrastructureLogging: {
