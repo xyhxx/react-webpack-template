@@ -51,6 +51,7 @@ specifiers:
   postcss: ^8.4.19
   postcss-flexbugs-fixes: ^5.0.2
   postcss-loader: ^7.0.1
+  postcss-nesting: ^10.2.0
   postcss-preset-env: ^7.8.2
   prompts: ^2.4.2
   react: ^18.2.0
@@ -59,12 +60,11 @@ specifiers:
   react-error-boundary: ^3.1.4
   react-refresh: ^0.14.0
   react-router-dom: ^6.4.3
-  sass: ^1.56.1
   sass-loader: ^13.2.0
   style-loader: ^3.3.1
   stylelint: ^14.14.1
   stylelint-config-recess-order: ^3.0.0
-  stylelint-config-standard-scss: ^6.1.0
+  stylelint-config-standard: ^29.0.0
   swc-loader: ^0.2.3
   swc-plugin-react-remove-properties: ^0.1.1
   typescript: ^4.8.4
@@ -133,16 +133,16 @@ devDependencies:
   postcss: 8.4.19
   postcss-flexbugs-fixes: 5.0.2_postcss@8.4.19
   postcss-loader: 7.0.2_upg3rk2kpasnbk27hkqapxaxfq
+  postcss-nesting: 10.2.0_postcss@8.4.19
   postcss-preset-env: 7.8.3_postcss@8.4.19
   prompts: 2.4.2
   react-app-polyfill: 3.0.0
   react-refresh: 0.14.0
-  sass: 1.56.1
-  sass-loader: 13.2.0_sass@1.56.1+webpack@5.75.0
+  sass-loader: 13.2.0_webpack@5.75.0
   style-loader: 3.3.1_webpack@5.75.0
   stylelint: 14.16.0
   stylelint-config-recess-order: 3.0.0_stylelint@14.16.0
-  stylelint-config-standard-scss: 6.1.0_u4cmdib575x7lmfjhgvokchuwe
+  stylelint-config-standard: 29.0.0_stylelint@14.16.0
   swc-loader: 0.2.3_zqhpc3y2oecp2qxc3hqu7q4zbq
   swc-plugin-react-remove-properties: 0.1.1
   typescript: 4.9.4
@@ -5582,10 +5582,6 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immutable/4.1.0:
-    resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
-    dev: true
-
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -7570,15 +7566,6 @@ packages:
       postcss: 8.4.19
     dev: true
 
-  /postcss-scss/4.0.6_postcss@8.4.19:
-    resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
-    engines: {node: '>=12.0'}
-    peerDependencies:
-      postcss: ^8.4.19
-    dependencies:
-      postcss: 8.4.19
-    dev: true
-
   /postcss-selector-not/6.0.1_postcss@8.4.19:
     resolution: {integrity: sha512-1i9affjAe9xu/y9uqWH+tD4r6/hDaXJruk8xn2x1vzxC2U3J3LKO3zJW4CyxlNhA56pADJ/djpEwpH1RClI2rQ==}
     engines: {node: ^12 || ^14 || >=16}
@@ -8063,7 +8050,7 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass-loader/13.2.0_sass@1.56.1+webpack@5.75.0:
+  /sass-loader/13.2.0_webpack@5.75.0:
     resolution: {integrity: sha512-JWEp48djQA4nbZxmgC02/Wh0eroSUutulROUusYJO9P9zltRbNN80JCBHqRGzjd4cmZCa/r88xgfkjGD0TXsHg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -8084,18 +8071,7 @@ packages:
     dependencies:
       klona: 2.0.5
       neo-async: 2.6.2
-      sass: 1.56.1
       webpack: 5.75.0_id63hl4ti3a2o54kosxu7nkk2i
-    dev: true
-
-  /sass/1.56.1:
-    resolution: {integrity: sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ==}
-    engines: {node: '>=12.0.0'}
-    hasBin: true
-    dependencies:
-      chokidar: 3.5.3
-      immutable: 4.1.0
-      source-map-js: 1.0.2
     dev: true
 
   /saxes/6.0.0:
@@ -8540,43 +8516,12 @@ packages:
       stylelint-order: 5.0.0_stylelint@14.16.0
     dev: true
 
-  /stylelint-config-recommended-scss/8.0.0_u4cmdib575x7lmfjhgvokchuwe:
-    resolution: {integrity: sha512-BxjxEzRaZoQb7Iinc3p92GS6zRdRAkIuEu2ZFLTxJK2e1AIcCb5B5MXY9KOXdGTnYFZ+KKx6R4Fv9zU6CtMYPQ==}
-    peerDependencies:
-      postcss: ^8.3.3
-      stylelint: ^14.10.0
-    peerDependenciesMeta:
-      postcss:
-        optional: true
-    dependencies:
-      postcss: 8.4.19
-      postcss-scss: 4.0.6_postcss@8.4.19
-      stylelint: 14.16.0
-      stylelint-config-recommended: 9.0.0_stylelint@14.16.0
-      stylelint-scss: 4.3.0_stylelint@14.16.0
-    dev: true
-
   /stylelint-config-recommended/9.0.0_stylelint@14.16.0:
     resolution: {integrity: sha512-9YQSrJq4NvvRuTbzDsWX3rrFOzOlYBmZP+o513BJN/yfEmGSr0AxdvrWs0P/ilSpVV/wisamAHu5XSk8Rcf4CQ==}
     peerDependencies:
       stylelint: ^14.10.0
     dependencies:
       stylelint: 14.16.0
-    dev: true
-
-  /stylelint-config-standard-scss/6.1.0_u4cmdib575x7lmfjhgvokchuwe:
-    resolution: {integrity: sha512-iZ2B5kQT2G3rUzx+437cEpdcnFOQkwnwqXuY8Z0QUwIHQVE8mnYChGAquyKFUKZRZ0pRnrciARlPaR1RBtPb0Q==}
-    peerDependencies:
-      postcss: ^8.3.3
-      stylelint: ^14.14.0
-    peerDependenciesMeta:
-      postcss:
-        optional: true
-    dependencies:
-      postcss: 8.4.19
-      stylelint: 14.16.0
-      stylelint-config-recommended-scss: 8.0.0_u4cmdib575x7lmfjhgvokchuwe
-      stylelint-config-standard: 29.0.0_stylelint@14.16.0
     dev: true
 
   /stylelint-config-standard/29.0.0_stylelint@14.16.0:
@@ -8595,19 +8540,6 @@ packages:
     dependencies:
       postcss: 8.4.19
       postcss-sorting: 7.0.1_postcss@8.4.19
-      stylelint: 14.16.0
-    dev: true
-
-  /stylelint-scss/4.3.0_stylelint@14.16.0:
-    resolution: {integrity: sha512-GvSaKCA3tipzZHoz+nNO7S02ZqOsdBzMiCx9poSmLlb3tdJlGddEX/8QzCOD8O7GQan9bjsvLMsO5xiw6IhhIQ==}
-    peerDependencies:
-      stylelint: ^14.5.1
-    dependencies:
-      lodash: 4.17.21
-      postcss-media-query-parser: 0.2.3
-      postcss-resolve-nested-selector: 0.1.1
-      postcss-selector-parser: 6.0.11
-      postcss-value-parser: 4.2.0
       stylelint: 14.16.0
     dev: true
 

@@ -1,6 +1,6 @@
 import icon from '@assets/images/logo.svg';
 
-import css from './index.module.scss';
+import css from './index.module.css';
 
 import cla from 'classnames';
 import {FC} from 'react';
