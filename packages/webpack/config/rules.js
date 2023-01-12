@@ -32,6 +32,7 @@ function getStyleLoaders(cssOptions, preProcessor) {
           ident: 'postcss',
           config: false,
           plugins: [
+            'postcss-nesting',
             'postcss-flexbugs-fixes',
             [
               'postcss-preset-env',
