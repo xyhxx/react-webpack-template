@@ -1,4 +1,4 @@
-import create from 'zustand';
+import {createStore} from 'zustand';
 import {devtools} from 'zustand/middleware';
 import type {ZustandDevtools} from '.';
 
@@ -11,7 +11,7 @@ type Action = {
   dec: () => void;
 };
 
-export const useCount = create<State & Action, ZustandDevtools>(
+export const countState = createStore<State & Action, ZustandDevtools>(
   devtools(function(set) {
     return {
       count: 0,
