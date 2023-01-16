@@ -16,6 +16,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
+const pkg = require('../../../package.json');
+
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
 
@@ -49,10 +51,10 @@ const plugins = [
   }),
   new HtmlWebpackPlugin(
     Object.assign(
-      {},
       {
         inject: true,
         template: resolve(publicPath, 'index.html'),
+        title: pkg.name,
       },
       isProduction
         ? {
