@@ -4,14 +4,15 @@ import css from './index.module.css';
 
 import cla from 'classnames';
 import {FC} from 'react';
-import {countState, equal} from '@stores';
+import {countState} from '@stores';
 import {useStore} from 'zustand';
+import {shallowEqual} from '@utils';
 
 const Home: FC = function() {
   const {count, inc, dec} = useStore(
     countState,
     state => state,
-    equal,
+    shallowEqual,
   );
 
   return (
