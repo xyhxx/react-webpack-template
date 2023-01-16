@@ -16,7 +16,9 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import pkg from '../package.json' assert { type: 'json' };
 
+console.log(pkg.name);
 const {DefinePlugin} = webpack,
       isDevelopment = process.env.NODE_ENV === 'development',
       isProduction = !isDevelopment;
@@ -45,10 +47,10 @@ const plugins = [
   }),
   new HtmlWebpackPlugin(
     Object.assign(
-      {},
       {
         inject: true,
         template: resolve(publicPath, 'index.html'),
+        title: pkg.name,
       },
       isProduction
         ? {
