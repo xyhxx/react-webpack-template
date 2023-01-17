@@ -1,3 +1,3 @@
-export type ZustandDevtools = [['zustand/devtools', never]];
+export {mountStoreDevtool as zustandDevtools} from 'simple-zustand-devtools';
 
 export * from './count';
