@@ -1,5 +1,4 @@
 import {createStore} from 'zustand';
-import {zustandDevtools} from '@stores';
 
 type State = {
   count: number;
@@ -24,4 +23,3 @@ export const countState = createStore<State & Action>(
   },
 );
 
-process.env.NODE_ENV === 'development' && zustandDevtools('countState', countState);
