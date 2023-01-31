@@ -1,0 +1,8 @@
+node_modules
+build
+public
+*/reportWebVitals.ts
+*.d.ts
+coverage/
+dist/
+coverage

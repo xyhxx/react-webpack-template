@@ -1,0 +1,29 @@
+{
+  "name": "@swt/app",
+  "type": "module",
+  "scripts": {
+    "dev": "swt-script dev",
+    "build": "swt-script build",
+    "test": "swt-script test",
+    "test:watch": "swt-script test --watchAll",
+    "test:coverage": "swt-script test --coverage"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.23.0",
+    "axios": "^1.2.6",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-router-dom": "^6.8.0",
+    "zustand": "^4.3.2"
+  },
+  "devDependencies": {
+    "@swt/webpack": "workspace:*",
+    "@tanstack/react-query-devtools": "^4.23.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "roots": [
+    "<rootDir>"
+  ],
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.d.ts"
+  ],
+  "setupFiles": [
+    "react-app-polyfill/jsdom"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.ts"
+  ],
+  "testMatch": [
+    "<rootDir>/__tests__/**/*.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": [
+      "@swc/jest",
+      {
+        "jsc": {
+          "transform": {
+            "react": {
+              "runtime": "automatic"
+            }
+          }
+        }
+      }
+    ],
+    "^.+\\.css$": "@swt/webpack/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "@swt/webpack/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [],
+  "moduleNameMapper": {
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "@styles(.*)$": "<rootDir>/src/styles$1",
+    "@assets(.*)$": "<rootDir>/src/assets$1",
+    "@routes(.*)$": "<rootDir>/src/routes$1",
+    "@apis(.*)$": "<rootDir>/src/apis$1",
+    "@components(.*)$": "<rootDir>/src/components$1",
+    "@hooks(.*)$": "<rootDir>/src/hooks$1",
+    "@pages(.*)$": "<rootDir>/src/pages$1",
+    "@stores(.*)$": "<rootDir>/src/stores$1",
+    "@models(.*)$": "<rootDir>/src/models$1",
+    "@utils(.*)$": "<rootDir>/src/utils$1"
+  },
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "tsx",
+    "json",
+    "jsx"
+  ],
+  "watchPlugins": [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  "resetMocks": true
+}
