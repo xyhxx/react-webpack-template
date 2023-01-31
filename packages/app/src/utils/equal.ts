@@ -1,1 +1,1 @@
-export {default as shallowEqual} from 'zustand/shallow';
+export {shallow as shallowEqual} from 'zustand/shallow';
