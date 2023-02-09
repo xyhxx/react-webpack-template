@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "swt-script dev",
     "build": "swt-script build",
-    "test": "swt-script test",
-    "test:watch": "swt-script test --watchAll",
-    "test:coverage": "swt-script test --coverage"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.23.0",
