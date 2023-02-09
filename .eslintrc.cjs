@@ -12,6 +12,18 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['cypress/**'],
+      plugins: ['cypress'],
+      parserOptions: {
+        project: './cypress/tsconfig.json',
+        tsconfigRootDir: __dirname,
+        warnOnUnsupportedTypeScriptVersion: true,
+      },
+      env: {
+        'cypress/globals': true,
+      },
+    },
+    {
       files: [
         'packages/webpack/bin/**',
         'packages/webpack/config/**',
