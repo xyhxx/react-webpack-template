@@ -22,7 +22,8 @@
     "test": "pnpm -F app test",
     "test:watch": "pnpm -F app test:watch",
     "test:coverage": "pnpm -F app test:coverage",
-    "e2e": "cypress"
+    "e2e:run": "cypress run --headed -b chrome",
+    "e2e": "cypress open"
   },
   "devDependencies": {
     "@types/ip": "^1.1.0",

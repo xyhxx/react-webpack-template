@@ -4,3 +4,4 @@ build
 analyzer
 coverage
 .swc
+cypress/videos
