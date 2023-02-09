@@ -19,10 +19,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["jest"]
   },
   "extends": "./tsconfig.paths.json",
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "cypress.config.ts"
+  ],
   "include": [
     "packages/app/src",
     "packages/app/__tests__",
