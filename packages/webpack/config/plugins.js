@@ -27,6 +27,11 @@ const plugins = [
     async: isDevelopment,
     typescript: {
       configFile: resolve(rootPath, './tsconfig.json'),
+      mode: 'write-references',
+      tsBuildInfoFile: resolve(rootPath, '.temp-cache/tsconfig.tsbuildinfo'),
+      diagnosticOptions: {
+        syntactic: true,
+      },
     },
     issue: {
       include: [
