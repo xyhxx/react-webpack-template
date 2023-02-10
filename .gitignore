@@ -5,3 +5,4 @@ analyzer
 coverage
 .swc
 cypress/videos
+cypress/screenshots
