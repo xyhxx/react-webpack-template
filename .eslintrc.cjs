@@ -12,7 +12,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['cypress/**'],
+      files: ['cypress/**', 'cypress.config.ts'],
       plugins: ['cypress'],
       parserOptions: {
         project: './cypress/tsconfig.json',
