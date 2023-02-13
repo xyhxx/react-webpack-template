@@ -1,4 +1,4 @@
-namespace Cypress {
+declare namespace Cypress {
   interface Chainable<Subject = any> {
     /**
      * Custom command to select DOM element by data-testid attribute.
