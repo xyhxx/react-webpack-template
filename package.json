@@ -18,6 +18,7 @@
   },
   "scripts": {
     "dev": "pnpm -F app dev",
+    "dev:e2e": "pnpm -F app e2e",
     "build": "pnpm -F app build",
     "test": "pnpm -F app test",
     "test:watch": "pnpm -F app test:watch",

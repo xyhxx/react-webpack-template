@@ -80,9 +80,13 @@ const plugins = [
     ),
   ),
   new DefinePlugin({
-    'process.env': {
-      ...getEnv(),
-    },
+    'process.env': Object.assign(
+      {},
+      {
+        ...getEnv(),
+      },
+      process.env.IS_E2E ? {IS_E2E: 'true'} : void 0,
+    ),
   }),
   new CopyPlugin({
     patterns: [

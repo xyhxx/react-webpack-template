@@ -13,13 +13,18 @@ const args = process.argv.slice(2);
 const scriptIndex = args.findIndex(
   x => x === 'build' || x === 'test' || x === 'dev',
 );
-const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
+let script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-function setEnv(script) {
-  switch (script) {
+function setEnv(name) {
+  switch (name) {
     case 'dev':
       process.env.NODE_ENV = 'development';
+      break;
+    case 'e2e':
+      process.env.NODE_ENV = 'development';
+      process.env.IS_E2E = 'true';
+      script = 'dev';
       break;
     case 'build':
       process.env.NODE_ENV = 'production';
@@ -63,7 +68,7 @@ function runScript() {
 }
 
 function start() {
-  if (['build', 'dev', 'test'].includes(script)) {
+  if (['build', 'dev', 'test', 'e2e'].includes(script)) {
     setEnv(script);
     const {status} = runScript();
     process.exit(status);

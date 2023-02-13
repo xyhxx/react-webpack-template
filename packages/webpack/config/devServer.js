@@ -1,7 +1,7 @@
 const {address} = require('ip');
 
 module.exports = {
-  open: true,
+  open: !process.env.IS_E2E,
   host: address(),
   port: Number(process.env.HOST),
   hot: true,

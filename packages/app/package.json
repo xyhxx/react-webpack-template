@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "swt-script dev",
+    "e2e": "swt-script e2e",
     "build": "swt-script build",
     "test": "jest",
     "test:watch": "jest --watchAll",
