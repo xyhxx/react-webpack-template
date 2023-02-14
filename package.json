@@ -23,8 +23,8 @@
     "test": "pnpm -F app test",
     "test:watch": "pnpm -F app test:watch",
     "test:coverage": "pnpm -F app test:coverage",
-    "e2e:run": "cypress run -b chrome",
-    "e2e": "cypress open"
+    "cypress:run": "cypress run -b chrome",
+    "cypress": "cypress open"
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",
