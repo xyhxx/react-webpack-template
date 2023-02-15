@@ -1,6 +1,6 @@
 module.exports = {
   extends: 'proste/reactTS.js',
-  plugins: ['jest'],
+  plugins: ['jest', 'import-newlines'],
   env: {
     'jest/globals': true,
   },
