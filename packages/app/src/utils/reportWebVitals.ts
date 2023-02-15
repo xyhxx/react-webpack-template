@@ -2,7 +2,7 @@
 const {log} = console;
 
 export function reportWebVitals() {
-  import('web-vitals')
+  import('web-vitals/attribution')
     .then(function({onCLS, onFID, onFCP, onLCP, onTTFB, onINP}) {
       // Time to First Byte
       onCLS(log);
