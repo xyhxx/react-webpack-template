@@ -8,6 +8,7 @@ importers:
       '@types/node': ^18.11.18
       '@typescript-eslint/eslint-plugin': ^5.53.0
       '@typescript-eslint/parser': ^5.53.0
+      cross-env: ^7.0.3
       cypress: ^12.6.0
       eslint: ^8.34.0
       eslint-config-proste: ^4.1.1
@@ -29,6 +30,7 @@ importers:
       '@types/node': 18.11.18
       '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
       '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
+      cross-env: 7.0.3
       cypress: 12.6.0
       eslint: 8.34.0
       eslint-config-proste: 4.1.1_dhw7rpyq4zbzcwn5qrpqhecdc4

@@ -3,11 +3,11 @@
   "type": "module",
   "scripts": {
     "dev": "swt-script dev",
-    "e2e": "swt-script e2e",
+    "e2e": "cross-env IS_E2E=true swt-script dev",
     "build": "swt-script build",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.24.10",
