@@ -3,15 +3,6 @@ const browserslist = require('browserslist');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const swcTransformOptions = {
-  react: {
-    refresh: !isProduction,
-    runtime: 'automatic',
-  },
-};
-const swcParserOptions = {
-};
-
 module.exports = function(isTs) {
   return {
     loader: require.resolve('swc-loader'),
@@ -22,10 +13,12 @@ module.exports = function(isTs) {
         parser: {
           syntax: isTs ? 'typescript' : 'ecmascript',
           [isTs ? 'tsx' : 'jsx']: true,
-          ...swcParserOptions,
         },
         transform: {
-          ...swcTransformOptions,
+          react: {
+            refresh: !isProduction,
+            runtime: 'automatic',
+          },
         },
         experimental: {
           plugins: [
