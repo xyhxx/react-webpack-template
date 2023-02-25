@@ -5,15 +5,10 @@ import css from './index.module.css';
 import cla from 'classnames';
 import {FC} from 'react';
 import {countState} from '@stores';
-import {useStore} from 'zustand';
-import {shallowEqual} from '@utils';
+import {useStoreSelector} from '@hooks';
 
 const Home: FC = function() {
-  const {count, inc, dec} = useStore(
-    countState,
-    state => state,
-    shallowEqual,
-  );
+  const {count, inc, dec} = useStoreSelector(countState);
 
   return (
     <>
