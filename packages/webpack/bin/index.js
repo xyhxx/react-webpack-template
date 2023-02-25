@@ -24,9 +24,6 @@ function setEnv(name) {
     case 'build':
       process.env.NODE_ENV = 'production';
       break;
-    case 'test':
-      process.env.NODE_ENV = 'test';
-      break;
   }
 
   const env = getSWTEnv();
@@ -63,7 +60,7 @@ function runScript() {
 }
 
 function start() {
-  if (['build', 'dev', 'test'].includes(script)) {
+  if (['build', 'dev'].includes(script)) {
     setEnv(script);
     const {status} = runScript();
     process.exit(status);

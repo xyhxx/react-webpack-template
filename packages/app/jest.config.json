@@ -6,9 +6,6 @@
     "src/**/*.{js,jsx,ts,tsx}",
     "!src/**/*.d.ts"
   ],
-  "setupFiles": [
-    "react-app-polyfill/jsdom"
-  ],
   "setupFilesAfterEnv": [
     "<rootDir>/src/setupTests.ts"
   ],
