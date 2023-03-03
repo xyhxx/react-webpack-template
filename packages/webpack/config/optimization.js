@@ -1,14 +1,27 @@
-const {ESBuildMinifyPlugin} = require('esbuild-loader');
+/* eslint-disable camelcase */
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 const optimization = {
   minimize: isProduction,
   minimizer: [
-    new ESBuildMinifyPlugin({
-      css: true,
-      legalComments: 'none',
+    new TerserPlugin({
+      minify: TerserPlugin.swcMinify,
+      // view more options
+      // https://swc.rs/docs/configuration/minification
+      terserOptions: {
+        compress: {
+          unused: true,
+        },
+        mangle: true,
+        format: {
+          comments: false,
+        },
+      },
     }),
+    new CssMinimizerPlugin(),
   ],
   runtimeChunk: {
     name: entrypoint => `runtime~${entrypoint.name}`,
