@@ -11,7 +11,7 @@ const devServer = require('./devServer');
 const rules = require('./rules');
 const optimization = require('./optimization');
 const {resolve} = require('path');
-const {TimeAnalyticsPlugin} = require('time-analytics-webpack-plugin');
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
@@ -58,7 +58,8 @@ const config = {
   devServer,
 };
 
-module.exports = TimeAnalyticsPlugin.wrap(
-  config,
-  {enable: !isProduction},
-);
+const {wrap} = new SpeedMeasureWebpackPlugin({
+  disable: isProduction,
+});
+
+module.exports = wrap(config);
