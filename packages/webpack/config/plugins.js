@@ -22,7 +22,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
 
 const plugins = [
-  new WebpackBar(),
+  new WebpackBar({
+    color: '#057748',
+  }),
   new ForkTsCheckerWebpackPlugin({
     async: isDevelopment,
     typescript: {
