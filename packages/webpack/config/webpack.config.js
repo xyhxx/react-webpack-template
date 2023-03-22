@@ -1,11 +1,5 @@
 const alias = require('./alias');
-const {
-  outputPath,
-  nodeModulesPath,
-  assetsPublicPath,
-  srcPath,
-  rootPath,
-} = require('./paths');
+const {outputPath, nodeModulesPath, assetsPublicPath, srcPath, rootPath} = require('./paths');
 const plugins = require('./plugins');
 const devServer = require('./devServer');
 const rules = require('./rules');
@@ -14,19 +8,13 @@ const {resolve} = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
-const fileName = isProduction
-  ? 'static/js/[name].[contenthash:8].js'
-  : 'static/js/[name].js';
+const fileName = isProduction ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js';
 
 const config = {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: resolve(srcPath, 'index.tsx'),
-  devtool: isProduction
-    ? useSourceMap
-      ? 'source-map'
-      : false
-    : 'cheap-module-source-map',
+  devtool: isProduction ? (useSourceMap ? 'source-map' : false) : 'cheap-module-source-map',
   mode: isProduction ? 'production' : 'development',
   performance: false,
   infrastructureLogging: {

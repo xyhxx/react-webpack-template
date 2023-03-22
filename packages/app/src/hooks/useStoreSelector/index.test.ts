@@ -2,11 +2,11 @@ import {act, renderHook} from '@testing-library/react';
 import {useStoreSelector} from '.';
 import {createStore} from 'zustand';
 
-type State = {name: string, age: number};
+type State = {name: string; age: number};
 type Action = {dispatch: (state: Partial<State>) => void};
 
 function setup() {
-  const demoStore = createStore<State & Action>(function(set) {
+  const demoStore = createStore<State & Action>(function (set) {
     return {
       name: 'simon',
       age: 12,
@@ -19,13 +19,13 @@ function setup() {
   return demoStore;
 }
 
-describe('useStoreSelector', function() {
-  it('useStoreSelector is defined', function() {
+describe('useStoreSelector', function () {
+  it('useStoreSelector is defined', function () {
     expect(useStoreSelector).toBeDefined();
     expect(useStoreSelector).toBeInstanceOf(Function);
   });
 
-  it('result', function() {
+  it('result', function () {
     const store = setup();
 
     const {result} = renderHook(() => useStoreSelector(store, state => state));
@@ -35,12 +35,11 @@ describe('useStoreSelector', function() {
     expect(result.current.dispatch).toBeInstanceOf(Function);
   });
 
-  it('memo state', function() {
+  it('memo state', function () {
     const store = setup();
-    const {result: result1} = renderHook(() => useStoreSelector(
-      store,
-      state => ({name: state.name}),
-    ));
+    const {result: result1} = renderHook(() =>
+      useStoreSelector(store, state => ({name: state.name})),
+    );
     const {result: result2} = renderHook(() => useStoreSelector(store, state => state.dispatch));
 
     const prevResult = result1.current;

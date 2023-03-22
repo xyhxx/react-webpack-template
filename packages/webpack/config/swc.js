@@ -3,7 +3,7 @@ const browserslist = require('browserslist');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-module.exports = function(isTs) {
+module.exports = function (isTs) {
   return {
     loader: require.resolve('swc-loader'),
     test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,

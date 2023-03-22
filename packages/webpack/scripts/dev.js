@@ -14,9 +14,8 @@ function start(port) {
   const {host} = devServerOptions;
   const server = new WebpackDevServer(compiler, devServerOptions);
   console.log(chalk.hex('#065279')('Starting dev server...'));
-  server.startCallback(function(err) {
-    if (err)
-      return errorLogger('Dev server start error');
+  server.startCallback(function (err) {
+    if (err) return errorLogger('Dev server start error');
 
     isInteractive && clearConsole();
     startedServerLogger(port, host);
@@ -24,14 +23,13 @@ function start(port) {
 }
 
 junglePort(host, defaultPort)
-  .then(function(port) {
+  .then(function (port) {
     if (!port) return;
 
     start(port);
   })
-  .catch(function(err) {
+  .catch(function (err) {
     err && err.message && console.log(err.message);
 
     process.exit(1);
   });
-

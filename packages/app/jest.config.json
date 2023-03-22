@@ -1,14 +1,7 @@
 {
-  "roots": [
-    "<rootDir>"
-  ],
-  "collectCoverageFrom": [
-    "src/**/*.{js,jsx,ts,tsx}",
-    "!src/**/*.d.ts"
-  ],
-  "setupFilesAfterEnv": [
-    "<rootDir>/src/setupTests.ts"
-  ],
+  "roots": ["<rootDir>"],
+  "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
+  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"],
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
     "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
@@ -48,16 +41,7 @@
     "@models(.*)$": "<rootDir>/src/models$1",
     "@utils(.*)$": "<rootDir>/src/utils$1"
   },
-  "moduleFileExtensions": [
-    "js",
-    "ts",
-    "tsx",
-    "json",
-    "jsx"
-  ],
-  "watchPlugins": [
-    "jest-watch-typeahead/filename",
-    "jest-watch-typeahead/testname"
-  ],
+  "moduleFileExtensions": ["js", "ts", "tsx", "json", "jsx"],
+  "watchPlugins": ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
   "resetMocks": true
 }

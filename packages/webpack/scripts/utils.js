@@ -3,9 +3,7 @@ const detect = require('detect-port-alt');
 const prompts = require('prompts');
 
 function clearConsole() {
-  process.stdout.write(
-    process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H',
-  );
+  process.stdout.write(process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H');
 }
 
 function startedServerLogger(port, host) {
@@ -24,8 +22,8 @@ function junglePort(host, defaultPort) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
-    function(port) {
-      return new Promise(function(resolve) {
+    function (port) {
+      return new Promise(function (resolve) {
         if (port === defaultPort) return resolve(port);
 
         const message = `Something is already running on port ${defaultPort}.`;
@@ -35,12 +33,10 @@ function junglePort(host, defaultPort) {
             type: 'confirm',
             name: 'changePort',
             message:
-              chalk.yellow(
-                message,
-              ) + '\nWould you like to run the app on another port instead?',
+              chalk.yellow(message) + '\nWould you like to run the app on another port instead?',
             initial: true,
           };
-          prompts(question).then(function({changePort}) {
+          prompts(question).then(function ({changePort}) {
             changePort ? resolve(port) : resolve(null);
           });
         } else {
@@ -49,12 +45,12 @@ function junglePort(host, defaultPort) {
         }
       });
     },
-    function(err) {
+    function (err) {
       throw new Error(
-        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`)
-          + '\n'
-          + ('Network error message: ' + err.message || err)
-          + '\n',
+        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`) +
+          '\n' +
+          ('Network error message: ' + err.message || err) +
+          '\n',
       );
     },
   );

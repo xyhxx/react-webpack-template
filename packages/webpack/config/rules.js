@@ -93,32 +93,36 @@ const rules = [
       !enableSWC && babel(),
       enableSWC && swc(false),
       enableSWC && swc(true),
-      enableSass ? {
-        test: sassRegex,
-        exclude: sassModuleRegex,
-        use: getStyleLoaders(
-          {
-            importLoaders: 3,
-            sourceMap: buildSourceMap,
-            modules: {
-              mode: 'icss',
-            },
-          },
-          'sass-loader',
-        ),
-        sideEffects: true,
-      } : void 0,
-      enableSass ? {
-        test: sassModuleRegex,
-        use: getStyleLoaders(
-          {
-            importLoaders: 3,
-            sourceMap: buildSourceMap,
-            modules: moduleCssOptions,
-          },
-          'sass-loader',
-        ),
-      } : void 0,
+      enableSass
+        ? {
+            test: sassRegex,
+            exclude: sassModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 3,
+                sourceMap: buildSourceMap,
+                modules: {
+                  mode: 'icss',
+                },
+              },
+              'sass-loader',
+            ),
+            sideEffects: true,
+          }
+        : void 0,
+      enableSass
+        ? {
+            test: sassModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 3,
+                sourceMap: buildSourceMap,
+                modules: moduleCssOptions,
+              },
+              'sass-loader',
+            ),
+          }
+        : void 0,
     ].filter(Boolean),
   },
 ];

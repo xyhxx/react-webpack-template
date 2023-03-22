@@ -1,6 +1,6 @@
 module.exports = {
-  extends: 'proste/reactTS.js',
-  plugins: ['jest', 'import-newlines'],
+  extends: ['proste/reactTS.js', 'prettier'],
+  plugins: ['jest'],
   env: {
     'jest/globals': true,
   },
@@ -30,7 +30,7 @@ module.exports = {
         'packages/webpack/scripts/**',
       ],
       parserOptions: {},
-      extends: 'proste/javascript.js',
+      extends: ['proste/javascript.js', 'prettier'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-var-requires': 0,

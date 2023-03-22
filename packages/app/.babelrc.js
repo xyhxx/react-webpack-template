@@ -21,20 +21,20 @@ export default {
   ],
   plugins: [
     [
-      '@babel/plugin-transform-runtime', 
+      '@babel/plugin-transform-runtime',
       {
         corejs: false,
         helpers: true,
         regenerator: true,
         useESModules: true,
-      }
+      },
     ],
     !isDev && [
       'react-remove-properties',
       {
-        'properties': ['data-testid'],
+        properties: ['data-testid'],
       },
     ],
     isDev && 'react-refresh/babel',
   ].filter(Boolean),
-}
+};

@@ -1,10 +1,9 @@
-
 const {srcPath} = require('./paths.js');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const enableThreadLoader = process.env.ENABLE_THREAD_LOADER === 'true';
 
-module.exports = function() {
+module.exports = function () {
   return {
     test: /\.(js|jsx|ts|tsx|mjs)$/,
     include: srcPath,

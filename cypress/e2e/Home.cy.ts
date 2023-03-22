@@ -1,5 +1,5 @@
-describe('Home page', function() {
-  it('Home page e2e', function() {
+describe('Home page', function () {
+  it('Home page e2e', function () {
     cy.visit('/');
 
     cy.getTestId('title').should('contain.text', 'count is 0');

@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "strictNullChecks":true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -23,10 +19,7 @@
     "types": ["jest"]
   },
   "extends": "./tsconfig.paths.json",
-  "exclude": [
-    "node_modules",
-    "cypress.config.ts"
-  ],
+  "exclude": ["node_modules", "cypress.config.ts"],
   "include": [
     "packages/app/src",
     "packages/app/__tests__",

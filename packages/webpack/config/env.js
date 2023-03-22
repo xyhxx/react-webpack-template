@@ -1,4 +1,3 @@
-
 const {config} = require('dotenv');
 const {resolve} = require('path');
 const {appPath} = require('./paths');
@@ -33,8 +32,8 @@ function initEnv() {
 
   for (const [key, value] of Object.entries(temp))
     !key.includes(prefix)
-      ? env[key] = JSON.stringify(value)
-      : swtEnv[key.replace(prefix, '')] = value;
+      ? (env[key] = JSON.stringify(value))
+      : (swtEnv[key.replace(prefix, '')] = value);
 }
 
 function getSWTEnv() {

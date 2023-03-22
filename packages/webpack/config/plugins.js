@@ -1,9 +1,4 @@
-const {
-  outputPath,
-  publicPath,
-  srcPath,
-  rootPath,
-} = require('./paths');
+const {outputPath, publicPath, srcPath, rootPath} = require('./paths');
 const {getEnv} = require('./env');
 const {resolve} = require('path');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
@@ -36,14 +31,8 @@ const plugins = [
       },
     },
     issue: {
-      include: [
-        {file: '../**/src/**/*.{ts,tsx}'},
-        {file: '**/src/**/*.{ts,tsx}'},
-      ],
-      exclude: [
-        {file: '**/src/setupProxy.*'},
-        {file: '**/src/setupTests.*'},
-      ],
+      include: [{file: '../**/src/**/*.{ts,tsx}'}, {file: '**/src/**/*.{ts,tsx}'}],
+      exclude: [{file: '**/src/setupProxy.*'}, {file: '**/src/setupTests.*'}],
     },
   }),
   new ESLintWebpackPlugin({
@@ -51,10 +40,7 @@ const plugins = [
     context: srcPath,
     exclude: 'node_modules',
     cache: true,
-    cacheLocation: resolve(
-      rootPath,
-      '.temp-cache/.eslintcache',
-    ),
+    cacheLocation: resolve(rootPath, '.temp-cache/.eslintcache'),
   }),
   new HtmlWebpackPlugin(
     Object.assign(
@@ -65,19 +51,19 @@ const plugins = [
       },
       isProduction
         ? {
-          minify: {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          },
-        }
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            },
+          }
         : void 0,
     ),
   ),
@@ -122,9 +108,6 @@ if (isProduction)
       reportFilename: resolve(rootPath, 'analyzer/index.html'),
     }),
   );
-else
-  plugins.push(
-    new ReactRefreshWebpackPlugin({overlay: false}),
-  );
+else plugins.push(new ReactRefreshWebpackPlugin({overlay: false}));
 
 module.exports = plugins;
