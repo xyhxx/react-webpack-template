@@ -4,7 +4,6 @@
 CODEOWNERS
 .dockerignore
 Dockerfile.ui-test
-package.json
 AUTHORS.txt
 lib/
 es/
