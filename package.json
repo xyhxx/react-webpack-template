@@ -64,11 +64,11 @@
   },
   "lint-staged": {
     "**/*/*.css": [
-      "pnpm lint:style",
+      "stylelint",
       "prettier --write"
     ],
     "**/*/*.{js,jsx,ts,tsx}": [
-      "pnpm lint:js",
+      "eslint",
       "prettier --write"
     ]
   }
