@@ -63,9 +63,12 @@
     "typescript": "^5.0.2"
   },
   "lint-staged": {
-    "**/*.css": "pnpm lint:style",
-    "**/*.{js,jsx,ts,tsx}": "pnpm lint:js",
-    "**/*.{js,jsx,ts,tsx,css}": [
+    "**/*/*.*.css": [
+      "pnpm lint:style",
+      "prettier --write"
+    ],
+    "**/*/*.{js,jsx,ts,tsx}": [
+      "pnpm lint:js",
       "prettier --write"
     ]
   }
