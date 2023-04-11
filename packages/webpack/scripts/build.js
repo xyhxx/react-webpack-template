@@ -17,7 +17,10 @@ function printAssets(assets) {
     const isMedia = path.includes('static/assets');
     const sizeNum = size.size();
     const kbSize = Math.ceil(sizeNum / 1024);
-    const sizePen = sizeNum > MAX_CHUNK_SIZE ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
+    const sizePen =
+      sizeNum > MAX_CHUNK_SIZE
+        ? chalk.hex('#ff2121').bold
+        : chalk.hex('#0aa344');
     const pathPen = isJs
       ? chalk.hex('#48c0a3')
       : isCss
@@ -47,10 +50,18 @@ function printAssets(assets) {
     console.log();
     console.log();
     console.log(
-      chalk.grey(`Some chunks are larger ${MAX_CHUNK_SIZE / 1024}KB after compilation. Consider:`),
+      chalk.grey(
+        `Some chunks are larger ${
+          MAX_CHUNK_SIZE / 1024
+        }KB after compilation. Consider:`,
+      ),
     );
     console.log();
-    console.log(chalk.hex(pathColor)('1.Using dynamic import() to code-split the application'));
+    console.log(
+      chalk.hex(pathColor)(
+        '1.Using dynamic import() to code-split the application',
+      ),
+    );
     console.log(
       chalk.hex(pathColor)(
         '2.Adjust the prompt size by adjusting' +
@@ -76,14 +87,14 @@ try {
       console.log();
       process.exit(1);
     }
-    const assets = stats.compilation.assets;
-    const startTime = stats.compilation.startTime;
-    const endTime = stats.compilation.endTime;
+    const {assets, startTime, endTime} = stats.compilation.assets;
     const time = endTime - startTime;
     clearConsole();
     console.log();
     console.log(chalk.green('Successfully 🤩'));
-    console.log(chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`));
+    console.log(
+      chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`),
+    );
     console.log();
     printAssets(assets);
     console.log();
