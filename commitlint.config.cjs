@@ -5,17 +5,15 @@ module.exports = {
       2,
       'always',
       [
-        'feat', // new function
-        'fix', // fix the problem
-        'style', // modify code format
-        'refactor', // refactor code
-        'test', // add test
-        'perf', // performance optimization
-        'chore', // adding or removing dependencies, tools
-        'update', // update code
+        'feat',
+        'fix',
+        'style',
+        'refactor',
+        'perf',
+        'test',
+        'chore',
         'revert',
-        'merge',
-        'build',
+        'update',
       ],
     ],
     'type-case': [0],
