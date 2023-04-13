@@ -14,6 +14,7 @@ module.exports = {
         'chore',
         'revert',
         'update',
+        'merge',
       ],
     ],
     'type-case': [0],

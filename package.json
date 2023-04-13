@@ -78,6 +78,10 @@
         "revert": {
           "description": "Reverts a previous commit",
           "title": "Reverts"
+        },
+        "merge": {
+          "description": "Merge branch",
+          "title": "Merges"
         }
       }
     }
