@@ -35,6 +35,10 @@
     {
       "type": "update",
       "section": "Updates"
+    },
+    {
+      "type": "merge",
+      "section": "Merges"
     }
   ]
 }
