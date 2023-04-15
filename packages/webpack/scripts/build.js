@@ -87,7 +87,7 @@ try {
       console.log();
       process.exit(1);
     }
-    const {assets, startTime, endTime} = stats.compilation.assets;
+    const {assets, startTime, endTime} = stats.compilation;
     const time = endTime - startTime;
     clearConsole();
     console.log();
