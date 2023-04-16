@@ -20,16 +20,6 @@ module.exports = function (isTs) {
             runtime: 'automatic',
           },
         },
-        experimental: {
-          plugins: [
-            isProduction && [
-              require.resolve('swc-plugin-react-remove-properties'),
-              {
-                properties: ['data-testid'],
-              },
-            ],
-          ].filter(Boolean),
-        },
       },
       env: {
         targets: browserslist(),
