@@ -34,6 +34,9 @@ importers:
       cz-conventional-changelog:
         specifier: ^3.3.0
         version: 3.3.0
+      editorconfig:
+        specifier: ^1.0.2
+        version: 1.0.2
       eslint:
         specifier: ^8.38.0
         version: 8.38.0
@@ -1594,6 +1597,10 @@ packages:
       fastq: 1.15.0
     dev: true
 
+  /@one-ini/wasm@0.1.1:
+    resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
+    dev: true
+
   /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.0)(webpack-dev-server@4.13.3)(webpack@5.79.0):
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
     engines: {node: '>= 10.13'}
@@ -2988,6 +2995,12 @@ packages:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
+    dev: true
+
+  /brace-expansion@2.0.1:
+    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+    dependencies:
+      balanced-match: 1.0.2
     dev: true
 
   /braces@3.0.2:
@@ -4403,6 +4416,17 @@ packages:
     dependencies:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
+    dev: true
+
+  /editorconfig@1.0.2:
+    resolution: {integrity: sha512-l8CnaNCz0dgCqJQ3hKqW2qtUavm1WLdJUvlxufaZ6JDkds3UFxgUKnKJz982yJPYko/78LkWAiwJadFnFtUBjw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@one-ini/wasm': 0.1.1
+      commander: 10.0.1
+      minimatch: 6.1.6
+      semver: 7.4.0
     dev: true
 
   /ee-first@1.1.1:
@@ -7458,6 +7482,13 @@ packages:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
       brace-expansion: 1.1.11
+    dev: true
+
+  /minimatch@6.1.6:
+    resolution: {integrity: sha512-6bR3UIeh/DF8+p6A9Spyuy67ShOq42rOkHWi7eUe3Ua99Zo5lZfGC6lJJWkeoK4k9jQFT3Pl7czhTXimG2XheA==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
     dev: true
 
   /minimist-options@4.1.0:

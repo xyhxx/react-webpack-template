@@ -107,6 +107,7 @@
     "cross-env": "^7.0.3",
     "cypress": "^12.9.0",
     "cz-conventional-changelog": "^3.3.0",
+    "editorconfig": "^1.0.2",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-proste": "^5.1.0",
