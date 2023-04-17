@@ -39,6 +39,19 @@
     "release:patch": "standard-version --release-as patch",
     "commit": "cz"
   },
+  "browserslist": {
+    "production": [
+      ">= 5%",
+      "not dead",
+      "not op_mini all",
+      "not ie <= 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog",
