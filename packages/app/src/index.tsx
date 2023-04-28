@@ -1,22 +1,18 @@
 import '@styles/index.css';
-import PrivateRoutes from '@routes';
 import {createRoot} from 'react-dom/client';
-import {BrowserRouter} from 'react-router-dom';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {RouterProvider} from 'react-router-dom';
+import {QueryClientProvider} from '@tanstack/react-query';
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import {StrictMode} from 'react';
-import {reportWebVitals} from '@utils';
-
-const queryClient = new QueryClient();
+import {QUERY_CLIENT, reportWebVitals} from '@utils';
+import routes from '@routes';
 
 const root = createRoot(document.getElementById('root')!);
 
 root.render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <PrivateRoutes />
-      </BrowserRouter>
+    <QueryClientProvider client={QUERY_CLIENT}>
+      <RouterProvider router={routes} />
       <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   </StrictMode>,
