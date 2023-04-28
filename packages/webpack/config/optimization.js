@@ -8,14 +8,10 @@ const optimization = {
   minimize: isProduction,
   minimizer: [
     new TerserPlugin({
-      minify: TerserPlugin.swcMinify,
-      // view more options
-      // https://swc.rs/docs/configuration/minification
       terserOptions: {
-        compress: {
-          unused: true,
+        mangle: {
+          safari10: true,
         },
-        mangle: true,
         format: {
           comments: false,
         },
