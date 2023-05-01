@@ -1,108 +1,108 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const config = require('../config/webpack.config');
-const {clearConsole} = require('./utils');
-const {errorLogger} = require('./utils');
+const {
+  errorLogger,
+  clearBuildFolder,
+  printBuildError,
+  clearConsole,
+} = require('./utils');
+const formatWebpackMessage = require('./formatWebpackMessage');
+const {
+  measureFileSizesBeforeBuild,
+  printFileSizesAfterBuild,
+} = require('./fileSizeUtils');
+const {outputPath} = require('../config/paths');
 
 const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 
-function printAssets(assets) {
-  console.log('Packaging resource list:');
-  console.log();
-  const list = [];
-  let overstep = false;
-  for (const [path, size] of Object.entries(assets)) {
-    const isJs = path.lastIndexOf('.js') === path.length - 3;
-    const isCss = path.lastIndexOf('.css') === path.length - 4;
-    const isMedia = path.includes('static/assets');
-    const sizeNum = size.size();
-    const kbSize = Math.ceil(sizeNum / 1024);
-    const sizePen =
-      sizeNum > MAX_CHUNK_SIZE
-        ? chalk.hex('#ff2121').bold
-        : chalk.hex('#0aa344');
-    const pathPen = isJs
-      ? chalk.hex('#48c0a3')
-      : isCss
-      ? chalk.hex('#b0a4e3')
-      : chalk.hex('#eacd76');
-    if (isJs || isMedia || isCss) {
-      if (!overstep) overstep = sizeNum > MAX_CHUNK_SIZE;
-
-      list.push({
-        path,
-        size: sizeNum >= 1024 ? `${kbSize} KB` : `${sizeNum} B`,
-        sizePen,
-        pathPen,
-      });
-    }
-  }
-  const maxLength = list.reduce(function (pre, next) {
-    return next.size.length > pre ? next.size.length : pre;
-  }, 0);
-  list.forEach(function ({path, size, sizePen, pathPen}) {
-    const afterSize = size.padEnd(maxLength + 2, ' ');
-    console.log(sizePen(`Size: ${afterSize}`), pathPen(path));
-  });
-  if (overstep) {
-    const varColor = '#177cb0';
-    const pathColor = '#f00056';
-    console.log();
-    console.log();
-    console.log(
-      chalk.grey(
-        `Some chunks are larger ${
-          MAX_CHUNK_SIZE / 1024
-        }KB after compilation. Consider:`,
-      ),
-    );
-    console.log();
-    console.log(
-      chalk.hex(pathColor)(
-        '1.Using dynamic import() to code-split the application',
-      ),
-    );
-    console.log(
-      chalk.hex(pathColor)(
-        '2.Adjust the prompt size by adjusting' +
-          ` ${chalk.hex(varColor)('SWT_MAX_CHUNK_SIZE')}` +
-          ` in ${chalk.white('packages/app/.env')}`,
-      ),
-    );
-    console.log(
-      chalk.hex(pathColor)(
-        `3.Modify ${chalk.hex(varColor)('splitChunks')} in ` +
-          `${chalk.white('packages/webpack/config/optimization.js')}`,
-      ),
-    );
-  }
-}
-try {
+function build(previousFileSizes) {
   const compiler = webpack(config);
-  compiler.run(function (err, stats) {
-    if (err) {
+
+  return new Promise(function (resolve, reject) {
+    compiler.run(function (err, stats) {
+      let message = '';
+      if (err) {
+        if (!err.message) {
+          return reject(err);
+        }
+
+        message = formatWebpackMessage({
+          errors: [err.message],
+          warnings: [],
+        });
+      } else {
+        message = formatWebpackMessage(
+          stats.toJson({all: false, warnings: true, errors: true}),
+        );
+      }
+
+      if (message.errors.length) {
+        // Only keep the first error. Others are often indicative
+        // of the same problem, but confuse the reader with noise.
+        if (message.errors.length > 1) {
+          message.errors.length = 1;
+        }
+        return reject(new Error(message.errors.join('\n\n')));
+      }
+
+      return resolve({
+        stats,
+        previousFileSizes,
+        warnings: message.warnings,
+      });
+    });
+  });
+}
+
+measureFileSizesBeforeBuild(outputPath)
+  .then(function (prevFileSizes) {
+    clearBuildFolder();
+    clearConsole();
+
+    return build(prevFileSizes);
+  })
+  .then(
+    function ({stats, previousFileSizes, warnings}) {
+      if (warnings.length) {
+        console.log(chalk.yellow('Compiled with warnings.\n'));
+        console.log(warnings.join('\n\n'));
+        console.log(
+          '\nSearch for the ' +
+            chalk.underline(chalk.yellow('keywords')) +
+            ' to learn more about each warning.',
+        );
+        console.log(
+          'To ignore, add ' +
+            chalk.cyan('// eslint-disable-next-line') +
+            ' to the line before.\n',
+        );
+      } else {
+        console.log(chalk.green('Successfully 🤩'));
+        const {time} = stats.toJson();
+        console.log(chalk.gray(`Compiled successfully in ${time / 1000}s`));
+      }
+
+      printFileSizesAfterBuild({
+        webpackStats: stats,
+        previousSizeMap: previousFileSizes,
+        buildFolder: outputPath,
+        maxSize: MAX_CHUNK_SIZE,
+      });
+    },
+    function (err) {
       errorLogger('Failed to compile');
+      console.log();
+      printBuildError(err);
+      console.log();
+      process.exit(1);
+    },
+  )
+  .catch(function (err) {
+    if (err && err.message) {
       console.log();
       console.log(err.message);
       console.log();
-      process.exit(1);
     }
-    const {assets, startTime, endTime} = stats.compilation;
-    const time = endTime - startTime;
-    clearConsole();
-    console.log();
-    console.log(chalk.green('Successfully 🤩'));
-    console.log(
-      chalk.gray(`Compiled successfully in ${(time / 1000).toFixed(2)}s`),
-    );
-    console.log();
-    printAssets(assets);
-    console.log();
+    process.exit(1);
   });
-} catch (error) {
-  errorLogger('Failed to compile');
-  console.log();
-  console.log(error.message);
-  console.log();
-  process.exit(1);
-}

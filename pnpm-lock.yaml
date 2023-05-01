@@ -194,9 +194,15 @@ importers:
       eslint-webpack-plugin:
         specifier: ^4.0.1
         version: 4.0.1(eslint@8.38.0)(webpack@5.79.0)
+      filesize:
+        specifier: ^10.0.7
+        version: 10.0.7
       fork-ts-checker-webpack-plugin:
         specifier: ^8.0.0
         version: 8.0.0(typescript@5.0.4)(webpack@5.79.0)
+      fs-extra:
+        specifier: ^11.1.1
+        version: 11.1.1
       html-webpack-plugin:
         specifier: ^5.5.1
         version: 5.5.1(webpack@5.79.0)
@@ -230,6 +236,12 @@ importers:
       react-refresh:
         specifier: ^0.14.0
         version: 0.14.0
+      recursive-readdir:
+        specifier: ^2.2.3
+        version: 2.2.3
+      strip-ansi:
+        specifier: ^6.0.1
+        version: 6.0.1
       style-loader:
         specifier: ^3.3.2
         version: 3.3.2(webpack@5.79.0)
@@ -5210,6 +5222,11 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
+  /filesize@10.0.7:
+    resolution: {integrity: sha512-iMRG7Qo9nayLoU3PNCiLizYtsy4W1ClrapeCwEgtiQelOAOuRJiw4QaLI+sSr8xr901dgHv+EYP2bCusGZgoiA==}
+    engines: {node: '>= 10.4.0'}
+    dev: true
+
   /fill-range@7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -9263,6 +9280,13 @@ packages:
     engines: {node: '>= 10.13.0'}
     dependencies:
       resolve: 1.22.3
+    dev: true
+
+  /recursive-readdir@2.2.3:
+    resolution: {integrity: sha512-8HrF5ZsXk5FAH9dgsx3BlUer73nIhuj+9OrQwEbLTPOBzGkL1lsFCR01am+v+0m2Cmbs1nP12hLDl5FA7EszKA==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      minimatch: 3.1.2
     dev: true
 
   /redent@3.0.0:

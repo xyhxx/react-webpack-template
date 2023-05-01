@@ -1,7 +1,6 @@
 {
   "name": "rwt",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
   "description": "An out of the box react webpack template,It is simpler, more convenient to customize and more modular on the basis of create-react-app.",
   "author": "xyhxx (603331487@qq.com)",
