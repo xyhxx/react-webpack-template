@@ -1,5 +1,4 @@
-const {srcPath} = require('./paths.js');
-const browserslist = require('browserslist');
+const {srcPath, rootPath} = require('./paths.js');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -33,8 +32,9 @@ module.exports = function (isTs) {
         },
       },
       env: {
-        targets: browserslist(),
+        path: rootPath,
         mode: 'entry',
+        coreJs: '3.30',
       },
     },
   };
