@@ -10,6 +10,7 @@ module.exports = function (isTs) {
     include: srcPath,
     options: {
       jsc: {
+        externalHelpers: true,
         parser: {
           syntax: isTs ? 'typescript' : 'ecmascript',
           [isTs ? 'tsx' : 'jsx']: true,
