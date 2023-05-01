@@ -13,12 +13,15 @@ module.exports = function (isTs) {
         parser: {
           syntax: isTs ? 'typescript' : 'ecmascript',
           [isTs ? 'tsx' : 'jsx']: true,
+          decorators: true,
+          dynamicImport: true,
         },
         transform: {
           react: {
             refresh: !isProduction,
             runtime: 'automatic',
           },
+          decoratorVersion: '2022-03',
         },
         experimental: {
           plugins: [
