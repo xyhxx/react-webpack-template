@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -52,4 +52,4 @@ const optimization = {
   },
 };
 
-module.exports = optimization;
+export default optimization;

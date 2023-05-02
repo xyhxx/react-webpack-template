@@ -1,16 +1,16 @@
-const chalk = require('chalk');
-const detect = require('detect-port-alt');
-const prompts = require('prompts');
-const fs = require('fs-extra');
-const {outputPath} = require('../config/paths');
+import chalk from 'chalk';
+import detect from 'detect-port-alt';
+import prompts from 'prompts';
+import fs from 'fs-extra';
+import {outputPath} from '../config/paths.js';
 
-function clearConsole() {
+export function clearConsole() {
   process.stdout.write(
     process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H',
   );
 }
 
-function startedServerLogger(port, host) {
+export function startedServerLogger(port, host) {
   console.log();
   console.log(chalk.green('Server started! 🥰'));
   console.log();
@@ -20,11 +20,11 @@ function startedServerLogger(port, host) {
   console.log();
 }
 
-function errorLogger(error) {
+export function errorLogger(error) {
   console.error(chalk.red(error + ' 😭'));
 }
 
-function junglePort(host, defaultPort) {
+export function junglePort(host, defaultPort) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
@@ -63,11 +63,11 @@ function junglePort(host, defaultPort) {
   );
 }
 
-function clearBuildFolder() {
+export function clearBuildFolder() {
   fs.emptyDirSync(outputPath);
 }
 
-function printBuildError(err) {
+export function printBuildError(err) {
   const message = err != null && err.message;
   const stack = err != null && err.stack;
 
@@ -97,12 +97,3 @@ function printBuildError(err) {
   }
   console.log();
 }
-
-module.exports = {
-  clearConsole,
-  startedServerLogger,
-  errorLogger,
-  junglePort,
-  clearBuildFolder,
-  printBuildError,
-};

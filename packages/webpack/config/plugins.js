@@ -1,17 +1,19 @@
-const {outputPath, publicPath, srcPath, rootPath} = require('./paths');
-const {getEnv} = require('./env');
-const {resolve} = require('path');
-const ESLintWebpackPlugin = require('eslint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const WebpackBar = require('webpackbar');
-const {DefinePlugin} = require('webpack');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+import {outputPath, publicPath, srcPath, rootPath} from './paths.js';
+import {getEnv} from './env.js';
+import {resolve} from 'path';
+import ESLintWebpackPlugin from 'eslint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import WebpackBar from 'webpackbar';
+import webpack from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-const pkg = require('../../../package.json');
+import pkg from '../../../package.json' assert {type: 'json'};
+
+const {DefinePlugin} = webpack;
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
@@ -31,7 +33,10 @@ const plugins = [
       },
     },
     issue: {
-      include: [{file: '../**/src/**/*.{ts,tsx}'}, {file: '**/src/**/*.{ts,tsx}'}],
+      include: [
+        {file: '../**/src/**/*.{ts,tsx}'},
+        {file: '**/src/**/*.{ts,tsx}'},
+      ],
       exclude: [{file: '**/src/setupProxy.*'}, {file: '**/src/setupTests.*'}],
     },
   }),
@@ -110,4 +115,4 @@ if (isProduction)
   );
 else plugins.push(new ReactRefreshWebpackPlugin({overlay: false}));
 
-module.exports = plugins;
+export default plugins;

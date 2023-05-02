@@ -1,18 +1,18 @@
-const webpack = require('webpack');
-const chalk = require('chalk');
-const config = require('../config/webpack.config');
-const {
+import webpack from 'webpack';
+import chalk from 'chalk';
+import config from '../config/webpack.config.js';
+import {
   errorLogger,
   clearBuildFolder,
   printBuildError,
   clearConsole,
-} = require('./utils');
-const formatWebpackMessage = require('./formatWebpackMessage');
-const {
+} from './utils.js';
+import formatWebpackMessage from './formatWebpackMessage.js';
+import {outputPath} from '../config/paths.js';
+import {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
-} = require('./fileSizeUtils');
-const {outputPath} = require('../config/paths');
+} from './fileSizeUtils.js';
 
 const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 

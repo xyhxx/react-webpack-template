@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk');
-const {filesize} = require('filesize');
-const recursive = require('recursive-readdir');
-const stripAnsi = require('strip-ansi');
+import fs from 'fs';
+import path from 'path';
+import chalk from 'chalk';
+import {filesize} from 'filesize';
+import recursive from 'recursive-readdir';
+import stripAnsi from 'strip-ansi';
 
 function getDifferenceLabel(currentSize, previousSize) {
   const FIFTY_KILOBYTES = 1024 * 50;
@@ -39,7 +39,7 @@ function getFileSize(path) {
   return stats.size;
 }
 
-function printFileSizesAfterBuild({
+export function printFileSizesAfterBuild({
   webpackStats,
   previousSizeMap,
   buildFolder,
@@ -139,7 +139,7 @@ function printFileSizesAfterBuild({
   }
 }
 
-function measureFileSizesBeforeBuild(buildFolder) {
+export function measureFileSizesBeforeBuild(buildFolder) {
   return new Promise(function (resolve) {
     recursive(buildFolder, function (err, fileNames) {
       let sizes;
@@ -161,8 +161,3 @@ function measureFileSizesBeforeBuild(buildFolder) {
     });
   });
 }
-
-module.exports = {
-  measureFileSizesBeforeBuild,
-  printFileSizesAfterBuild,
-};

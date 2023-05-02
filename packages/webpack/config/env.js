@@ -1,6 +1,6 @@
-const {config} = require('dotenv');
-const {resolve} = require('path');
-const {appPath} = require('./paths');
+import {config} from 'dotenv';
+import {resolve} from 'path';
+import {appPath} from './paths.js';
 
 const commonEnv = resolve(appPath, '.env');
 
@@ -36,19 +36,14 @@ function initEnv() {
       : (swtEnv[key.replace(prefix, '')] = value);
 }
 
-function getSWTEnv() {
+export function getSWTEnv() {
   initEnv();
 
   return swtEnv;
 }
 
-function getEnv() {
+export function getEnv() {
   initEnv();
 
   return env;
 }
-
-module.exports = {
-  getEnv,
-  getSWTEnv,
-};

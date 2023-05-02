@@ -1,6 +1,8 @@
-const {address} = require('ip');
+import ip from 'ip';
 
-module.exports = {
+const {address} = ip;
+
+export default {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',

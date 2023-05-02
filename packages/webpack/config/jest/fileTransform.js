@@ -1,7 +1,7 @@
-const path = require('path');
-const camelcase = require('camelcase');
+import path from 'path';
+import camelcase from 'camelcase';
 
-module.exports = {
+export default {
   process(_, filename) {
     const assetFilename = JSON.stringify(path.basename(filename));
 

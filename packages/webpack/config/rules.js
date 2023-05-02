@@ -1,6 +1,7 @@
-const babel = require('./babel');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const swc = require('./swc');
+import babel from './babel.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import swc from './swc.js';
+import {require} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const enableSWC = process.env.SWT_ENABLE_SWC === 'true';
@@ -20,7 +21,9 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 function getStyleLoaders(cssOptions, preProcessor) {
   return [
-    isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
+    isProduction
+      ? MiniCssExtractPlugin.loader
+      : require.resolve('style-loader'),
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -127,4 +130,4 @@ const rules = [
   },
 ];
 
-module.exports = rules;
+export default rules;

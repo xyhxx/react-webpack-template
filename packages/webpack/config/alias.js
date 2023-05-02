@@ -1,11 +1,11 @@
-const {resolve} = require('path');
-const {appDirection} = require('./paths');
+import {resolve} from 'path';
+import {appDirection} from './paths.js';
 
 function aliasPath(url) {
   return resolve(appDirection, 'src/', url);
 }
 
-module.exports = {
+export default {
   '@styles': aliasPath('styles'),
   '@assets': aliasPath('assets'),
   '@routes': aliasPath('routes'),

@@ -1,8 +1,13 @@
-const Webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('../config/webpack.config');
-const chalk = require('chalk');
-const {clearConsole, startedServerLogger, errorLogger, junglePort} = require('./utils');
+import Webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig from '../config/webpack.config.js';
+import chalk from 'chalk';
+import {
+  clearConsole,
+  startedServerLogger,
+  errorLogger,
+  junglePort,
+} from './utils.js';
 
 const isInteractive = process.stdout.isTTY;
 

@@ -1,16 +1,16 @@
-const alias = require('./alias');
-const {
+import alias from './alias.js';
+import plugins from './plugins.js';
+import devServer from './devServer.js';
+import rules from './rules.js';
+import optimization from './optimization.js';
+import {resolve} from 'path';
+import {
   outputPath,
   nodeModulesPath,
   assetsPublicPath,
   srcPath,
   rootPath,
-} = require('./paths');
-const plugins = require('./plugins');
-const devServer = require('./devServer');
-const rules = require('./rules');
-const optimization = require('./optimization');
-const {resolve} = require('path');
+} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
@@ -56,4 +56,4 @@ const config = {
   devServer,
 };
 
-module.exports = config;
+export default config;
