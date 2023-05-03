@@ -1,7 +1,7 @@
 import {resolve} from 'path';
-import {appDirection} from './paths.js';
+import {appDirection} from './paths.ts';
 
-function aliasPath(url) {
+function aliasPath(url: string) {
   return resolve(appDirection, 'src/', url);
 }
 

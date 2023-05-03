@@ -1,8 +1,9 @@
 import ip from 'ip';
+import {Configuration} from 'webpack';
 
 const {address} = ip;
 
-export default {
+const config: Configuration['devServer'] = {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',
@@ -21,3 +22,5 @@ export default {
     },
   },
 };
+
+export default config;

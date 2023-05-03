@@ -141,6 +141,7 @@
     "stylelint": "^15.5.0",
     "stylelint-config-recess-order": "^4.0.0",
     "stylelint-config-standard": "^33.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   }
 }

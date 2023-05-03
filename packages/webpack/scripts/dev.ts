@@ -1,21 +1,21 @@
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import webpackConfig from '../config/webpack.config.js';
+import webpackConfig from '../config/webpack.config.ts';
 import chalk from 'chalk';
 import {
   clearConsole,
   startedServerLogger,
   errorLogger,
   junglePort,
-} from './utils.js';
+} from './utils.ts';
 
 const isInteractive = process.stdout.isTTY;
 
-const {host, port: defaultPort} = webpackConfig.devServer;
+const {host, port: defaultPort} = webpackConfig.devServer!;
 
-function start(port) {
+function start(port: number) {
   const devServerOptions = {...webpackConfig.devServer, port};
-  const compiler = Webpack(webpackConfig);
+  const compiler = Webpack(webpackConfig as any);
   const {host} = devServerOptions;
   const server = new WebpackDevServer(compiler, devServerOptions);
   console.log(chalk.hex('#065279')('Starting dev server...'));
@@ -27,13 +27,13 @@ function start(port) {
   });
 }
 
-junglePort(host, defaultPort)
-  .then(function (port) {
+junglePort(host!, defaultPort as number)
+  .then(function (port: any) {
     if (!port) return;
 
     start(port);
   })
-  .catch(function (err) {
+  .catch(function (err: Error) {
     err && err.message && console.log(err.message);
 
     process.exit(1);

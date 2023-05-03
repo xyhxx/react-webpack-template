@@ -30,7 +30,7 @@ module.exports = {
         'packages/webpack/scripts/**',
       ],
       parserOptions: {},
-      extends: ['proste/javascript.js', 'prettier'],
+      extends: ['proste/typescript.js', 'prettier'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-var-requires': 0,

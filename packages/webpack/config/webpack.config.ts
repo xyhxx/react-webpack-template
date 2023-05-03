@@ -1,8 +1,8 @@
-import alias from './alias.js';
-import plugins from './plugins.js';
-import devServer from './devServer.js';
-import rules from './rules.js';
-import optimization from './optimization.js';
+import alias from './alias.ts';
+import plugins from './plugins.ts';
+import devServer from './devServer.ts';
+import rules from './rules.ts';
+import optimization from './optimization.ts';
 import {resolve} from 'path';
 import {
   outputPath,
@@ -10,7 +10,8 @@ import {
   assetsPublicPath,
   srcPath,
   rootPath,
-} from './paths.js';
+} from './paths.ts';
+import {Configuration} from 'webpack';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
@@ -18,7 +19,7 @@ const fileName = isProduction
   ? 'static/js/[name].[contenthash:8].js'
   : 'static/js/[name].js';
 
-const config = {
+const config: Configuration = {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: resolve(srcPath, 'index.tsx'),

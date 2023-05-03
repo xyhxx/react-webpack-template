@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import detect from 'detect-port-alt';
 import prompts from 'prompts';
 import fs from 'fs-extra';
-import {outputPath} from '../config/paths.js';
+import {outputPath} from '../config/paths.ts';
 
 export function clearConsole() {
   process.stdout.write(
@@ -10,7 +10,7 @@ export function clearConsole() {
   );
 }
 
-export function startedServerLogger(port, host) {
+export function startedServerLogger(port: number, host?: string) {
   console.log();
   console.log(chalk.green('Server started! 🥰'));
   console.log();
@@ -20,11 +20,11 @@ export function startedServerLogger(port, host) {
   console.log();
 }
 
-export function errorLogger(error) {
+export function errorLogger(error: string) {
   console.error(chalk.red(error + ' 😭'));
 }
 
-export function junglePort(host, defaultPort) {
+export function junglePort(host: string, defaultPort: number) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
@@ -35,7 +35,7 @@ export function junglePort(host, defaultPort) {
         const message = `Something is already running on port ${defaultPort}.`;
         if (isInteractive) {
           clearConsole();
-          const question = {
+          const question: prompts.PromptObject = {
             type: 'confirm',
             name: 'changePort',
             message:
@@ -52,7 +52,7 @@ export function junglePort(host, defaultPort) {
         }
       });
     },
-    function (err) {
+    function (err: Error) {
       throw new Error(
         chalk.red(`Could not find an open port at ${chalk.bold(host)}.`) +
           '\n' +
@@ -67,7 +67,7 @@ export function clearBuildFolder() {
   fs.emptyDirSync(outputPath);
 }
 
-export function printBuildError(err) {
+export function printBuildError(err: Error) {
   const message = err != null && err.message;
   const stack = err != null && err.stack;
 

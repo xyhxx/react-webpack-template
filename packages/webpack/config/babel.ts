@@ -1,4 +1,4 @@
-import {srcPath, require} from './paths.js';
+import {srcPath, require} from './paths.ts';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const enableThreadLoader = process.env.ENABLE_THREAD_LOADER === 'true';

@@ -1,9 +1,9 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 
 import spawn from 'cross-spawn';
 import {resolve} from 'path';
-import {getSWTEnv} from '../config/env.js';
-import {__dirname} from '../config/paths.js';
+import {getSWTEnv} from '../config/env.ts';
+import {__dirname} from '../config/paths.ts';
 
 process.on('unhandledRejection', function (err) {
   throw err;
@@ -17,7 +17,7 @@ const scriptIndex = args.findIndex(
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-function setEnv(name) {
+function setEnv(name: string) {
   switch (name) {
     case 'dev':
       process.env.NODE_ENV = 'development';
@@ -34,25 +34,26 @@ function setEnv(name) {
 
 function runScript() {
   const result = spawn.sync(
-    process.execPath,
+    'pnpm',
     nodeArgs
-      .concat(resolve(__dirname, `../scripts/${script}`))
-      .concat(process.argv.slice(scriptIndex + 1)),
+      .concat('ts-node')
+      .concat(resolve(__dirname, `../scripts/${script}.ts`)),
     {stdio: 'inherit'},
   );
   if (result.signal) {
-    if (result.signal === 'SIGKILL')
+    if (result.signal === 'SIGKILL') {
       console.log(
         'The build failed because the process exited too early. ' +
           'This probably means the system ran out of memory or someone called ' +
           '`kill -9` on the process.',
       );
-    else if (result.signal === 'SIGTERM')
+    } else if (result.signal === 'SIGTERM') {
       console.log(
         'The build failed because the process exited too early. ' +
           'Someone might have called `kill` or `killall`, or the system could ' +
           'be shutting down.',
       );
+    }
 
     process.exit(1);
   }
@@ -64,7 +65,7 @@ function start() {
   if (['build', 'dev'].includes(script)) {
     setEnv(script);
     const {status} = runScript();
-    process.exit(status);
+    process.exit(status ?? 1);
   } else console.log('Unknown script "' + script + '".');
 }
 

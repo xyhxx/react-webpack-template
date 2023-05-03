@@ -1,6 +1,6 @@
 import {config} from 'dotenv';
 import {resolve} from 'path';
-import {appPath} from './paths.js';
+import {appPath} from './paths.ts';
 
 const commonEnv = resolve(appPath, '.env');
 
@@ -12,10 +12,10 @@ const envs = {
   production: resolve(appPath, '.env.pro'),
 };
 
-const env = {};
-const swtEnv = {};
+const env: Record<string, string> = {};
+const swtEnv: Record<string, string> = {};
 
-function objectIsEmpty(obj) {
+function objectIsEmpty(obj: Record<string, string>) {
   return Object.getOwnPropertyNames(obj).length === 0;
 }
 
@@ -26,7 +26,7 @@ function initEnv() {
   const common = config({path: commonEnv}).parsed;
   const value = config({path: envs[ENV]}).parsed;
 
-  const temp = {};
+  const temp: Record<string, string> = {};
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
 

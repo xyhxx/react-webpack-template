@@ -4,8 +4,9 @@ import chalk from 'chalk';
 import {filesize} from 'filesize';
 import recursive from 'recursive-readdir';
 import stripAnsi from 'strip-ansi';
+import type {Stats} from 'webpack';
 
-function getDifferenceLabel(currentSize, previousSize) {
+function getDifferenceLabel(currentSize: number, previousSize: number) {
   const FIFTY_KILOBYTES = 1024 * 50;
   const difference = currentSize - previousSize;
   const fileSize = !Number.isNaN(difference) ? filesize(difference) : 0;
@@ -19,11 +20,11 @@ function getDifferenceLabel(currentSize, previousSize) {
   return '';
 }
 
-function canReadAsset(asset) {
+function canReadAsset(asset: string) {
   return /\.(js|css)$/.test(asset);
 }
 
-function removeFileNameHash(buildFolder, fileName) {
+function removeFileNameHash(buildFolder: string, fileName: string) {
   return fileName
     .replace(buildFolder, '')
     .replace(/\\/g, '/')
@@ -34,48 +35,47 @@ function removeFileNameHash(buildFolder, fileName) {
     );
 }
 
-function getFileSize(path) {
+function getFileSize(path: string) {
   const stats = fs.statSync(path);
   return stats.size;
 }
 
-export function printFileSizesAfterBuild({
-  webpackStats,
-  previousSizeMap,
-  buildFolder,
-  maxSize,
+export function printFileSizesAfterBuild(options: {
+  webpackStats: Stats;
+  previousSizeMap: Awaited<ReturnType<typeof measureFileSizesBeforeBuild>>;
+  buildFolder: string;
+  maxSize: number;
 }) {
+  const {webpackStats, previousSizeMap, buildFolder, maxSize} = options;
+
   const {root} = previousSizeMap;
   const {sizes} = previousSizeMap;
-  const assets = (webpackStats.stats || [webpackStats])
-    .map(function (stats) {
-      return stats
-        .toJson({all: false, assets: true, assetsSort: 'size'})
-        .assets.filter(asset => canReadAsset(asset.name))
-        .map(function (asset) {
-          const size = getFileSize(path.join(root, asset.name));
-          const previousSize = sizes[removeFileNameHash(root, asset.name)];
-          const difference = getDifferenceLabel(size, previousSize);
-          const isJs = path.extname(asset.name) === '.js';
-          const pathPen = isJs ? chalk.hex('#48c0a3') : chalk.hex('#b0a4e3');
-          const sizePen =
-            size > maxSize ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
+  const assetsList =
+    webpackStats.toJson({
+      all: false,
+      assets: true,
+      assetsSort: 'size',
+    })?.assets ?? [];
+  const assets = assetsList
+    .filter(asset => canReadAsset(asset.name))
+    .map(function (asset) {
+      const size = getFileSize(path.join(root, asset.name));
+      const previousSize = sizes[removeFileNameHash(root, asset.name)];
+      const difference = getDifferenceLabel(size, previousSize);
+      const isJs = path.extname(asset.name) === '.js';
+      const pathPen = isJs ? chalk.hex('#48c0a3') : chalk.hex('#b0a4e3');
+      const sizePen =
+        size > maxSize ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
 
-          return {
-            folder: path.join(
-              path.basename(buildFolder),
-              path.dirname(asset.name),
-            ),
-            name: path.basename(asset.name),
-            size,
-            sizeLabel:
-              filesize(size) + (difference ? ' (' + difference + ')' : ''),
-            pathPen,
-            sizePen,
-          };
-        });
-    })
-    .reduce((single, all) => all.concat(single), []);
+      return {
+        folder: path.join(path.basename(buildFolder), path.dirname(asset.name)),
+        name: path.basename(asset.name),
+        size,
+        sizeLabel: filesize(size) + (difference ? ' (' + difference + ')' : ''),
+        pathPen,
+        sizePen,
+      };
+    });
   const longestSizeLabelLength = Math.max.apply(
     null,
     assets.map(a => stripAnsi(a.sizeLabel).length),
@@ -139,15 +139,17 @@ export function printFileSizesAfterBuild({
   }
 }
 
-export function measureFileSizesBeforeBuild(buildFolder) {
-  return new Promise(function (resolve) {
+export function measureFileSizesBeforeBuild(buildFolder: string) {
+  return new Promise<{root: string; sizes: Record<string, number>}>(function (
+    resolve,
+  ) {
     recursive(buildFolder, function (err, fileNames) {
       let sizes;
 
       if (!err && fileNames) {
         sizes = fileNames
           .filter(canReadAsset)
-          .reduce(function (memo, fileName) {
+          .reduce(function (memo: Record<string, number>, fileName) {
             const key = removeFileNameHash(buildFolder, fileName);
             memo[key] = getFileSize(fileName);
             return memo;

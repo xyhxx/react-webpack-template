@@ -1,7 +1,6 @@
 import {resolve, dirname} from 'path';
 import {realpathSync} from 'fs';
 import {fileURLToPath} from 'url';
-
 import {createRequire} from 'node:module';
 
 export const require = createRequire(import.meta.url);
@@ -10,7 +9,7 @@ export const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const appDirection = realpathSync(process.cwd());
 
-function resolvePath(url) {
+function resolvePath(url: string) {
   return resolve(appDirection, url);
 }
 export const outputPath = resolvePath('../../build');

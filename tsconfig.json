@@ -21,11 +21,18 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
+    "allowImportingTsExtensions": true,
     "types": [
       "jest"
-    ]
+    ],
   },
   "extends": "./tsconfig.paths.json",
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "esm": true,
+    "compilerOptions": {}
+  },
   "exclude": [
     "node_modules",
     "cypress.config.ts"
@@ -36,6 +43,7 @@
     "packages/webpack/bin",
     "packages/webpack/scripts",
     "packages/webpack/config",
+    "packages/webpack/detect-port-alt.d.ts",
     ".eslintrc.cjs",
     "commitlint.config.cjs"
   ]

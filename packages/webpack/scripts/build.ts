@@ -1,27 +1,43 @@
-import webpack from 'webpack';
+import webpack, {Stats} from 'webpack';
 import chalk from 'chalk';
-import config from '../config/webpack.config.js';
+import config from '../config/webpack.config.ts';
 import {
   errorLogger,
   clearBuildFolder,
   printBuildError,
   clearConsole,
-} from './utils.js';
-import formatWebpackMessage from './formatWebpackMessage.js';
-import {outputPath} from '../config/paths.js';
+} from './utils.ts';
+import formatWebpackMessage from './formatWebpackMessage.ts';
+import {outputPath} from '../config/paths.ts';
 import {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
-} from './fileSizeUtils.js';
+} from './fileSizeUtils.ts';
 
 const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 
-function build(previousFileSizes) {
+function build(previousFileSizes: {
+  root: string;
+  sizes: Record<string, number>;
+}) {
   const compiler = webpack(config);
 
-  return new Promise(function (resolve, reject) {
+  return new Promise<{
+    stats: Stats;
+    previousFileSizes: {
+      root: string;
+      sizes: Record<string, number>;
+    };
+    warnings: string[];
+  }>(function (resolve, reject) {
     compiler.run(function (err, stats) {
-      let message = '';
+      let message:
+        | string
+        | {
+            errors: string[];
+            warnings: string[];
+          } = '';
+
       if (err) {
         if (!err.message) {
           return reject(err);
@@ -33,7 +49,7 @@ function build(previousFileSizes) {
         });
       } else {
         message = formatWebpackMessage(
-          stats.toJson({all: false, warnings: true, errors: true}),
+          stats?.toJson({all: false, warnings: true, errors: true}) as any,
         );
       }
 
@@ -47,7 +63,7 @@ function build(previousFileSizes) {
       }
 
       return resolve({
-        stats,
+        stats: stats!,
         previousFileSizes,
         warnings: message.warnings,
       });
@@ -80,7 +96,9 @@ measureFileSizesBeforeBuild(outputPath)
       } else {
         console.log(chalk.green('Successfully 🤩'));
         const {time} = stats.toJson();
-        console.log(chalk.gray(`Compiled successfully in ${time / 1000}s`));
+        console.log(
+          chalk.gray(`Compiled successfully in ${(time ?? 0) / 1000}s`),
+        );
       }
 
       printFileSizesAfterBuild({
