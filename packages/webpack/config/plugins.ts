@@ -29,6 +29,7 @@ const plugins: Configuration['plugins'] = [
       diagnosticOptions: {
         syntactic: true,
       },
+      mode: 'write-references',
     },
     issue: {
       include: [
