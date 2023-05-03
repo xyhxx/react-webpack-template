@@ -31,6 +31,7 @@
     "transpileOnly": true,
     "files": true,
     "esm": true,
+    "swc": true,
     "compilerOptions": {}
   },
   "exclude": [
