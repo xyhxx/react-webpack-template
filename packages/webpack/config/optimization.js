@@ -31,11 +31,13 @@ const optimization = {
     enforceSizeThreshold: 50000,
     cacheGroups: {
       defaultVendors: {
+        name: 'defaultVendors',
         test: /[\\/]node_modules[\\/]/,
         priority: -10,
         reuseExistingChunk: true,
       },
       default: {
+        name: 'defaultChunks',
         minChunks: 2,
         priority: -20,
         reuseExistingChunk: true,
