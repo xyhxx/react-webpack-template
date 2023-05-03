@@ -19,7 +19,7 @@ const optimization = {
     new CssMinimizerPlugin(),
   ],
   runtimeChunk: {
-    name: entrypoint => `runtime~${entrypoint.name}`,
+    name: 'webpackRuntime',
   },
   splitChunks: {
     chunks: 'async',
