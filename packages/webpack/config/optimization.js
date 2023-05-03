@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
