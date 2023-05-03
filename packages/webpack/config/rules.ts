@@ -7,7 +7,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 const enableSWC = process.env.ENABLE_SWC === 'true';
 const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 const buildSourceMap = isProduction ? useSourceMap : true;
-const enableSass = process.env.ENABLE_SASS === 'true';
 
 const moduleCssOptions = {
   localIdentName: '[local]-[hash:base64:5]',
@@ -16,13 +15,8 @@ const moduleCssOptions = {
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
-const sassRegex = /\.(scss|sass)$/;
-const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-function getStyleLoaders(
-  cssOptions: Record<string, unknown>,
-  preProcessor?: string,
-) {
+function getStyleLoaders(cssOptions: Record<string, unknown>) {
   return [
     isProduction
       ? MiniCssExtractPlugin.loader
@@ -53,9 +47,6 @@ function getStyleLoaders(
           ],
         },
       },
-    },
-    preProcessor && {
-      loader: preProcessor,
     },
   ].filter(Boolean);
 }
@@ -99,36 +90,6 @@ const rules = [
       !enableSWC && babel(),
       enableSWC && swc(false),
       enableSWC && swc(true),
-      enableSass
-        ? {
-            test: sassRegex,
-            exclude: sassModuleRegex,
-            use: getStyleLoaders(
-              {
-                importLoaders: 3,
-                sourceMap: buildSourceMap,
-                modules: {
-                  mode: 'icss',
-                },
-              },
-              'sass-loader',
-            ),
-            sideEffects: true,
-          }
-        : void 0,
-      enableSass
-        ? {
-            test: sassModuleRegex,
-            use: getStyleLoaders(
-              {
-                importLoaders: 3,
-                sourceMap: buildSourceMap,
-                modules: moduleCssOptions,
-              },
-              'sass-loader',
-            ),
-          }
-        : void 0,
     ].filter(Boolean),
   },
 ];
