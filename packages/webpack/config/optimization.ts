@@ -8,6 +8,7 @@ const optimization: Configuration['optimization'] = {
   minimize: isProduction,
   minimizer: [
     new TerserPlugin({
+      extractComments: false,
       terserOptions: {
         mangle: {
           safari10: true,
