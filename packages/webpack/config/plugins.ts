@@ -11,8 +11,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
-import pkg from '../../../package.json' assert {type: 'json'};
-
 const {DefinePlugin} = webpack;
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -51,7 +49,6 @@ const plugins: Configuration['plugins'] = [
       {
         inject: true,
         template: resolve(publicPath, 'index.html'),
-        title: pkg.name,
       },
       isProduction
         ? {
