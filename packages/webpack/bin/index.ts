@@ -17,13 +17,17 @@ const scriptIndex = args.findIndex(
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
+type CanWrite<T> = {
+  -readonly [K in keyof T]: T[K];
+};
+
 function setEnv(name: string) {
   switch (name) {
     case 'dev':
-      process.env.NODE_ENV = 'development';
+      (process.env as CanWrite<NodeJS.ProcessEnv>).NODE_ENV = 'development';
       break;
     case 'build':
-      process.env.NODE_ENV = 'production';
+      (process.env as CanWrite<NodeJS.ProcessEnv>).NODE_ENV = 'production';
       break;
   }
 

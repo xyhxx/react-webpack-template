@@ -4,14 +4,8 @@
 
 declare namespace NodeJS {
   type ProcessEnv = {
-    NODE_ENV: 'development' | 'production' | 'test';
-    IS_E2E: 'true' | undefined;
-    HOST: string;
-    ENABLE_THREAD_LOADER: 'true' | undefined;
-    ENABLE_SOURCE_MAP: 'true' | undefined;
-    ENABLE_SWC: 'true' | undefined;
-    ENABLE_SASS: 'true' | undefined;
-    MAX_CHUNK_SIZE: 'true' | undefined;
+    readonly NODE_ENV: 'development' | 'production' | 'test';
+    readonly IS_E2E: 'true' | undefined;
   };
 }
 

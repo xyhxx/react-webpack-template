@@ -2,6 +2,13 @@ import {config} from 'dotenv';
 import {resolve} from 'path';
 import {appPath} from './paths.ts';
 
+export type SWTEnv = {
+  readonly HOST: string;
+  readonly ENABLE_SOURCE_MAP: 'true' | undefined;
+  readonly ENABLE_SWC: 'true' | undefined;
+  readonly MAX_CHUNK_SIZE: 'true' | undefined;
+};
+
 const commonEnv = resolve(appPath, '.env');
 
 const prefix = 'SWT_';

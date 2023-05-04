@@ -13,8 +13,11 @@ import {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
 } from './fileSizeUtils.ts';
+import {SWTEnv} from '../config/env.ts';
 
-const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
+const MAX_CHUNK_SIZE = Number(
+  (process.env as unknown as SWTEnv).MAX_CHUNK_SIZE ?? 0,
+);
 
 function build(previousFileSizes: {
   root: string;

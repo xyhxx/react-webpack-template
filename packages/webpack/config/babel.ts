@@ -2,14 +2,13 @@ import {srcPath, require} from './paths.ts';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
-const enableThreadLoader = process.env.ENABLE_THREAD_LOADER === 'true';
 
 export default function () {
   return {
     test: /\.(js|jsx|ts|tsx|mjs)$/,
     include: srcPath,
     use: [
-      enableThreadLoader && require.resolve('thread-loader'),
+      require.resolve('thread-loader'),
       {
         loader: require.resolve('babel-loader'),
         options: {
