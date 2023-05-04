@@ -22,9 +22,6 @@
     "jsx": "react-jsx",
     "experimentalDecorators": true,
     "allowImportingTsExtensions": true,
-    "types": [
-      "jest"
-    ],
   },
   "extends": "./tsconfig.paths.json",
   "ts-node": {
@@ -40,6 +37,7 @@
   ],
   "include": [
     "packages/app/src",
+    "packages/app/vitest.config.ts",
     "packages/app/__tests__",
     "packages/webpack/bin",
     "packages/webpack/scripts",

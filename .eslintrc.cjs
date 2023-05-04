@@ -1,9 +1,5 @@
 module.exports = {
   extends: ['proste/reactTS.js', 'prettier'],
-  plugins: ['jest'],
-  env: {
-    'jest/globals': true,
-  },
   root: true,
   parserOptions: {
     project: './tsconfig.json',

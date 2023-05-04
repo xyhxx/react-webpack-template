@@ -10,8 +10,7 @@
       "ignoreMissing": [
         "eslint",
         "typescript",
-        "postcss",
-        "jest"
+        "postcss"
       ]
     }
   },
@@ -20,7 +19,6 @@
     "dev:e2e": "pnpm -F app e2e",
     "build": "pnpm -F app build",
     "test": "pnpm -F app test",
-    "test:watch": "pnpm -F app test:watch",
     "test:coverage": "pnpm -F app test:coverage",
     "cypress:run": "cypress run -b chrome",
     "cypress": "cypress open",
@@ -113,7 +111,6 @@
     "@commitlint/config-conventional": "^17.6.1",
     "@swc/helpers": "^0.5.1",
     "@total-typescript/ts-reset": "^0.4.2",
-    "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
@@ -128,12 +125,10 @@
     "eslint-config-proste": "^5.1.0",
     "eslint-plugin-cypress": "^2.13.2",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "ip": "^1.1.8",
-    "jest": "^29.5.0",
     "lint-staged": "^13.2.1",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
@@ -142,6 +137,7 @@
     "stylelint-config-recess-order": "^4.0.0",
     "stylelint-config-standard": "^33.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.0"
   }
 }

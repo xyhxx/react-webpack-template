@@ -1,8 +1,9 @@
 import routes from '@routes';
 import {RouterProvider} from 'react-router-dom';
 import {fireEvent, render, screen as sc} from '@testing-library/react';
+import {it, expect} from 'vitest';
 
-test(`
+it(`
     1. click increment btn, innterHTML is count is 1
     2. click reduce btn, innertTHML is count is 0
   `, function () {
