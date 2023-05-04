@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,7 +17,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": true
   },
   "extends": "./tsconfig.paths.json",
   "ts-node": {
@@ -31,10 +27,7 @@
     "swc": true,
     "compilerOptions": {}
   },
-  "exclude": [
-    "node_modules",
-    "cypress.config.ts"
-  ],
+  "exclude": ["node_modules", "cypress.config.ts"],
   "include": [
     "packages/app/src",
     "packages/app/vitest.config.ts",

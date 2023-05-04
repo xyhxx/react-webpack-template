@@ -11,9 +11,9 @@ type WithReact<S extends StoreApi<unknown>> = S & {
   getServerState?: () => ExtractState<S>;
 };
 
-export function useStoreSelector<A extends WithReact<StoreApi<unknown>>, R = ExtractState<A>>(
-  api: A,
-  selector?: (state: ExtractState<A>) => R,
-): R {
+export function useStoreSelector<
+  A extends WithReact<StoreApi<unknown>>,
+  R = ExtractState<A>,
+>(api: A, selector?: (state: ExtractState<A>) => R): R {
   return useStore(api, selector ?? (api.getState as any), shallowEqual);
 }

@@ -11,7 +11,9 @@ const Home: FC = function () {
   return (
     <>
       <img src={icon} className={css.icon} />
-      <h1 className={cla([css.title, css.name, {[css.titleRed]: count >= 5}])}>React</h1>
+      <h1 className={cla([css.title, css.name, {[css.titleRed]: count >= 5}])}>
+        React
+      </h1>
       <h2 className={css.title} data-testid='title'>
         count is {count}
       </h2>
