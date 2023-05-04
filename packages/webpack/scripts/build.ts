@@ -95,10 +95,6 @@ measureFileSizesBeforeBuild(outputPath)
         );
       } else {
         console.log(chalk.green('Successfully 🤩'));
-        const {time} = stats.toJson();
-        console.log(
-          chalk.gray(`Compiled successfully in ${(time ?? 0) / 1000}s`),
-        );
       }
 
       printFileSizesAfterBuild({
