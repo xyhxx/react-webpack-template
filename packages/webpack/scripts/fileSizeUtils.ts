@@ -114,7 +114,7 @@ export function printFileSizesAfterBuild(options: {
       chalk.grey(
         `Some chunks are larger ${filesize(
           maxSize,
-        )}KB after compilation. Consider:`,
+        )} after compilation. Consider:`,
       ),
     );
     console.log();
