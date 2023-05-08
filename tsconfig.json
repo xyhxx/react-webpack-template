@@ -17,7 +17,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "types": ["vitest/globals"]
   },
   "extends": "./tsconfig.paths.json",
   "ts-node": {

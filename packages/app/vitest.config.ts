@@ -10,6 +10,7 @@ export default defineConfig({
     coverage: {
       reportsDirectory: '../../coverage',
     },
+    globals: true,
   },
   resolve: {
     alias: {
