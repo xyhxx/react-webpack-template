@@ -31,13 +31,14 @@
   "exclude": ["node_modules", "cypress.config.ts"],
   "include": [
     "packages/app/src",
-    "packages/app/vitest.config.ts",
     "packages/app/__tests__",
     "packages/webpack/bin",
     "packages/webpack/scripts",
     "packages/webpack/config",
     "packages/webpack/detect-port-alt.d.ts",
     ".eslintrc.cjs",
-    "commitlint.config.cjs"
+    "commitlint.config.cjs",
+    "vitest.config.ts",
+    "vitest.workspace.ts"
   ]
 }

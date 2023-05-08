@@ -25,6 +25,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.58.0
         version: 5.58.0(eslint@8.38.0)(typescript@5.0.4)
+      '@vitest/coverage-c8':
+        specifier: ^0.31.0
+        version: 0.31.0(vitest@0.31.0)
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0
@@ -70,6 +73,9 @@ importers:
       ip:
         specifier: ^1.1.8
         version: 1.1.8
+      jsdom:
+        specifier: ^22.0.0
+        version: 22.0.0
       lint-staged:
         specifier: ^13.2.1
         version: 13.2.1
@@ -143,12 +149,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.11
         version: 18.0.11
-      '@vitest/coverage-c8':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
-      jsdom:
-        specifier: ^22.0.0
-        version: 22.0.0
       web-vitals:
         specifier: ^3.3.1
         version: 3.3.1
