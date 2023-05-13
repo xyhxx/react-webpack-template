@@ -4,7 +4,7 @@ import {RouterProvider} from 'react-router-dom';
 import {QueryClientProvider} from '@tanstack/react-query';
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import {StrictMode} from 'react';
-import {QUERY_CLIENT, reportWebVitals} from '@utils';
+import {QUERY_CLIENT} from '@utils';
 import routes from '@routes';
 
 const root = createRoot(document.getElementById('root')!);
@@ -17,5 +17,3 @@ root.render(
     </QueryClientProvider>
   </StrictMode>,
 );
-
-process.env.NODE_ENV === 'development' && reportWebVitals();
