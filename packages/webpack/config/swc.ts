@@ -2,7 +2,7 @@ import {srcPath, rootPath, require} from './paths.ts';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-export default function (isTs: boolean) {
+export default function(isTs: boolean) {
   return {
     loader: require.resolve('swc-loader'),
     test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,

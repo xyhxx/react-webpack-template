@@ -28,9 +28,11 @@ export function junglePort(host: string, defaultPort: number) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
-    function (port) {
-      return new Promise(function (resolve) {
-        if (port === defaultPort) return resolve(port);
+    function(port) {
+      return new Promise(function(resolve) {
+        if (port === defaultPort) {
+          return resolve(port);
+        }
 
         const message = `Something is already running on port ${defaultPort}.`;
         if (isInteractive) {
@@ -39,11 +41,11 @@ export function junglePort(host: string, defaultPort: number) {
             type: 'confirm',
             name: 'changePort',
             message:
-              chalk.yellow(message) +
-              '\nWould you like to run the app on another port instead?',
+              chalk.yellow(message)
+              + '\nWould you like to run the app on another port instead?',
             initial: true,
           };
-          prompts(question).then(function ({changePort}) {
+          prompts(question).then(function({changePort}) {
             changePort ? resolve(port) : resolve(null);
           });
         } else {
@@ -52,12 +54,12 @@ export function junglePort(host: string, defaultPort: number) {
         }
       });
     },
-    function (err: Error) {
+    function(err: Error) {
       throw new Error(
-        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`) +
-          '\n' +
-          ('Network error message: ' + err.message || err) +
-          '\n',
+        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`)
+          + '\n'
+          + ('Network error message: ' + err.message || err)
+          + '\n',
       );
     },
   );
@@ -72,15 +74,16 @@ export function printBuildError(err: Error) {
   const stack = err != null && err.stack;
 
   if (
-    stack &&
-    typeof message === 'string' &&
-    message.indexOf('from Terser') !== -1
+    stack
+    && typeof message === 'string'
+    && message.indexOf('from Terser') !== -1
   ) {
     try {
       const matched = /(.+)\[(.+):(.+),(.+)\]\[.+\]/.exec(stack);
       if (!matched) {
         throw new Error('Using errors for control flow is bad.');
       }
+
       const [, , problemPath, line, column] = matched;
       console.log(
         'Failed to minify the code from this file: \n\n',
@@ -95,5 +98,6 @@ export function printBuildError(err: Error) {
   } else {
     console.log((message || err) + '\n');
   }
+
   console.log();
 }

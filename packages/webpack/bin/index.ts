@@ -5,7 +5,7 @@ import {resolve} from 'path';
 import {getSWTEnv} from '../config/env.ts';
 import {__dirname} from '../config/paths.ts';
 
-process.on('unhandledRejection', function (err) {
+process.on('unhandledRejection', function(err) {
   throw err;
 });
 
@@ -47,15 +47,15 @@ function runScript() {
   if (result.signal) {
     if (result.signal === 'SIGKILL') {
       console.log(
-        'The build failed because the process exited too early. ' +
-          'This probably means the system ran out of memory or someone called ' +
-          '`kill -9` on the process.',
+        'The build failed because the process exited too early. '
+          + 'This probably means the system ran out of memory or someone called '
+          + '`kill -9` on the process.',
       );
     } else if (result.signal === 'SIGTERM') {
       console.log(
-        'The build failed because the process exited too early. ' +
-          'Someone might have called `kill` or `killall`, or the system could ' +
-          'be shutting down.',
+        'The build failed because the process exited too early. '
+          + 'Someone might have called `kill` or `killall`, or the system could '
+          + 'be shutting down.',
       );
     }
 
@@ -70,7 +70,9 @@ function start() {
     setEnv(script);
     const {status} = runScript();
     process.exit(status ?? 1);
-  } else console.log('Unknown script "' + script + '".');
+  } else {
+    console.log('Unknown script "' + script + '".');
+  }
 }
 
 start();

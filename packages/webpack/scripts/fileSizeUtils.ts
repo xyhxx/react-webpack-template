@@ -17,6 +17,7 @@ function getDifferenceLabel(currentSize: number, previousSize: number) {
   } else if (difference < 0) {
     return chalk.green(fileSize);
   }
+
   return '';
 }
 
@@ -50,22 +51,22 @@ export function printFileSizesAfterBuild(options: {
 
   const {root} = previousSizeMap;
   const {sizes} = previousSizeMap;
-  const assetsList =
-    webpackStats.toJson({
+  const assetsList
+    = webpackStats.toJson({
       all: false,
       assets: true,
       assetsSort: 'size',
     })?.assets ?? [];
   const assets = assetsList
     .filter(asset => canReadAsset(asset.name))
-    .map(function (asset) {
+    .map(function(asset) {
       const size = getFileSize(path.join(root, asset.name));
       const previousSize = sizes[removeFileNameHash(root, asset.name)];
       const difference = getDifferenceLabel(size, previousSize);
       const isJs = path.extname(asset.name) === '.js';
       const pathPen = isJs ? chalk.hex('#48c0a3') : chalk.hex('#b0a4e3');
-      const sizePen =
-        size > maxSize ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
+      const sizePen
+        = size > maxSize ? chalk.hex('#ff2121').bold : chalk.hex('#0aa344');
 
       return {
         folder: path.join(path.basename(buildFolder), path.dirname(asset.name)),
@@ -87,7 +88,7 @@ export function printFileSizesAfterBuild(options: {
 
   let overstep = false;
 
-  assets.forEach(function (asset) {
+  assets.forEach(function(asset) {
     const {sizeLabel, name, size, pathPen, sizePen, folder} = asset;
     let label = sizeLabel;
 
@@ -125,31 +126,31 @@ export function printFileSizesAfterBuild(options: {
     );
     console.log(
       chalk.hex(pathColor)(
-        '2.Adjust the prompt size by adjusting' +
-          ` ${chalk.hex(varColor)('SWT_MAX_CHUNK_SIZE')}` +
-          ` in ${chalk.white('packages/app/.env')}`,
+        '2.Adjust the prompt size by adjusting'
+          + ` ${chalk.hex(varColor)('SWT_MAX_CHUNK_SIZE')}`
+          + ` in ${chalk.white('packages/app/.env')}`,
       ),
     );
     console.log(
       chalk.hex(pathColor)(
-        `3.Modify ${chalk.hex(varColor)('splitChunks')} in ` +
-          `${chalk.white('packages/webpack/config/optimization.js')}`,
+        `3.Modify ${chalk.hex(varColor)('splitChunks')} in `
+          + `${chalk.white('packages/webpack/config/optimization.js')}`,
       ),
     );
   }
 }
 
 export function measureFileSizesBeforeBuild(buildFolder: string) {
-  return new Promise<{root: string; sizes: Record<string, number>}>(function (
+  return new Promise<{root: string; sizes: Record<string, number>}>(function(
     resolve,
   ) {
-    recursive(buildFolder, function (err, fileNames) {
+    recursive(buildFolder, function(err, fileNames) {
       let sizes;
 
       if (!err && fileNames) {
         sizes = fileNames
           .filter(canReadAsset)
-          .reduce(function (memo: Record<string, number>, fileName) {
+          .reduce(function(memo: Record<string, number>, fileName) {
             const key = removeFileNameHash(buildFolder, fileName);
             memo[key] = getFileSize(fileName);
             return memo;

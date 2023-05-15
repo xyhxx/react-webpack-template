@@ -27,7 +27,9 @@ function objectIsEmpty(obj: Record<string, string>) {
 }
 
 function initEnv() {
-  if (!objectIsEmpty(env) && !objectIsEmpty(swtEnv)) return;
+  if (!objectIsEmpty(env) && !objectIsEmpty(swtEnv)) {
+    return;
+  }
   const ENV = process.env.NODE_ENV;
 
   const common = config({path: commonEnv}).parsed;
@@ -37,10 +39,11 @@ function initEnv() {
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
 
-  for (const [key, value] of Object.entries(temp))
+  for (const [key, value] of Object.entries(temp)) {
     !key.includes(prefix)
       ? (env[key] = JSON.stringify(value))
       : (swtEnv[key.replace(prefix, '')] = value);
+  }
 }
 
 export function getSWTEnv() {

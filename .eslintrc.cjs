@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['proste/reactTS.js', 'prettier'],
+  extends: ['proste/reactTS.js'],
   root: true,
   parserOptions: {
     project: './tsconfig.json',
@@ -19,6 +19,9 @@ module.exports = {
     afterAll: true,
     beforeEach: true,
     afterEach: true,
+  },
+  rules: {
+    curly: [2, 'all'],
   },
   overrides: [
     {
@@ -40,7 +43,7 @@ module.exports = {
         'packages/webpack/scripts/**',
       ],
       parserOptions: {},
-      extends: ['proste/typescript.js', 'prettier'],
+      extends: ['proste/typescript.js'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-var-requires': 0,

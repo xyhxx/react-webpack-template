@@ -6,8 +6,8 @@ import {SWTEnv} from './env.ts';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const enableSWC = (process.env as unknown as SWTEnv).ENABLE_SWC === 'true';
-const useSourceMap =
-  (process.env as unknown as SWTEnv).ENABLE_SOURCE_MAP === 'true';
+const useSourceMap
+  = (process.env as unknown as SWTEnv).ENABLE_SOURCE_MAP === 'true';
 const buildSourceMap = isProduction ? useSourceMap : true;
 
 const moduleCssOptions = {

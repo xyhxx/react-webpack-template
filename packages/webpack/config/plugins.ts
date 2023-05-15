@@ -52,19 +52,19 @@ const plugins: Configuration['plugins'] = [
       },
       isProduction
         ? {
-            minify: {
-              removeComments: true,
-              collapseWhitespace: true,
-              removeRedundantAttributes: true,
-              useShortDoctype: true,
-              removeEmptyAttributes: true,
-              removeStyleLinkTypeAttributes: true,
-              keepClosingSlash: true,
-              minifyJS: true,
-              minifyCSS: true,
-              minifyURLs: true,
-            },
-          }
+          minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          },
+        }
         : void 0,
     ),
   ),
@@ -97,7 +97,7 @@ const plugins: Configuration['plugins'] = [
 
 const fileName = 'static/css/[name].[contenthash:8].css';
 
-if (isProduction)
+if (isProduction) {
   plugins.push(
     new MiniCssExtractPlugin({
       filename: fileName,
@@ -109,6 +109,8 @@ if (isProduction)
       reportFilename: resolve(rootPath, 'analyzer/index.html'),
     }),
   );
-else plugins.push(new ReactRefreshWebpackPlugin({overlay: false}));
+} else {
+  plugins.push(new ReactRefreshWebpackPlugin({overlay: false}));
+}
 
 export default plugins;
