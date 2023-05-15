@@ -32,6 +32,7 @@ function formatMessage(msg: MessageType) {
     }
 
     const [, errorLine, errorColumn, errorMessage] = parsingError;
+    // eslint-disable-next-line max-len
     return `${friendlySyntaxErrorLabel} ${errorMessage} (${errorLine}:${errorColumn})`;
   });
 
