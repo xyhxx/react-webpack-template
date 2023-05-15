@@ -20,9 +20,6 @@ module.exports = {
     beforeEach: true,
     afterEach: true,
   },
-  rules: {
-    curly: [2, 'all'],
-  },
   overrides: [
     {
       files: ['cypress/**', 'cypress.config.ts'],
