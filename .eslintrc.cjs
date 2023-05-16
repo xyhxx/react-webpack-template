@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['proste/reactTS.js'],
+  extends: ['proste/reactTS'],
   root: true,
   parserOptions: {
     project: './tsconfig.json',
@@ -40,7 +40,7 @@ module.exports = {
         'packages/webpack/scripts/**',
       ],
       parserOptions: {},
-      extends: ['proste/typescript.js'],
+      extends: ['proste/typescript'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-var-requires': 0,
