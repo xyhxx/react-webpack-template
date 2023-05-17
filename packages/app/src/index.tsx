@@ -13,7 +13,7 @@ root.render(
   <StrictMode>
     <QueryClientProvider client={QUERY_CLIENT}>
       <RouterProvider router={routes} />
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   </StrictMode>,
 );
