@@ -26,7 +26,7 @@ export default function(isTs: boolean) {
       },
       env: {
         path: rootPath,
-        mode: 'entry',
+        mode: 'usage',
         coreJs: '3.30.1',
       },
     },
