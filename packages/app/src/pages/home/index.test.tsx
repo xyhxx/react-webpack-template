@@ -6,17 +6,16 @@ it(`
     1. click increment btn, innterHTML is count is 1
     2. click reduce btn, innertTHML is count is 0
   `, function() {
-  const {container} = render(<RouterProvider router={routes} />);
+  const {getByTestId} = render(<RouterProvider router={routes} />);
 
-  const incrementBtn = container.querySelector('#inc_btn')!;
-  const decBtn = container.querySelector('#dec_btn')!;
-  const html = container.querySelector('#title')!;
+  const incBtn = getByTestId('inc_btn');
+  const decBtn = getByTestId('dec_btn');
 
-  fireEvent.click(incrementBtn);
+  fireEvent.click(incBtn);
 
-  expect(html.innerHTML).toBe('count is 1');
+  expect(getByTestId('title').innerHTML).toBe('count is 1');
 
   fireEvent.click(decBtn);
 
-  expect(html.innerHTML).toBe('count is 0');
+  expect(getByTestId('title').innerHTML).toBe('count is 0');
 });
