@@ -23,6 +23,16 @@ export default function(isTs: boolean) {
           },
           decoratorVersion: '2022-03',
         },
+        experimental: {
+          plugins: [
+            isProduction && [
+              require.resolve('swc-plugin-react-remove-properties'),
+              {
+                properties: ['data-testid'],
+              },
+            ],
+          ].filter(Boolean),
+        },
       },
       env: {
         path: rootPath,
