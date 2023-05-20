@@ -1,4 +1,5 @@
-import {srcPath, rootPath, require} from './paths.ts';
+import {srcPath, require} from './paths.ts';
+import browserslist from 'browserslist';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -35,7 +36,7 @@ export default function(isTs: boolean) {
         },
       },
       env: {
-        path: rootPath,
+        targets: browserslist(),
         mode: 'usage',
         coreJs: '3.30.1',
       },
