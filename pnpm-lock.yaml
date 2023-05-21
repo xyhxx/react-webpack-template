@@ -50,8 +50,8 @@ importers:
         specifier: ^8.38.0
         version: 8.38.0
       eslint-config-proste:
-        specifier: ^7.0.0
-        version: 7.0.0(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.38.0)
+        specifier: ^7.4.0
+        version: 7.4.0(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.38.0)
       eslint-plugin-cypress:
         specifier: ^2.13.2
         version: 2.13.2(eslint@8.38.0)
@@ -96,7 +96,7 @@ importers:
         version: 33.0.0(stylelint@15.5.0)
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@swc/core@1.3.59)(@types/node@18.16.3)(typescript@5.0.4)
+        version: 10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4)
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -226,7 +226,7 @@ importers:
         version: 5.0.2(postcss@8.4.21)
       postcss-loader:
         specifier: ^7.2.4
-        version: 7.2.4(@types/node@18.16.3)(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)(webpack@5.79.0)
+        version: 7.2.4(@types/node@20.2.1)(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)(webpack@5.79.0)
       postcss-nesting:
         specifier: ^11.2.2
         version: 11.2.2(postcss@8.4.21)
@@ -415,7 +415,7 @@ packages:
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@18.16.3)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4)
       typescript: 5.0.4
     transitivePeerDependencies:
       - '@swc/core'
@@ -1717,6 +1717,10 @@ packages:
 
   /@types/node@18.16.3:
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+    dev: true
+
+  /@types/node@20.2.1:
+    resolution: {integrity: sha512-DqJociPbZP1lbZ5SQPk4oag6W7AyaGMO6gSfRwq3PWl4PXTwJpRQJhDq4W0kzrg3w6tJ1SwlvGZ5uKFHY13LIg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -3332,7 +3336,25 @@ packages:
     dependencies:
       '@types/node': 18.16.3
       cosmiconfig: 8.1.3
-      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@18.16.3)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4)
+      typescript: 5.0.4
+    dev: true
+
+  /cosmiconfig-typescript-loader@4.3.0(@types/node@20.2.1)(cosmiconfig@8.1.3)(ts-node@10.9.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@types/node': '*'
+      cosmiconfig: '>=7'
+      ts-node: '>=10'
+      typescript: '>=3'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@types/node': 20.2.1
+      cosmiconfig: 8.1.3
+      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4)
       typescript: 5.0.4
     dev: true
 
@@ -4254,8 +4276,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-proste@7.0.0(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.38.0):
-    resolution: {integrity: sha512-jBLmB3zyJTPthGHxrly1IwUKN93qTprpvGWn6OBSFvlpOa6DsXje8W2vN3uMzgErqrnsmY8XzhXbh0cTADi/ig==}
+  /eslint-config-proste@7.4.0(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.38.0):
+    resolution: {integrity: sha512-DJckpPELQCwqoXN8ucan54NRbhg0ry2x5ELnUtAJYEX1NCj8HTqrBfOkE0+UZVSyNfANLFI7+jUx2/hBXGU8+A==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '>=5.4.0'
       '@typescript-eslint/parser': '>=5.4.0'
@@ -7474,7 +7496,7 @@ packages:
       postcss: 8.4.21
     dev: true
 
-  /postcss-loader@7.2.4(@types/node@18.16.3)(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)(webpack@5.79.0):
+  /postcss-loader@7.2.4(@types/node@20.2.1)(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)(webpack@5.79.0):
     resolution: {integrity: sha512-F88rpxxNspo5hatIc+orYwZDtHFaVFOSIVAx+fBfJC1GmhWbVmPWtmg2gXKE1OxJbneOSGn8PWdIwsZFcruS+w==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -7491,11 +7513,11 @@ packages:
         optional: true
     dependencies:
       cosmiconfig: 8.1.3
-      cosmiconfig-typescript-loader: 4.3.0(@types/node@18.16.3)(cosmiconfig@8.1.3)(ts-node@10.9.1)(typescript@5.0.4)
+      cosmiconfig-typescript-loader: 4.3.0(@types/node@20.2.1)(cosmiconfig@8.1.3)(ts-node@10.9.1)(typescript@5.0.4)
       klona: 2.0.6
       postcss: 8.4.21
       semver: 7.4.0
-      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@18.16.3)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4)
       typescript: 5.0.4
       webpack: 5.79.0(@swc/core@1.3.59)(webpack-cli@5.0.1)
     transitivePeerDependencies:
@@ -9410,7 +9432,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node@10.9.1(@swc/core@1.3.59)(@types/node@18.16.3)(typescript@5.0.4):
+  /ts-node@10.9.1(@swc/core@1.3.59)(@types/node@20.2.1)(typescript@5.0.4):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -9432,7 +9454,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.16.3
+      '@types/node': 20.2.1
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
