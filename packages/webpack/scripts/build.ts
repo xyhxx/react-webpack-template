@@ -42,9 +42,7 @@ function build(previousFileSizes: {
       } = '';
 
       if (err) {
-        if (!err.message) {
-          return reject(err);
-        }
+        if (!err.message) return reject(err);
 
         message = formatWebpackMessage({
           errors: [err.message],
@@ -59,9 +57,7 @@ function build(previousFileSizes: {
       if (message.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
-        if (message.errors.length > 1) {
-          message.errors.length = 1;
-        }
+        if (message.errors.length > 1)message.errors.length = 1;
 
         return reject(new Error(message.errors.join('\n\n')));
       }

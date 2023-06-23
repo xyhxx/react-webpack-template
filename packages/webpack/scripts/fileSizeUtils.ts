@@ -10,13 +10,14 @@ function getDifferenceLabel(currentSize: number, previousSize: number) {
   const FIFTY_KILOBYTES = 1024 * 50;
   const difference = currentSize - previousSize;
   const fileSize = !Number.isNaN(difference) ? filesize(difference) : 0;
-  if (difference >= FIFTY_KILOBYTES) {
-    return chalk.red('+' + fileSize);
-  } else if (difference < FIFTY_KILOBYTES && difference > 0) {
-    return chalk.yellow('+' + fileSize);
-  } else if (difference < 0) {
-    return chalk.green(fileSize);
-  }
+  if (difference >= FIFTY_KILOBYTES) return chalk.red('+' + fileSize);
+
+  else if (
+    difference < FIFTY_KILOBYTES
+    && difference > 0
+  ) return chalk.yellow('+' + fileSize);
+
+  else if (difference < 0) return chalk.green(fileSize);
 
   return '';
 }
@@ -98,9 +99,7 @@ export function printFileSizesAfterBuild(options: {
       label += rightPadding;
     }
 
-    if (!overstep && size > maxSize && path.extname(name) === '.js') {
-      overstep = true;
-    }
+    if (!overstep && size > maxSize && path.extname(name) === '.js')overstep = true;
 
     const filePath = folder + path.sep + name;
     console.log(sizePen(`Size: ${label}`), pathPen(filePath));

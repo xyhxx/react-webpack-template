@@ -27,9 +27,8 @@ function objectIsEmpty(obj: Record<string, string>) {
 }
 
 function initEnv() {
-  if (!objectIsEmpty(env) && !objectIsEmpty(swtEnv)) {
-    return;
-  }
+  if (!objectIsEmpty(env) && !objectIsEmpty(swtEnv)) return;
+
   const ENV = process.env.NODE_ENV;
 
   const common = config({path: commonEnv}).parsed;

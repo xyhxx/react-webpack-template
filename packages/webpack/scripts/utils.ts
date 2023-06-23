@@ -30,9 +30,7 @@ export function junglePort(host: string, defaultPort: number) {
   return detect(defaultPort, host).then(
     function(port) {
       return new Promise(function(resolve) {
-        if (port === defaultPort) {
-          return resolve(port);
-        }
+        if (port === defaultPort) return resolve(port);
 
         const message = `Something is already running on port ${defaultPort}.`;
         if (isInteractive) {
@@ -80,9 +78,7 @@ export function printBuildError(err: Error) {
   ) {
     try {
       const matched = /(.+)\[(.+):(.+),(.+)\]\[.+\]/.exec(stack);
-      if (!matched) {
-        throw new Error('Using errors for control flow is bad.');
-      }
+      if (!matched) throw new Error('Using errors for control flow is bad.');
 
       const [, , problemPath, line, column] = matched;
       console.log(

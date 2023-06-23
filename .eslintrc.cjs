@@ -1,10 +1,15 @@
 module.exports = {
   extends: ['proste/reactTS', 'proste/vitest'],
+  plugins: ['xyhxx'],
   root: true,
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
     warnOnUnsupportedTypeScriptVersion: true,
+  },
+  rules: {
+    'xyhxx/if-line': 1,
+    'xyhxx/object-pattern-newline': 1,
   },
   overrides: [
     {

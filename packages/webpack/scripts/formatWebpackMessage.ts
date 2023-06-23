@@ -15,9 +15,7 @@ function formatMessage(msg: MessageType) {
     lines = msg['message'].split('\n');
   } else if (Array.isArray(msg)) {
     msg.forEach(function(message) {
-      if ('message' in message) {
-        lines = message['message'].split('\n');
-      }
+      if ('message' in message) lines = message['message'].split('\n');
     });
   }
 
@@ -27,9 +25,7 @@ function formatMessage(msg: MessageType) {
     const parsingError = /Line (\d+):(?:(\d+):)?\s*Parsing error: (.+)$/.exec(
       line,
     );
-    if (!parsingError) {
-      return line;
-    }
+    if (!parsingError) return line;
 
     const [, errorLine, errorColumn, errorMessage] = parsingError;
     // eslint-disable-next-line max-len
@@ -57,9 +53,7 @@ function formatMessage(msg: MessageType) {
   );
   lines = message.split('\n');
 
-  if (lines.length > 2 && lines[1].trim() === '') {
-    lines.splice(1, 1);
-  }
+  if (lines.length > 2 && lines[1].trim() === '')lines.splice(1, 1);
 
   lines[0] = lines[0].replace(/^(.*) \d+:\d+-\d+$/, '$1');
 
@@ -104,9 +98,9 @@ function formatWebpackMessages(json: {
   const formattedErrors = json.errors.map(formatMessage);
   const formattedWarnings = json.warnings.map(formatMessage);
   const result = {errors: formattedErrors, warnings: formattedWarnings};
-  if (result.errors.some(isLikelyASyntaxError)) {
-    result.errors = result.errors.filter(isLikelyASyntaxError);
-  }
+  if (
+    result.errors.some(isLikelyASyntaxError)
+  ) result.errors = result.errors.filter(isLikelyASyntaxError);
 
   return result;
 }
