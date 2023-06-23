@@ -14,14 +14,14 @@ const Home: FC = function() {
       <h1 className={cla([css.title, css.name, {[css.titleRed]: count >= 5}])}>
         React
       </h1>
-      <h2 className={css.title} data-testid="title">
+      <h2 className={css.title} data-testid="title" id="title">
         count is {count}
       </h2>
       <div className={css.btnGroup}>
-        <button onClick={inc} data-testid="inc_btn">
+        <button onClick={inc} data-testid="inc_btn" id="inc_btn">
           increment
         </button>
-        <button onClick={dec} data-testid="dec_btn">
+        <button onClick={dec} data-testid="dec_btn" id="dec_btn">
           decrease
         </button>
       </div>
