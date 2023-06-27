@@ -1,10 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import {filesize} from 'filesize';
+import {filesize as originalFilesize} from 'filesize';
 import recursive from 'recursive-readdir';
 import stripAnsi from 'strip-ansi';
 import type {Stats} from 'webpack';
+
+function filesize(num: number) {
+  return originalFilesize(num, {base: 2, standard: 'jedec'});
+}
 
 function getDifferenceLabel(currentSize: number, previousSize: number) {
   const FIFTY_KILOBYTES = 1024 * 50;
@@ -99,10 +103,13 @@ export function printFileSizesAfterBuild(options: {
       label += rightPadding;
     }
 
-    if (!overstep && size > maxSize && path.extname(name) === '.js')overstep = true;
+    if (!overstep && size > maxSize && path.extname(name) === '.js') overstep = true;
 
     const filePath = folder + path.sep + name;
-    console.log(sizePen(`Size: ${label}`), pathPen(filePath));
+    console.log(
+      sizePen(`Size: ${label}`),
+      pathPen(filePath),
+    );
   });
 
   if (overstep) {
