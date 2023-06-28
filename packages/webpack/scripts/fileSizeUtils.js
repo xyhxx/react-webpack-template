@@ -4,13 +4,21 @@ import chalk from 'chalk';
 import {filesize as originalFilesize} from 'filesize';
 import recursive from 'recursive-readdir';
 import stripAnsi from 'strip-ansi';
-import type {Stats} from 'webpack';
 
-function filesize(num: number) {
+/**
+ * @param {number} num
+ *
+ * @return {number}
+ */
+function filesize(num) {
   return originalFilesize(num, {base: 2, standard: 'jedec'});
 }
 
-function getDifferenceLabel(currentSize: number, previousSize: number) {
+/**
+ * @param {number} currentSize
+ * @param {number} previousSize
+ */
+function getDifferenceLabel(currentSize, previousSize) {
   const FIFTY_KILOBYTES = 1024 * 50;
   const difference = currentSize - previousSize;
   const fileSize = !Number.isNaN(difference) ? filesize(difference) : 0;
@@ -26,11 +34,18 @@ function getDifferenceLabel(currentSize: number, previousSize: number) {
   return '';
 }
 
-function canReadAsset(asset: string) {
+/**
+ * @param {string} asset string
+ */
+function canReadAsset(asset) {
   return /\.(js|css)$/.test(asset);
 }
 
-function removeFileNameHash(buildFolder: string, fileName: string) {
+/**
+ * @param {string} buildFolder
+ * @param {string} fileName
+ */
+function removeFileNameHash(buildFolder, fileName) {
   return fileName
     .replace(buildFolder, '')
     .replace(/\\/g, '/')
@@ -41,17 +56,34 @@ function removeFileNameHash(buildFolder: string, fileName: string) {
     );
 }
 
-function getFileSize(path: string) {
+/**
+ * @param {string} path
+ */
+function getFileSize(path) {
   const stats = fs.statSync(path);
   return stats.size;
 }
 
-export function printFileSizesAfterBuild(options: {
-  webpackStats: Stats;
-  previousSizeMap: Awaited<ReturnType<typeof measureFileSizesBeforeBuild>>;
-  buildFolder: string;
-  maxSize: number;
-}) {
+/**
+ *
+  @typedef PreviousFileSizes
+ * @property {string} root
+ * @property {Record<string, number>} sizes
+ *
+ * @typedef PromiseResolve
+ * @property {import('webpack').Stats} stats
+ * @property {PreviousFileSizes} previousFileSizes
+ * @property {string[]} warnings
+ *
+ * @typedef Options
+ * @property {import('webpack').Stats} webpackStats
+ * @property {PromiseResolve} previousSizeMap
+ * @property {string} buildFolder
+ * @property {number} maxSize
+ *
+ * @param {Options} options
+ */
+export function printFileSizesAfterBuild(options) {
   const {webpackStats, previousSizeMap, buildFolder, maxSize} = options;
 
   const {root} = previousSizeMap;
@@ -146,17 +178,27 @@ export function printFileSizesAfterBuild(options: {
   }
 }
 
-export function measureFileSizesBeforeBuild(buildFolder: string) {
-  return new Promise<{root: string; sizes: Record<string, number>}>(function(
+/**
+ * @param {string} buildFolder
+ *
+ * @typedef FileSizeResolve
+ * @property {string} root
+ * @property {Record<string, number>} sizes
+ *
+ * @return {Promise<FileSizeResolve>}
+ */
+export function measureFileSizesBeforeBuild(buildFolder) {
+  return new Promise(function(
     resolve,
   ) {
     recursive(buildFolder, function(err, fileNames) {
+      /** @type {Record<string, number>} */
       let sizes;
 
       if (!err && fileNames) {
         sizes = fileNames
           .filter(canReadAsset)
-          .reduce(function(memo: Record<string, number>, fileName) {
+          .reduce(function(memo, fileName) {
             const key = removeFileNameHash(buildFolder, fileName);
             memo[key] = getFileSize(fileName);
             return memo;

@@ -9,7 +9,10 @@ export const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const appDirection = realpathSync(process.cwd());
 
-function resolvePath(url: string) {
+/**
+ * @param {string} url
+ */
+function resolvePath(url) {
   return resolve(appDirection, url);
 }
 export const outputPath = resolvePath('../../build');

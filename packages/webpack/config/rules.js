@@ -1,13 +1,11 @@
-import babel from './babel.ts';
+import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import swc from './swc.ts';
-import {require} from './paths.ts';
-import {SWTEnv} from './env.ts';
+import swc from './swc.js';
+import {require} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const enableSWC = (process.env as unknown as SWTEnv).ENABLE_SWC === 'true';
-const useSourceMap
-  = (process.env as unknown as SWTEnv).ENABLE_SOURCE_MAP === 'true';
+const enableSWC = process.env.ENABLE_SWC === 'true';
+const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
 const buildSourceMap = isProduction ? useSourceMap : true;
 
 const moduleCssOptions = {
@@ -18,7 +16,10 @@ const moduleCssOptions = {
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
-function getStyleLoaders(cssOptions: Record<string, unknown>) {
+/**
+ * @param {Record<string, unknown>} cssOptions
+ */
+function getStyleLoaders(cssOptions) {
   return [
     isProduction
       ? MiniCssExtractPlugin.loader

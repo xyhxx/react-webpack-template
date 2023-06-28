@@ -1,10 +1,10 @@
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import type {Configuration} from 'webpack';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const optimization: Configuration['optimization'] = {
+/** @type {import('webpack').Configuration['optimization']} */
+const optimization = {
   minimize: isProduction,
   minimizer: [
     new TerserPlugin({

@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "bin": {
-    "swt-script": "./bin/index.ts"
+    "swt-script": "./bin/index.js"
   },
   "files": [
     "bin",

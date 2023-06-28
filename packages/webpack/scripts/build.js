@@ -1,45 +1,49 @@
-import webpack, {Stats} from 'webpack';
+import webpack from 'webpack';
 import chalk from 'chalk';
-import config from '../config/webpack.config.ts';
+import config from '../config/webpack.config.js';
 import {
   errorLogger,
   clearBuildFolder,
   printBuildError,
   clearConsole,
-} from './utils.ts';
-import formatWebpackMessage from './formatWebpackMessage.ts';
-import {outputPath} from '../config/paths.ts';
+} from './utils.js';
+import formatWebpackMessage from './formatWebpackMessage.js';
+import {outputPath} from '../config/paths.js';
 import {
   measureFileSizesBeforeBuild,
   printFileSizesAfterBuild,
-} from './fileSizeUtils.ts';
-import {SWTEnv} from '../config/env.ts';
+} from './fileSizeUtils.js';
 
-const MAX_CHUNK_SIZE = Number(
-  (process.env as unknown as SWTEnv).MAX_CHUNK_SIZE ?? 0,
-);
+const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
 
-function build(previousFileSizes: {
-  root: string;
-  sizes: Record<string, number>;
-}) {
+/**
+ * @typedef PreviousFileSizes
+ * @property {string} root
+ * @property {Record<string, number>} sizes
+ *
+ * @typedef PromiseResolve
+ * @property {import('webpack').Stats} stats
+ * @property {PreviousFileSizes} previousFileSizes
+ * @property {string[]} warnings
+ *
+ * @param {PreviousFileSizes} previousFileSizes
+ *
+ * @return {Promise<PromiseResolve>}
+ */
+function build(previousFileSizes) {
   const compiler = webpack(config);
 
-  return new Promise<{
-    stats: Stats;
-    previousFileSizes: {
-      root: string;
-      sizes: Record<string, number>;
-    };
-    warnings: string[];
-  }>(function(resolve, reject) {
+  /**
+   * @typedef PromiseResolve
+   * @property  {import('webpack').Stats} states
+   * @property {PreviousFileSizes} previousFileSizes
+   * @property {string[]} warnings
+   *
+   * @type Promise<PromiseResolve>
+   */
+  return new Promise(function(resolve, reject) {
     compiler.run(function(err, stats) {
-      let message:
-      | string
-      | {
-        errors: string[];
-        warnings: string[];
-      } = '';
+      let message = '';
 
       if (err) {
         if (!err.message) return reject(err);
@@ -50,20 +54,18 @@ function build(previousFileSizes: {
         });
       } else {
         message = formatWebpackMessage(
-          stats?.toJson({all: false, warnings: true, errors: true}) as any,
+          stats?.toJson({all: false, warnings: true, errors: true}),
         );
       }
 
       if (message.errors.length) {
-        // Only keep the first error. Others are often indicative
-        // of the same problem, but confuse the reader with noise.
-        if (message.errors.length > 1)message.errors.length = 1;
+        if (message.errors.length > 1) message.errors.length = 1;
 
         return reject(new Error(message.errors.join('\n\n')));
       }
 
       return resolve({
-        stats: stats!,
+        stats,
         previousFileSizes,
         warnings: message.warnings,
       });

@@ -1,4 +1,4 @@
-import {srcPath, require} from './paths.ts';
+import {srcPath, require} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
