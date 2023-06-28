@@ -35,7 +35,6 @@
     "packages/webpack/bin",
     "packages/webpack/scripts",
     "packages/webpack/config",
-    "packages/webpack/detect-port-alt.d.ts",
     ".eslintrc.cjs",
     "commitlint.config.cjs",
     "vitest.config.ts",
