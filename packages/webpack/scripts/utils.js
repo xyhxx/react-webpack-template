@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import detect from 'detect-port-alt';
 import prompts from 'prompts';
 import fs from 'fs-extra';
-import {outputPath} from '../config/paths.ts';
+import {outputPath} from '../config/paths.js';
 
 export function clearConsole() {
   process.stdout.write(
@@ -10,7 +10,11 @@ export function clearConsole() {
   );
 }
 
-export function startedServerLogger(port: number, host?: string) {
+/**
+ * @param {number} port
+ * @param {string} host
+ */
+export function startedServerLogger(port, host) {
   console.log();
   console.log(chalk.green('Server started! 🥰'));
   console.log();
@@ -20,11 +24,18 @@ export function startedServerLogger(port: number, host?: string) {
   console.log();
 }
 
-export function errorLogger(error: string) {
+/**
+ * @param {string} error
+ */
+export function errorLogger(error) {
   console.error(chalk.red(error + ' 😭'));
 }
 
-export function junglePort(host: string, defaultPort: number) {
+/**
+ * @param {string} host
+ * @param {number} defaultPort
+ */
+export function junglePort(host, defaultPort) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
@@ -35,7 +46,7 @@ export function junglePort(host: string, defaultPort: number) {
         const message = `Something is already running on port ${defaultPort}.`;
         if (isInteractive) {
           clearConsole();
-          const question: prompts.PromptObject = {
+          const question = {
             type: 'confirm',
             name: 'changePort',
             message:
@@ -52,7 +63,7 @@ export function junglePort(host: string, defaultPort: number) {
         }
       });
     },
-    function(err: Error) {
+    function(err) {
       throw new Error(
         chalk.red(`Could not find an open port at ${chalk.bold(host)}.`)
           + '\n'
@@ -67,7 +78,10 @@ export function clearBuildFolder() {
   fs.emptyDirSync(outputPath);
 }
 
-export function printBuildError(err: Error) {
+/**
+ * @param {Error} err
+ */
+export function printBuildError(err) {
   const message = err != null && err.message;
   const stack = err != null && err.stack;
 

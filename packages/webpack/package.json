@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "bin": {
-    "swt-script": "./bin/index.ts"
+    "swt-script": "./bin/index.js"
   },
   "files": [
     "bin",
@@ -14,12 +14,6 @@
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@swc/core": "^1.3.66",
-    "@types/cross-spawn": "^6.0.2",
-    "@types/fs-extra": "^11.0.1",
-    "@types/ip": "^1.1.0",
-    "@types/prompts": "^2.4.4",
-    "@types/recursive-readdir": "^2.2.1",
-    "@types/webpack-bundle-analyzer": "^4.6.0",
     "browserslist": "^4.21.9",
     "camelcase": "^7.0.1",
     "chalk": "^5.2.0",

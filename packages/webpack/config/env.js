@@ -1,13 +1,6 @@
 import {config} from 'dotenv';
 import {resolve} from 'path';
-import {appPath} from './paths.ts';
-
-export type SWTEnv = {
-  readonly HOST: string;
-  readonly ENABLE_SOURCE_MAP: 'true' | undefined;
-  readonly ENABLE_SWC: 'true' | undefined;
-  readonly MAX_CHUNK_SIZE: 'true' | undefined;
-};
+import {appPath} from './paths.js';
 
 const commonEnv = resolve(appPath, '.env');
 
@@ -19,10 +12,15 @@ const envs = {
   production: resolve(appPath, '.env.pro'),
 };
 
-const env: Record<string, string> = {};
-const swtEnv: Record<string, string> = {};
+/** @type Record<string, string> */
+const env = {};
+/** @type Record<string, string> */
+const swtEnv = {};
 
-function objectIsEmpty(obj: Record<string, string>) {
+/**
+ * @param {Record<string, string>} obj
+ */
+function objectIsEmpty(obj) {
   return Object.getOwnPropertyNames(obj).length === 0;
 }
 
@@ -34,7 +32,8 @@ function initEnv() {
   const common = config({path: commonEnv}).parsed;
   const value = config({path: envs[ENV]}).parsed;
 
-  const temp: Record<string, string> = {};
+  /** @type Record<string, string> */
+  const temp = {};
   common && Object.assign(temp, common);
   value && Object.assign(temp, value);
 

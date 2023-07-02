@@ -1,9 +1,12 @@
-import {srcPath, require} from './paths.ts';
+import {srcPath, require} from './paths.js';
 import browserslist from 'browserslist';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-export default function(isTs: boolean) {
+/**
+ * @param {boolean} isTs
+ */
+export default function(isTs) {
   return {
     loader: require.resolve('swc-loader'),
     test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,

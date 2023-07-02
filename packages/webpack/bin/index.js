@@ -1,9 +1,9 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env node
 
 import spawn from 'cross-spawn';
 import {resolve} from 'path';
-import {getSWTEnv} from '../config/env.ts';
-import {__dirname} from '../config/paths.ts';
+import {getSWTEnv} from '../config/env.js';
+import {__dirname} from '../config/paths.js';
 
 process.on('unhandledRejection', function(err) {
   throw err;
@@ -17,17 +17,16 @@ const scriptIndex = args.findIndex(
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-type CanWrite<T> = {
-  -readonly [K in keyof T]: T[K];
-};
-
-function setEnv(name: string) {
+/**
+ * @param {string} name
+ */
+function setEnv(name) {
   switch (name) {
     case 'dev':
-      (process.env as CanWrite<NodeJS.ProcessEnv>).NODE_ENV = 'development';
+      process.env.NODE_ENV = 'development';
       break;
     case 'build':
-      (process.env as CanWrite<NodeJS.ProcessEnv>).NODE_ENV = 'production';
+      process.env.NODE_ENV = 'production';
       break;
   }
 
@@ -38,10 +37,10 @@ function setEnv(name: string) {
 
 function runScript() {
   const result = spawn.sync(
-    'pnpm',
+    process.execPath,
     nodeArgs
-      .concat('ts-node')
-      .concat(resolve(__dirname, `../scripts/${script}.ts`)),
+      .concat(resolve(__dirname, `../scripts/${script}`))
+      .concat(process.argv.slice(scriptIndex + 1)),
     {stdio: 'inherit'},
   );
   if (result.signal) {

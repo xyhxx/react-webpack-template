@@ -1,10 +1,9 @@
 import ip from 'ip';
-import {Configuration} from 'webpack';
-import {SWTEnv} from './env.ts';
 
 const {address} = ip;
 
-const config: Configuration['devServer'] = {
+/** @type {import('webpack').Configuration['devServer']}  */
+const config = {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',
@@ -12,7 +11,7 @@ const config: Configuration['devServer'] = {
   },
   open: !process.env.IS_E2E,
   host: address(),
-  port: Number((process.env as unknown as SWTEnv).HOST),
+  port: Number(process.env.HOST),
   hot: true,
   compress: true,
   historyApiFallback: true,

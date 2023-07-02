@@ -1,11 +1,11 @@
-import {outputPath, publicPath, srcPath, rootPath} from './paths.ts';
-import {getEnv} from './env.ts';
+import {outputPath, publicPath, srcPath, rootPath} from './paths.js';
+import {getEnv} from './env.js';
 import {resolve} from 'path';
 import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import WebpackBar from 'webpackbar';
-import webpack, {Configuration} from 'webpack';
+import webpack from 'webpack';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
@@ -16,7 +16,8 @@ const {DefinePlugin} = webpack;
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
 
-const plugins: Configuration['plugins'] = [
+/** @type {import('webpack').Configuration['plugins']} */
+const plugins = [
   new WebpackBar({
     color: '#057748',
   }),

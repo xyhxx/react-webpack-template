@@ -1,13 +1,17 @@
 const friendlySyntaxErrorLabel = 'Syntax error:';
 
-function isLikelyASyntaxError(message: string) {
+/**
+ * @param {string} message
+ */
+function isLikelyASyntaxError(message) {
   return message.indexOf(friendlySyntaxErrorLabel) !== -1;
 }
 
-type MessageType = string | Record<string, string>[] | Record<string, string>;
-
-function formatMessage(msg: MessageType) {
-  let lines: string[] = [];
+/**
+ * @param {string | Record<string, string>[] | Record<string, string>} msg
+ */
+function formatMessage(msg) {
+  let lines = [];
 
   if (typeof msg === 'string') {
     lines = msg.split('\n');
@@ -91,10 +95,13 @@ function formatMessage(msg: MessageType) {
   return message.trim();
 }
 
-function formatWebpackMessages(json: {
-  errors: MessageType[];
-  warnings: MessageType[];
-}) {
+/**
+ *
+ * @param {Array<string
+ * | Record<string, string>[]
+ * | Record<string, string>>} json
+ */
+function formatWebpackMessages(json) {
   const formattedErrors = json.errors.map(formatMessage);
   const formattedWarnings = json.warnings.map(formatMessage);
   const result = {errors: formattedErrors, warnings: formattedWarnings};
