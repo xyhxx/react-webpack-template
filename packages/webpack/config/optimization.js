@@ -1,6 +1,9 @@
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
+const {lightningCssMinify} = CssMinimizerPlugin;
+const {swcMinify} = TerserPlugin;
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 /** @type {import('webpack').Configuration['optimization']} */
@@ -8,6 +11,7 @@ const optimization = {
   minimize: isProduction,
   minimizer: [
     new TerserPlugin({
+      minify: swcMinify,
       extractComments: false,
       terserOptions: {
         mangle: {
@@ -18,7 +22,9 @@ const optimization = {
         },
       },
     }),
-    new CssMinimizerPlugin(),
+    new CssMinimizerPlugin({
+      minify: lightningCssMinify,
+    }),
   ],
   runtimeChunk: {
     name: 'webpackRuntime',
