@@ -25,6 +25,7 @@
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:style-fix": "pnpm run lint:style --fix",
     "lint:js-fix": "pnpm run lint:js --fix",
+    "lint:ts": "tsc",
     "prepare": "husky install",
     "postinstall": "husky install",
     "pre-commit": "lint-staged",
@@ -100,6 +101,9 @@
     ],
     "**/*/*.{js,jsx,ts,tsx}": [
       "eslint"
+    ],
+    "**/*/*.{ts,tsx}": [
+      "tsc"
     ]
   },
   "devDependencies": {
