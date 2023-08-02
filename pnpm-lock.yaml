@@ -36,8 +36,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0
       core-js:
-        specifier: ^3.31.0
-        version: 3.31.0
+        specifier: ^3.32.0
+        version: 3.32.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -54,8 +54,8 @@ importers:
         specifier: ^8.43.0
         version: 8.43.0
       eslint-config-proste:
-        specifier: ^8.0.0
-        version: 8.0.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0)
+        specifier: ^8.1.0
+        version: 8.1.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0)
       eslint-plugin-cypress:
         specifier: ^2.13.3
         version: 2.13.3(eslint@8.43.0)
@@ -3304,8 +3304,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js@3.31.0:
-    resolution: {integrity: sha512-NIp2TQSGfR6ba5aalZD+ZQ1fSxGhDo/s1w0nx3RYzf2pnJxt7YynxFlFScP6eV7+GZsKO95NSjGxyJsU3DZgeQ==}
+  /core-js@3.32.0:
+    resolution: {integrity: sha512-rd4rYZNlF3WuoYuRIDEmbR/ga9CeuWX9U05umAvgrrZoHY4Z++cp/xwPQMvUpBB4Ag6J8KfD80G0zwCyaSxDww==}
     requiresBuild: true
     dev: true
 
@@ -4313,8 +4313,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-proste@8.0.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0):
-    resolution: {integrity: sha512-ZvJgOjSaNF9B/Umae6KAkJVxtFH9alDQVe93ZaZG287Xlv2bmcIlz9uExwqkGyd3X0MtUW2yTvBG+q2KNITedA==}
+  /eslint-config-proste@8.1.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0):
+    resolution: {integrity: sha512-u5qdrzUMcNkHjC85v8oZ98NDmCzJv+zx3wJEzmIv96dmEcPp+wJFtQiAJwe4dCZ5QsIKsGK5Mc/bTvPG678BSA==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '>=5.4.0'
       '@typescript-eslint/parser': '>=5.4.0'

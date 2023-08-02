@@ -31,7 +31,7 @@ export default function(isTs) {
       env: {
         targets: browserslist(),
         mode: 'usage',
-        coreJs: '3.31.0',
+        coreJs: '3.32.0',
       },
     },
   };
