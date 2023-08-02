@@ -38,6 +38,7 @@
     ".eslintrc.cjs",
     "commitlint.config.cjs",
     "vitest.config.ts",
-    "vitest.workspace.ts"
+    "vitest.workspace.ts",
+    "lint-staged.config.mjs"
   ]
 }

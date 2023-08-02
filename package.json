@@ -95,17 +95,6 @@
       }
     }
   },
-  "lint-staged": {
-    "**/*/*.css": [
-      "stylelint"
-    ],
-    "**/*/*.{js,jsx,ts,tsx}": [
-      "eslint"
-    ],
-    "**/*/*.{ts,tsx}": [
-      "tsc"
-    ]
-  },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
