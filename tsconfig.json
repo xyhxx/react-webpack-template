@@ -39,6 +39,6 @@
     "commitlint.config.cjs",
     "vitest.config.ts",
     "vitest.workspace.ts",
-    "lint-staged.config.mjs"
+    "lint-staged.config.js"
   ]
 }
