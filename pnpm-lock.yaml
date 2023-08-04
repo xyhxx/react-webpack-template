@@ -54,8 +54,8 @@ importers:
         specifier: ^8.43.0
         version: 8.43.0
       eslint-config-proste:
-        specifier: ^8.1.0
-        version: 8.1.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0)
+        specifier: ^8.2.0
+        version: 8.2.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0)
       eslint-plugin-cypress:
         specifier: ^2.13.3
         version: 2.13.3(eslint@8.43.0)
@@ -4313,8 +4313,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-proste@8.1.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0):
-    resolution: {integrity: sha512-u5qdrzUMcNkHjC85v8oZ98NDmCzJv+zx3wJEzmIv96dmEcPp+wJFtQiAJwe4dCZ5QsIKsGK5Mc/bTvPG678BSA==}
+  /eslint-config-proste@8.2.0(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint-plugin-import-newlines@1.3.1)(eslint-plugin-import@2.27.5)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.1)(eslint@8.43.0):
+    resolution: {integrity: sha512-fm238cvw8un1/OTvNp9fAlRs/SfG0mKVPWrOih2/bNOYixQB1gJYIhn2RkcnyCcHGSYJZYHpWavUH3/ECIcWPQ==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '>=5.4.0'
       '@typescript-eslint/parser': '>=5.4.0'
