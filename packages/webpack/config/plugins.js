@@ -75,7 +75,7 @@ const plugins = [
       {
         ...getEnv(),
       },
-      process.env.IS_E2E ? {IS_E2E: 'true'} : void 0,
+      {IS_E2E: Boolean(process.env.IS_E2E)},
     ),
   }),
   new CopyPlugin({

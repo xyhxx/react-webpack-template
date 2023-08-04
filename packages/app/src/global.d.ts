@@ -5,7 +5,7 @@
 declare namespace NodeJS {
   type ProcessEnv = {
     readonly NODE_ENV: 'development' | 'production' | 'test';
-    readonly IS_E2E: 'true' | undefined;
+    readonly IS_E2E: boolean;
   };
 }
 
