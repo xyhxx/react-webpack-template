@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 
 export const require = createRequire(import.meta.url);
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const appDirection = realpathSync(process.cwd());

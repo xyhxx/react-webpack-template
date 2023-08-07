@@ -75,6 +75,7 @@ const plugins = [
       {
         ...getEnv(),
       },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       {IS_E2E: Boolean(process.env.IS_E2E)},
     ),
   }),
