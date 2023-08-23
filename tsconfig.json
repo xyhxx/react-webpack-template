@@ -18,7 +18,7 @@
     "jsx": "react-jsx",
     "experimentalDecorators": true,
     "allowImportingTsExtensions": true,
-    "types": ["jest"]
+    "types": ["vitest/globals"]
   },
   "extends": "./tsconfig.paths.json",
   "ts-node": {
@@ -31,14 +31,14 @@
   "exclude": ["node_modules", "cypress.config.ts"],
   "include": [
     "packages/app/src",
-    "packages/app/setupTests.ts",
     "packages/app/__tests__",
     "packages/webpack/bin",
     "packages/webpack/scripts",
     "packages/webpack/config",
-    "packages/webpack/jest",
     ".eslintrc.cjs",
     "commitlint.config.cjs",
+    "vitest.config.ts",
+    "vitest.workspace.ts",
     "lint-staged.config.js"
   ]
 }

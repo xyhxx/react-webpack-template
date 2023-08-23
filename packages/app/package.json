@@ -4,9 +4,8 @@
     "dev": "swt-script dev",
     "e2e": "cross-env IS_E2E=true swt-script dev",
     "build": "swt-script build",
-    "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage"
+    "test": "cross-env NODE_ENV=test vitest",
+    "test:coverage": "cross-env NODE_ENV=test vitest --coverage"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.15",
@@ -19,14 +18,9 @@
     "zustand": "^4.4.0"
   },
   "devDependencies": {
-    "@swc/jest": "^0.2.29",
     "@swt/webpack": "workspace:*",
-    "@testing-library/jest-dom": "^6.0.1",
     "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.13",
-    "@types/react-dom": "^18.2.6",
-    "identity-obj-proxy": "^3.0.0",
-    "jest-environment-jsdom": "^29.6.3",
-    "jest-watch-typeahead": "^2.2.2"
+    "@types/react-dom": "^18.2.6"
   }
 }

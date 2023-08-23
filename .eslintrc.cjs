@@ -1,9 +1,6 @@
 module.exports = {
-  extends: ['proste/reactTS'],
-  plugins: ['xyhxx', 'jest'],
-  env: {
-    'jest/globals': true,
-  },
+  extends: ['proste/reactTS', 'proste/vitest'],
+  plugins: ['xyhxx'],
   root: true,
   parserOptions: {
     project: './tsconfig.json',
