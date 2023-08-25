@@ -4,8 +4,8 @@ import swc from './swc.js';
 import {require} from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const enableSWC = process.env.ENABLE_SWC === 'true';
-const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
+const enableSWC = process.env.SWT_ENABLE_SWC === 'true';
+const useSourceMap = process.env.SWT_ENABLE_SOURCE_MAP === 'true';
 const buildSourceMap = isProduction ? useSourceMap : true;
 
 const moduleCssOptions = {

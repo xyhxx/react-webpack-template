@@ -5,6 +5,6 @@ const address = ip.address();
 
 export default defineConfig({
   e2e: {
-    baseUrl: `http://${address}:3001`,
+    baseUrl: `http://${address}:5000`,
   },
 });

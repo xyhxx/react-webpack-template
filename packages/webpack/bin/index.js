@@ -30,9 +30,7 @@ function setEnv(name) {
       break;
   }
 
-  const env = getSWTEnv();
-
-  Object.assign(process.env, env);
+  getSWTEnv();
 }
 
 function runScript() {

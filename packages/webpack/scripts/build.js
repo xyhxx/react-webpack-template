@@ -14,7 +14,7 @@ import {
   printFileSizesAfterBuild,
 } from './fileSizeUtils.js';
 
-const MAX_CHUNK_SIZE = Number(process.env.MAX_CHUNK_SIZE ?? 0);
+const MAX_CHUNK_SIZE = Number(process.env.SWT_MAX_CHUNK_SIZE ?? 0);
 
 /**
  * @typedef PreviousFileSizes

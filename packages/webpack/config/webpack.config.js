@@ -13,7 +13,7 @@ import {
 } from './paths.js';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const useSourceMap = process.env.ENABLE_SOURCE_MAP === 'true';
+const useSourceMap = process.env.SWT_ENABLE_SOURCE_MAP === 'true';
 const fileName = isProduction
   ? 'static/js/[name].[contenthash:8].js'
   : 'static/js/[name].js';

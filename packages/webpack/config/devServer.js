@@ -9,9 +9,13 @@ const config = {
     'Access-Control-Allow-Methods': '*',
     'Access-Control-Allow-Headers': '*',
   },
-  open: !process.env.IS_E2E,
+  open: process.env.E2E === 'false',
   host: address(),
-  port: Number(process.env.HOST),
+  port: Number(
+    process.env.E2E === 'false'
+      ? process.env.SWT_HOST
+      : process.env.SWT_E2E_HOST,
+  ),
   hot: true,
   compress: true,
   historyApiFallback: true,

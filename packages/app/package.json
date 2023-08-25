@@ -2,7 +2,7 @@
   "name": "@swt/app",
   "scripts": {
     "dev": "swt-script dev",
-    "e2e": "cross-env IS_E2E=true swt-script dev",
+    "e2e": "cross-env E2E=true swt-script dev",
     "build": "swt-script build",
     "test": "cross-env NODE_ENV=test vitest",
     "test:coverage": "cross-env NODE_ENV=test vitest --coverage"
