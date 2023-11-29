@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {outputPath, publicPath, srcPath, rootPath} from './paths.js';
 import {getEnv} from './env.js';
 import {resolve} from 'path';
@@ -10,6 +11,19 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import {readFileSync} from 'fs';
+import dateFormat from 'dateformat';
+
+const appPackagePath = resolve(rootPath, './package.json');
+const packageData = readFileSync(appPackagePath, 'utf-8');
+const packageDataJson = JSON.parse(packageData);
+
+const buildTime = dateFormat(new Date(), 'yyyymmddHHMMssl');
+
+const version =
+  process.env.NODE_ENV === 'development'
+    ? `${packageDataJson.version}.${buildTime}`
+    : packageDataJson.version;
 
 const {DefinePlugin} = webpack;
 
@@ -41,7 +55,7 @@ const plugins = [
   new ESLintWebpackPlugin({
     extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
     context: srcPath,
-    exclude: 'node_modules',
+    exclude: ['assets/icons', 'node_modules'],
     cache: true,
     cacheLocation: resolve(rootPath, '.temp-cache/.eslintcache'),
   }),
@@ -53,19 +67,19 @@ const plugins = [
       },
       isProduction
         ? {
-          minify: {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          },
-        }
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            },
+          }
         : void 0,
     ),
   ),
@@ -75,8 +89,11 @@ const plugins = [
       {
         ...getEnv(),
       },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      {E2E: `"${process.env.E2E}"`},
+      {
+        E2E: `"${process.env.E2E}"`,
+        VERSION: `"${version}"`,
+        BUILD_TIME: `"${buildTime}"`,
+      },
     ),
   }),
   new CopyPlugin({
@@ -87,7 +104,7 @@ const plugins = [
         toType: 'dir',
         noErrorOnMissing: true,
         globOptions: {
-          ignore: ['**/index.html', '**/pLogo.svg'],
+          ignore: ['**/index.html'],
         },
         info: {
           minimized: true,

@@ -1,15 +1,10 @@
 module.exports = {
-  extends: ['proste/reactTS', 'proste/vitest'],
-  plugins: ['xyhxx'],
+  extends: ['proste/reactTs', 'proste/vitest', 'prettier'],
   root: true,
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
     warnOnUnsupportedTypeScriptVersion: true,
-  },
-  rules: {
-    'xyhxx/if-line': 1,
-    'xyhxx/object-pattern-newline': 1,
   },
   overrides: [
     {
@@ -31,7 +26,7 @@ module.exports = {
         'packages/webpack/scripts/**',
       ],
       parserOptions: {},
-      extends: ['proste/javascript'],
+      extends: ['proste/typescript', 'prettier'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-var-requires': 0,

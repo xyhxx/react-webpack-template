@@ -39,8 +39,8 @@ export function junglePort(host, defaultPort) {
   const isInteractive = process.stdout.isTTY;
 
   return detect(defaultPort, host).then(
-    function(port) {
-      return new Promise(function(resolve) {
+    function (port) {
+      return new Promise(function (resolve) {
         if (port === defaultPort) return resolve(port);
 
         const message = `Something is already running on port ${defaultPort}.`;
@@ -50,11 +50,11 @@ export function junglePort(host, defaultPort) {
             type: 'confirm',
             name: 'changePort',
             message:
-              chalk.yellow(message)
-              + '\nWould you like to run the app on another port instead?',
+              chalk.yellow(message) +
+              '\nWould you like to run the app on another port instead?',
             initial: true,
           };
-          prompts(question).then(function({changePort}) {
+          prompts(question).then(function ({changePort}) {
             changePort ? resolve(port) : resolve(null);
           });
         } else {
@@ -63,12 +63,12 @@ export function junglePort(host, defaultPort) {
         }
       });
     },
-    function(err) {
+    function (err) {
       throw new Error(
-        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`)
-          + '\n'
-          + ('Network error message: ' + err.message || err)
-          + '\n',
+        chalk.red(`Could not find an open port at ${chalk.bold(host)}.`) +
+          '\n' +
+          ('Network error message: ' + err.message || err) +
+          '\n',
       );
     },
   );
@@ -86,9 +86,9 @@ export function printBuildError(err) {
   const stack = err != null && err.stack;
 
   if (
-    stack
-    && typeof message === 'string'
-    && message.indexOf('from Terser') !== -1
+    stack &&
+    typeof message === 'string' &&
+    message.indexOf('from Terser') !== -1
   ) {
     try {
       const matched = /(.+)\[(.+):(.+),(.+)\]\[.+\]/.exec(stack);

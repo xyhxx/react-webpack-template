@@ -58,6 +58,10 @@ const rules = [
   {
     oneOf: [
       {
+        test: /\.ldicons\.js$/,
+        type: 'asset/resource',
+      },
+      {
         test: cssRegex,
         exclude: cssModuleRegex,
         use: getStyleLoaders({

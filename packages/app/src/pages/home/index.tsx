@@ -4,7 +4,7 @@ import cla from 'classnames';
 import {FC} from 'react';
 import {useCountState} from '@stores';
 
-const Home: FC = function() {
+const Home: FC = function () {
   const {count, inc, dec} = useCountState();
 
   return (

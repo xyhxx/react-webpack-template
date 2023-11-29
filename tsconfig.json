@@ -21,22 +21,14 @@
     "types": ["vitest/globals"]
   },
   "extends": "./tsconfig.paths.json",
-  "ts-node": {
-    "transpileOnly": true,
-    "files": true,
-    "esm": true,
-    "swc": true,
-    "compilerOptions": {}
-  },
   "exclude": ["node_modules", "cypress.config.ts"],
   "include": [
-    "packages/app/src",
-    "packages/app/__tests__",
+    "packages/app",
     "packages/webpack/bin",
     "packages/webpack/scripts",
     "packages/webpack/config",
     ".eslintrc.cjs",
-    "commitlint.config.cjs",
+    "commitlint.config.js",
     "vitest.config.ts",
     "vitest.workspace.ts",
     "lint-staged.config.js"

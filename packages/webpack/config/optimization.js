@@ -1,9 +1,8 @@
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
-const {lightningCssMinify} = CssMinimizerPlugin;
 const {swcMinify} = TerserPlugin;
-
+const {lightningCssMinify} = CssMinimizerPlugin;
 const isProduction = process.env.NODE_ENV === 'production';
 
 /** @type {import('webpack').Configuration['optimization']} */
@@ -50,10 +49,17 @@ const optimization = {
         priority: -20,
         reuseExistingChunk: true,
       },
-      react: {
-        name: 'react',
+      common: {
+        name: 'common',
         chunks: 'all',
-        test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|@remix-run|scheduler)/,
+        test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|@remix-run|scheduler|@tanstack|zod|i18next|lottie)/,
+        priority: 10,
+        reuseExistingChunk: true,
+      },
+      antd: {
+        name: 'antd',
+        chunks: 'all',
+        test: /[\\/]node_modules[\\/](antd|@ant-design|rc)/,
         priority: 10,
         reuseExistingChunk: true,
       },

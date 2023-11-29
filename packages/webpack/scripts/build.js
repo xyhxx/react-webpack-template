@@ -41,8 +41,8 @@ function build(previousFileSizes) {
    *
    * @type Promise<PromiseResolve>
    */
-  return new Promise(function(resolve, reject) {
-    compiler.run(function(err, stats) {
+  return new Promise(function (resolve, reject) {
+    compiler.run(function (err, stats) {
       let message = '';
 
       if (err) {
@@ -74,26 +74,26 @@ function build(previousFileSizes) {
 }
 
 measureFileSizesBeforeBuild(outputPath)
-  .then(function(prevFileSizes) {
+  .then(function (prevFileSizes) {
     clearBuildFolder();
     clearConsole();
 
     return build(prevFileSizes);
   })
   .then(
-    function({stats, previousFileSizes, warnings}) {
+    function ({stats, previousFileSizes, warnings}) {
       if (warnings.length) {
         console.log(chalk.yellow('Compiled with warnings.\n'));
         console.log(warnings.join('\n\n'));
         console.log(
-          '\nSearch for the '
-            + chalk.underline(chalk.yellow('keywords'))
-            + ' to learn more about each warning.',
+          '\nSearch for the ' +
+            chalk.underline(chalk.yellow('keywords')) +
+            ' to learn more about each warning.',
         );
         console.log(
-          'To ignore, add '
-            + chalk.cyan('// eslint-disable-next-line')
-            + ' to the line before.\n',
+          'To ignore, add ' +
+            chalk.cyan('// eslint-disable-next-line') +
+            ' to the line before.\n',
         );
       } else {
         console.log(chalk.green('Successfully 🤩'));
@@ -106,7 +106,7 @@ measureFileSizesBeforeBuild(outputPath)
         maxSize: MAX_CHUNK_SIZE,
       });
     },
-    function(err) {
+    function (err) {
       errorLogger('Failed to compile');
       console.log();
       printBuildError(err);
@@ -114,7 +114,7 @@ measureFileSizesBeforeBuild(outputPath)
       process.exit(1);
     },
   )
-  .catch(function(err) {
+  .catch(function (err) {
     if (err && err.message) {
       console.log();
       console.log(err.message);

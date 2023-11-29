@@ -3,7 +3,7 @@ import {srcPath, require} from './paths.js';
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 
-export default function() {
+export default function () {
   return {
     test: /\.(js|jsx|ts|tsx|mjs)$/,
     include: srcPath,

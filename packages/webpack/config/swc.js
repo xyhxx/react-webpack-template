@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 /**
  * @param {boolean} isTs
  */
-export default function(isTs) {
+export default function (isTs) {
   return {
     loader: require.resolve('swc-loader'),
     test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,
@@ -31,7 +31,7 @@ export default function(isTs) {
       env: {
         targets: browserslist(),
         mode: 'usage',
-        coreJs: '3.32.0',
+        coreJs: '3.33.0',
       },
     },
   };

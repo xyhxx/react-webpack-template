@@ -19,4 +19,5 @@ export default {
   '@stores': aliasPath('stores'),
   '@utils': aliasPath('utils'),
   '@models': aliasPath('models'),
+  '@locales': aliasPath('locales'),
 };
