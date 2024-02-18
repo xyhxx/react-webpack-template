@@ -1,4 +1,4 @@
-import {Home} from '@pages';
+import Home from '@pages/home';
 import {HOME_PATH} from './name';
 import {RouteObject, createBrowserRouter} from 'react-router-dom';
 
