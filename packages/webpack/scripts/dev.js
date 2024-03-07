@@ -6,7 +6,7 @@ import {
   clearConsole,
   startedServerLogger,
   errorLogger,
-  junglePort,
+  choosePort,
 } from './utils.js';
 
 const isInteractive = process.stdout.isTTY;
@@ -30,7 +30,7 @@ function start(port) {
   });
 }
 
-junglePort(host, defaultPort)
+choosePort(host, defaultPort)
   .then(function (port) {
     if (!port) return;
 

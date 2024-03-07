@@ -1,6 +1,5 @@
 import chalk from 'chalk';
 import detect from 'detect-port-alt';
-import prompts from 'prompts';
 import fs from 'fs-extra';
 import {outputPath} from '../config/paths.js';
 
@@ -35,32 +34,11 @@ export function errorLogger(error) {
  * @param {string} host
  * @param {number} defaultPort
  */
-export function junglePort(host, defaultPort) {
-  const isInteractive = process.stdout.isTTY;
-
+export function choosePort(host, defaultPort) {
   return detect(defaultPort, host).then(
     function (port) {
       return new Promise(function (resolve) {
-        if (port === defaultPort) return resolve(port);
-
-        const message = `Something is already running on port ${defaultPort}.`;
-        if (isInteractive) {
-          clearConsole();
-          const question = {
-            type: 'confirm',
-            name: 'changePort',
-            message:
-              chalk.yellow(message) +
-              '\nWould you like to run the app on another port instead?',
-            initial: true,
-          };
-          prompts(question).then(function ({changePort}) {
-            changePort ? resolve(port) : resolve(null);
-          });
-        } else {
-          console.log(chalk.red(message));
-          resolve(null);
-        }
+        resolve(port);
       });
     },
     function (err) {
@@ -73,7 +51,6 @@ export function junglePort(host, defaultPort) {
     },
   );
 }
-
 export function clearBuildFolder() {
   fs.emptyDirSync(outputPath);
 }
