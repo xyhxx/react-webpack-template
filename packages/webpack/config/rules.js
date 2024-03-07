@@ -2,6 +2,7 @@ import babel from './babel.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import swc from './swc.js';
 import {require} from './paths.js';
+import tailwindcss from 'tailwindcss';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const enableSWC = process.env.SWT_ENABLE_SWC === 'true';
@@ -38,6 +39,8 @@ function getStyleLoaders(cssOptions) {
           plugins: [
             'postcss-nesting',
             'postcss-flexbugs-fixes',
+            ['tailwindcss/nesting', 'postcss-nesting'],
+            tailwindcss,
             [
               'postcss-preset-env',
               {
