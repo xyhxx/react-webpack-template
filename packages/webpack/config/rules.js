@@ -65,6 +65,10 @@ const rules = [
         type: 'asset/resource',
       },
       {
+        test: /\.json5$/,
+        loader: require.resolve('json5-loader'),
+      },
+      {
         test: cssRegex,
         exclude: cssModuleRegex,
         use: getStyleLoaders({

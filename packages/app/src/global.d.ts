@@ -11,6 +11,11 @@ declare namespace NodeJS {
   };
 }
 
+declare module '*.json5' {
+  const src: string;
+  export default src;
+}
+
 declare module '*.avif' {
   const src: string;
   export default src;

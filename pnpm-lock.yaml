@@ -204,6 +204,9 @@ importers:
       html-webpack-plugin:
         specifier: ^5.6.0
         version: 5.6.0(webpack@5.90.1)
+      json5-loader:
+        specifier: ^4.0.1
+        version: 4.0.1(webpack@5.90.1)
       lightningcss:
         specifier: ^1.23.0
         version: 1.23.0
@@ -6453,6 +6456,18 @@ packages:
 
   /json-stringify-safe@5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
+    dev: true
+
+  /json5-loader@4.0.1(webpack@5.90.1):
+    resolution: {integrity: sha512-c9viNZlZTz0MTIcf/4qvek5Dz1/PU3DNCB4PwUhlEZIV3qb1bSD6vQQymlV17/Wm6ncra1aCvmIPsuRj+KfEEg==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    dependencies:
+      json5: 2.2.3
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.90.1(@swc/core@1.4.0)(webpack-cli@5.1.4)
     dev: true
 
   /json5@1.0.2:
