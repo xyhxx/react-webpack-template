@@ -16,6 +16,15 @@ import dateFormat from 'dateformat';
 
 const appPackagePath = resolve(rootPath, './package.json');
 const packageData = readFileSync(appPackagePath, 'utf-8');
+
+/**
+ * @typedef PakcageData
+ * @property {string} version
+ * @property {string} name
+ */
+/**
+ * @type PakcageData
+ */
 const packageDataJson = JSON.parse(packageData);
 
 const buildTime = dateFormat(new Date(), 'yyyymmddHHMMssl');
@@ -27,8 +36,8 @@ const version =
 
 const {DefinePlugin} = webpack;
 
-const isProduction = process.env.NODE_ENV === 'production';
-const isDevelopment = !isProduction;
+const production = process.env.NODE_ENV === 'production';
+const development = !production;
 
 /** @type {import('webpack').Configuration['plugins']} */
 const plugins = [
@@ -36,7 +45,7 @@ const plugins = [
     color: '#057748',
   }),
   new ForkTsCheckerWebpackPlugin({
-    async: isDevelopment,
+    async: development,
     typescript: {
       configFile: resolve(rootPath, './tsconfig.json'),
       diagnosticOptions: {
@@ -64,8 +73,9 @@ const plugins = [
       {
         inject: true,
         template: resolve(publicPath, 'index.html'),
+        title: packageDataJson.title,
       },
-      isProduction
+      production
         ? {
             minify: {
               removeComments: true,
@@ -116,7 +126,7 @@ const plugins = [
 
 const fileName = 'static/css/[name].[contenthash:8].css';
 
-if (isProduction) {
+if (production) {
   plugins.push(
     new MiniCssExtractPlugin({
       filename: fileName,

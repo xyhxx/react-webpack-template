@@ -3,11 +3,11 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const {swcMinify} = TerserPlugin;
 const {lightningCssMinify} = CssMinimizerPlugin;
-const isProduction = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 
 /** @type {import('webpack').Configuration['optimization']} */
 const optimization = {
-  minimize: isProduction,
+  minimize: production,
   minimizer: [
     new TerserPlugin({
       minify: swcMinify,

@@ -37,12 +37,16 @@ const Home: FC = function () {
       <h1
         className={classNames(
           'mbs-20 text-center text-[60px] text-white transition-colors duration-500',
-          {'text-red-500': count >= 5},
+          {'!text-red-500': count >= 5},
         )}
       >
         React
       </h1>
-      <h2 className="mbs-20 text-center" data-testid="title" id="title">
+      <h2
+        className="mbs-20 text-center text-white"
+        data-testid="title"
+        id="title"
+      >
         count is {count}
       </h2>
       <div className="mbs-8 mbe-0 mli-auto flex w-52 items-center justify-evenly">

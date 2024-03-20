@@ -12,9 +12,9 @@ import {
   rootPath,
 } from './paths.js';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 const useSourceMap = process.env.SWT_ENABLE_SOURCE_MAP === 'true';
-const fileName = isProduction
+const fileName = production
   ? 'static/js/[name].[contenthash:8].js'
   : 'static/js/[name].js';
 
@@ -23,18 +23,18 @@ const config = {
   stats: 'errors-warnings',
   target: ['browserslist'],
   entry: resolve(srcPath, 'index.tsx'),
-  devtool: isProduction
+  devtool: production
     ? useSourceMap
       ? 'source-map'
       : false
     : 'cheap-module-source-map',
-  mode: isProduction ? 'production' : 'development',
+  mode: production ? 'production' : 'development',
   performance: false,
   infrastructureLogging: {
     level: 'none',
   },
   output: {
-    path: isProduction ? outputPath : void 0,
+    path: production ? outputPath : void 0,
     filename: fileName,
     chunkFilename: fileName,
     assetModuleFilename: 'static/assets/[name].[hash][ext]',

@@ -1,7 +1,7 @@
 import {srcPath, require} from './paths.js';
 
-const isProduction = process.env.NODE_ENV === 'production';
-const isDev = !isProduction;
+const production = process.env.NODE_ENV === 'production';
+const development = !production;
 
 export default function () {
   return {
@@ -25,7 +25,7 @@ export default function () {
               require.resolve('@babel/preset-react'),
               {
                 runtime: 'automatic',
-                development: isDev,
+                development,
               },
             ],
             require.resolve('@babel/preset-typescript'),
@@ -40,15 +40,15 @@ export default function () {
                 useESModules: true,
               },
             ],
-            !isDev && [
+            !development && [
               require.resolve('react-remove-properties'),
               {
                 properties: ['data-testid'],
               },
             ],
-            isDev && require.resolve('react-refresh/babel'),
+            development && require.resolve('react-refresh/babel'),
           ].filter(Boolean),
-          compact: isProduction,
+          compact: production,
         },
       },
     ].filter(Boolean),

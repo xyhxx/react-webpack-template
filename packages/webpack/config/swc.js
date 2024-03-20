@@ -1,28 +1,28 @@
 import {srcPath, require} from './paths.js';
 import browserslist from 'browserslist';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 
 /**
- * @param {boolean} isTs
+ * @param {boolean} ts
  */
-export default function (isTs) {
+export default function (ts) {
   return {
     loader: require.resolve('swc-loader'),
-    test: isTs ? /.tsx?$/ : /.(js|jsx|mjs)$/,
+    test: ts ? /.tsx?$/ : /.(js|jsx|mjs)$/,
     include: srcPath,
     options: {
       jsc: {
         externalHelpers: true,
         parser: {
-          syntax: isTs ? 'typescript' : 'ecmascript',
-          [isTs ? 'tsx' : 'jsx']: true,
+          syntax: ts ? 'typescript' : 'ecmascript',
+          [ts ? 'tsx' : 'jsx']: true,
           decorators: true,
           dynamicImport: true,
         },
         transform: {
           react: {
-            refresh: !isProduction,
+            refresh: !production,
             runtime: 'automatic',
           },
           decoratorVersion: '2022-03',
@@ -31,7 +31,7 @@ export default function (isTs) {
       env: {
         targets: browserslist(),
         mode: 'usage',
-        coreJs: '3.35.1',
+        coreJs: '3.36.1',
       },
     },
   };
