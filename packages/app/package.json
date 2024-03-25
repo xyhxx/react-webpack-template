@@ -1,5 +1,6 @@
 {
   "name": "@swt/app",
+  "type": "module",
   "scripts": {
     "dev": "swt-script dev",
     "e2e": "cross-env E2E=true swt-script dev",

@@ -1,8 +1,10 @@
+import logical from 'tailwindcss-logical';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   corePlugins: {
     preflight: false,
   },
-  plugins: [require('tailwindcss-logical')],
+  plugins: [logical],
 };
