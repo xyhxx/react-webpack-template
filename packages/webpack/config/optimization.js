@@ -1,5 +1,7 @@
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import browserslist from 'browserslist';
+import {browserslistToTargets} from 'lightningcss';
 
 const {swcMinify} = TerserPlugin;
 const {lightningCssMinify} = CssMinimizerPlugin;
@@ -23,6 +25,15 @@ const optimization = {
     }),
     new CssMinimizerPlugin({
       minify: lightningCssMinify,
+      minimizerOptions: {
+        targets: browserslistToTargets(browserslist()),
+        preset: [
+          'default',
+          {
+            discardComments: {removeAll: true},
+          },
+        ],
+      },
     }),
   ],
   runtimeChunk: {
