@@ -139,7 +139,7 @@ if (production) {
       reportFilename: resolve(rootPath, 'analyzer/index.html'),
     }),
     new CompressionPlugin({
-      algorithm: 'gzip',
+      algorithm: 'brotliCompress',
       test: /\.(js|css)$/,
       deleteOriginalAssets: false,
     }),
