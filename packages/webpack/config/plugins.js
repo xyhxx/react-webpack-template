@@ -13,6 +13,7 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import {readFileSync} from 'fs';
 import dateFormat from 'dateformat';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 const appPackagePath = resolve(rootPath, './package.json');
 const packageData = readFileSync(appPackagePath, 'utf-8');
@@ -136,6 +137,11 @@ if (production) {
       analyzerMode: 'static',
       openAnalyzer: false,
       reportFilename: resolve(rootPath, 'analyzer/index.html'),
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css)$/,
+      deleteOriginalAssets: false,
     }),
   );
 } else {
